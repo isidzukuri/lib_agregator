@@ -10,12 +10,16 @@ class YakabooImporter
 	
 	def import
     doc = Nokogiri::XML.parse(open('public/sd-feed-269.xml').read)
+    skip = Book.where(domain: 'yakaboo.ua').pluck(:paper)
 
     # ap doc.xpath("//offers/offer").first
 
     doc.xpath("//offers/offer").each do |el|
       b_data = Hash.from_xml(el.to_s)["offer"]
       next if b_data['type'] != "book"
+      next if skip.delete(b_data['url']) 
+
+
 
       categories_path = b_data['category_path'].split(' > ')
       catecory_str = categories_path[1]
@@ -38,18 +42,21 @@ class YakabooImporter
         end
       end
 
-      ap Book.create({
+      result = {
         'title' => b_data['name'],
         'description' => b_data['description'],
         'cover' => b_data['picture'],
-        'authors' => authors,
+        'authors' => authors.uniq,
         # 'genre' => book_genre(catecory_str.downcase.to_s),
-        'tags' => tags,
+        'tags' => tags.uniq,
         'paper' => b_data['url'],
         'source' => 'xml',
         'domain' => 'yakaboo.ua'
-      })
-      # ap result
+      }
+      ap result
+
+      Book.create(result)
+      # 
 
     end
 
