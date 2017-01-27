@@ -1,10 +1,30 @@
-<h2><%= @tag.title %></h2>
-
-<% @books.each do |item|%>
-
-  <a href='/books/<%= item.seo%>'><%= item.title%></a><br/>
-  <% item.authors.each do |author|%>
-    <a href='/authors/<%= author.seo%>'><%= author.full_name%></a><br/>
-  <% end %>
-  <hr/>
+<h2><%= @book.title %></h2>
+<% @book.authors.each do |author|%>
+  <a href='/authors/<%= author.seo%>'><%= author.full_name%></a><br/>
 <% end %>
+
+
+<hr/>
+
+<% if @book.genre.present? %>
+<a href='/genres/<%= @book.genre.seo%>'><%= @book.genre.title %></a><br/>
+<% end %>
+
+<% @book.tags.each do |item|%>
+  <a href='/tags/<%= item.seo%>'><%= item.title%></a><br/>
+<% end %>
+<hr/>
+
+<% if @book.cover.present? %>
+  <!-- <img src="<%= @book.cover %>" alt='<%= @book.title %>' title='<%= @book.title %>' /> -->
+<% end %>
+<div><%= @book.description %></div>
+<hr/>
+<div>
+  <h3>Доступні формати:</h3>
+
+  <% ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu', 'paper'].each do |frmt| %>
+    <% next unless @book[frmt] %>
+    <a href="<%=@book[frmt]%>" target="_blank" rel="nofollow"><%=frmt%></a>
+  <% end %>
+</div>

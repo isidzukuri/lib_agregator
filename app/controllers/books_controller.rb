@@ -1,14 +1,7 @@
-class TagsController < ApplicationController
-
-  def index
-    @items = Tag.order(:title).all
-  end
+class BooksController < ApplicationController
 
   def show
-    # @tag = Tag.includes(:books).find_by_seo(params[:key])
-    @tag = Tag.includes(books: [:authors]).find_by_seo(params[:key])
-
-    @books = @tag.books
+    @book = Book.includes(:authors, :tags, :genre).find_by_seo(params[:key])
   end
 
 end

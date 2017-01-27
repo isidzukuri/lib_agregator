@@ -20,7 +20,7 @@ class Book < ActiveRecord::Base
     search = Tire::Search::Search.new('books', load: true)
     search.query  { string("title:#{word}") }
     # p search.results
-
+    ActiveRecord::Associations::Preloader.new.preload(search.results, :authors)
     search.results
   end
 
