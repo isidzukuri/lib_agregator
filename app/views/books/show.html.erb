@@ -1,0 +1,10 @@
+<h2><%= @tag.title %></h2>
+
+<% @books.each do |item|%>
+
+  <a href='/books/<%= item.seo%>'><%= item.title%></a><br/>
+  <% item.authors.each do |author|%>
+    <a href='/authors/<%= author.seo%>'><%= author.full_name%></a><br/>
+  <% end %>
+  <hr/>
+<% end %>

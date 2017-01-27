@@ -1,0 +1,6 @@
+<h2><%= @author.full_name %></h2>
+
+<% @books.each do |item|%>
+  <a href='/books/<%= item.seo%>'><%= item.title%></a><br/>
+  <hr/>
+<% end %>
