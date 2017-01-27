@@ -2,7 +2,9 @@ class SearchController < ApplicationController
 
   def index
     if params[:word].present?
-      @books = Book.includes(:authors).search_by_title(params[:word])
+      @books = Book.search_by_title(params[:word])
+      @authors = Author.search_by_full_name(params[:word])
+
 
       # ap @books.first.authors
     else

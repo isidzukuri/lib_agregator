@@ -14,4 +14,10 @@ class Author < ActiveRecord::Base
   def seo_source
     :full_name
   end
+
+  def self.search_by_full_name word
+    search = Tire::Search::Search.new('authors', load: true)
+    search.query  { string("full_name:#{word}") }
+    search.results
+  end
 end

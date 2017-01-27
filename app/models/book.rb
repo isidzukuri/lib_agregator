@@ -14,8 +14,6 @@ class Book < ActiveRecord::Base
     indexes :description
   end
 
-
-
   def self.search_by_title word
     search = Tire::Search::Search.new('books', load: true)
     search.query  { string("title:#{word}") }
