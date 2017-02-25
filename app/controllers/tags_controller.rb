@@ -1,14 +1,14 @@
 class TagsController < ApplicationController
 
-  def index
-    @items = Tag.order(:title).all
+  def index 
+    @items = Tag.order(:title).limit(@per_page).offset(@offset).all
+    @items_total = Tag.count
   end
 
   def show
-    # @tag = Tag.includes(:books).find_by_seo(params[:key])
-    @tag = Tag.includes(books: [:authors]).find_by_seo(params[:key])
-
-    @books = @tag.books
+    @tag = Tag.find_by_seo(params[:key])
+    @items = @tag.books.includes(:authors).limit(@per_page).offset(@offset)
+    @items_total = @tag.books.count
   end
 
 end

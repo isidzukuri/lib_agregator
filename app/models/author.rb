@@ -7,6 +7,8 @@ class Author < ActiveRecord::Base
 
   validates :full_name, presence: true
 
+  alias_attribute :title, :full_name
+
   mapping do
     indexes :full_name
   end

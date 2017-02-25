@@ -1,11 +1,13 @@
 class GenresController < ApplicationController
 
   def index
-    @genres = Genre.all
+    @items = Genre.all
   end
 
   def show
-    params[:key]
-    
+    @genre = Genre.find_by_seo(params[:key])
+    @items = @genre.books.includes(:authors).limit(@per_page).offset(@offset)
+    @items_total = @genre.books.count
   end
+
 end

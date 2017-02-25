@@ -1,3 +1,5 @@
 <% @items.each do |item|%>
-  <a href='/tags/<%= item.seo%>'><%= item.title%></a><br/>
+  <a href='/authors/<%= item.seo%>'><%= item.title%></a><br/>
 <% end %>
+
+<%= render partial: "layouts/paginator" %>

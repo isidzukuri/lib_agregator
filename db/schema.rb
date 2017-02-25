@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -18,18 +17,16 @@ ActiveRecord::Schema.define(version: 20170118114158) do
     t.string "last_name"
     t.string "first_name"
     t.string "seo"
+    t.index ["full_name"], name: "index_authors_on_full_name"
+    t.index ["last_name"], name: "index_authors_on_last_name"
+    t.index ["seo"], name: "index_authors_on_seo", unique: true
   end
-
-  add_index "authors", ["full_name"], name: "index_authors_on_full_name"
-  add_index "authors", ["last_name"], name: "index_authors_on_last_name"
-  add_index "authors", ["seo"], name: "index_authors_on_seo", unique: true
 
   create_table "authors_books", force: :cascade do |t|
     t.integer "author_id", null: false
     t.integer "book_id",   null: false
+    t.index ["author_id", "book_id"], name: "index_authors_books_on_author_id_and_book_id", unique: true
   end
-
-  add_index "authors_books", ["author_id", "book_id"], name: "index_authors_books_on_author_id_and_book_id", unique: true
 
   create_table "books", force: :cascade do |t|
     t.string  "title"
@@ -48,33 +45,29 @@ ActiveRecord::Schema.define(version: 20170118114158) do
     t.string  "djvu"
     t.integer "genre_id"
     t.string  "seo"
+    t.index ["domain"], name: "index_books_on_domain"
+    t.index ["genre_id"], name: "index_books_on_genre_id"
+    t.index ["seo"], name: "index_books_on_seo", unique: true
+    t.index ["source"], name: "index_books_on_source"
+    t.index ["title"], name: "index_books_on_title"
   end
-
-  add_index "books", ["domain"], name: "index_books_on_domain"
-  add_index "books", ["genre_id"], name: "index_books_on_genre_id"
-  add_index "books", ["seo"], name: "index_books_on_seo", unique: true
-  add_index "books", ["source"], name: "index_books_on_source"
-  add_index "books", ["title"], name: "index_books_on_title"
 
   create_table "books_tags", force: :cascade do |t|
     t.integer "tag_id",  null: false
     t.integer "book_id", null: false
+    t.index ["tag_id", "book_id"], name: "index_books_tags_on_tag_id_and_book_id", unique: true
   end
-
-  add_index "books_tags", ["tag_id", "book_id"], name: "index_books_tags_on_tag_id_and_book_id", unique: true
 
   create_table "genres", force: :cascade do |t|
     t.string "title"
     t.string "seo"
+    t.index ["seo"], name: "index_genres_on_seo", unique: true
   end
-
-  add_index "genres", ["seo"], name: "index_genres_on_seo", unique: true
 
   create_table "tags", force: :cascade do |t|
     t.string "title"
     t.string "seo"
+    t.index ["seo"], name: "index_tags_on_seo", unique: true
   end
-
-  add_index "tags", ["seo"], name: "index_tags_on_seo", unique: true
 
 end
