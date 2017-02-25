@@ -1,3 +1,7 @@
-<% (@items_total/@per_page).ceil.times do |page|%>
-<a href="<%=@current_path%>?page=<%=page %>"><%=page+1 %></a>
-<% end %>
+<nav class="col-centered" aria-label="Page navigation">
+  <ul class="pagination">
+    <% (@items_total/@per_page).ceil.times do |page|%>
+    <li><a href="<%=@current_path%>?page=<%=page %>"><%=page+1 %></a></li>
+    <% end %>
+  </ul>
+</nav>

@@ -56,5 +56,7 @@ gem 'ruby-prof'
 gem 'htmlentities'
 gem 'unidecoder'
 gem 'tire'
-gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'puma'
+
+# gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap-sass', '~> 3.3.6'
