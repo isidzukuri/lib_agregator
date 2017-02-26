@@ -1,9 +1,17 @@
 # config valid only for current version of Capistrano
+# require 'capistrano-db-tasks'
+
 lock "3.7.2"
 
 set :application, "lib_agregator"
 set :repo_url, "https://github.com/isidzukuri/lib_agregator.git"
 set :deploy_to, '/var/www/lib_agregator'
+
+
+
+# RVM
+set :rvm_ruby_version, 'ruby-2.4.0'
+
 
 set :user, "root"
 server "185.25.118.190", user: 'root', roles: %w{web app db}

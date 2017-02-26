@@ -18,11 +18,14 @@ class ChtyvoImporter
 		@data = JSON.parse open('public/data_2017_01_17.json').read
 
 		data.each do |entry|
-		author = [book_author(entry['author'])]
-		genre = book_genre(entry['category'])
-		tags = [book_tag(entry['tags'])]
-		
-		create_book(entry, author, genre, tags)
+            begin 
+        		author = [book_author(entry['author'])]
+        		genre = book_genre(entry['category'])
+        		tags = [book_tag(entry['tags'])]
+        		
+        		create_book(entry, author, genre, tags)
+            rescue
+            end 
 		end
 		
 		true
@@ -43,10 +46,7 @@ class ChtyvoImporter
             entry[frmt] = "http://chtyvo.org.ua#{entry[frmt]}" if entry[frmt].present?
         end
 
-    begin
-       Book.create(entry)
-      rescue
-      end 
+		Book.create(entry)
 	end
 
 	def book_author full_name

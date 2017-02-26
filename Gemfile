@@ -33,7 +33,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development do
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails', '~> 1.2'
-  # gem 'capistrano-rvm', github: 'capistrano/rvm'
+  gem 'capistrano-bundler', '~> 1.2'
+  gem 'capistrano-rails-db'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-puma'
   # gem "capistrano-scm-gitcopy"
 end
 
