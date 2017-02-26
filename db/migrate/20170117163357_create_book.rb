@@ -7,7 +7,7 @@ class CreateBook < ActiveRecord::Migration
       t.string  :domain, index: true
       t.string  :source, index: true
 
-      t.string  :paper
+      t.string  :paper, limit: 500
       t.string  :txt
       t.string  :rtf
       t.string  :doc

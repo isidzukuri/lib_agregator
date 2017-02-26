@@ -3,6 +3,7 @@ class YakabooImporter
 	attr_accessor :data, :authors, :genres, :tags
   
   def initialize
+    ActiveRecord::Base.logger.level = 1
     @authors = {}
    	@genres = {}
    	@tags = {}
@@ -47,21 +48,26 @@ class YakabooImporter
         'description' => b_data['description'],
         'cover' => b_data['picture'],
         'authors' => authors.uniq,
-        # 'genre' => book_genre(catecory_str.downcase.to_s),
+        'genre' => book_genre,
         'tags' => tags.uniq,
         'paper' => b_data['url'],
         'source' => 'xml',
         'domain' => 'yakaboo.ua'
       }
-      ap result
-
-      Book.create(result)
-      # 
+      # ap result
+      begin
+       Book.create(result)
+      rescue
+      end 
 
     end
 
     true
 	end
+
+  def book_genre
+    @genre ||= Genre.find_or_create_by(title: 'Паперові книги')
+  end
 
 
 	def book_author full_name
@@ -106,22 +112,5 @@ class YakabooImporter
     tag
   end
 
-	def book_genre title
-		title = title.strip
-		genre = find_genre(title)
-		if !genre.present?
-			genre = Genre.create(title: title)
-		end
-		genre
-	end
-
-  def find_genre title
-    genre = genres[title]
-    if !genre
-      genre = Genre.find_by_title(title)
-      genres[title] = genre
-    end
-    genre
-  end
 end
 

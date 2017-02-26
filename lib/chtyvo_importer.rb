@@ -3,6 +3,7 @@ class ChtyvoImporter
 	attr_accessor :data, :authors, :genres, :tags
   
   def initialize
+    ActiveRecord::Base.logger.level = 1
     @authors = {}
    	@genres = {}
    	@tags = {}
@@ -42,7 +43,10 @@ class ChtyvoImporter
             entry[frmt] = "http://chtyvo.org.ua#{entry[frmt]}" if entry[frmt].present?
         end
 
-		Book.create(entry)
+    begin
+       Book.create(entry)
+      rescue
+      end 
 	end
 
 	def book_author full_name
