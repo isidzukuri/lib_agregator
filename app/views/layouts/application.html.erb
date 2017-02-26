@@ -19,6 +19,7 @@
     <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
     <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,700,800,900&amp;subset=cyrillic-ext" rel="stylesheet">
 
     <%= javascript_include_tag "application" %>
 
@@ -30,7 +31,7 @@
     <![endif]-->
     <meta name="google-site-verification" content="Jo2YvVtXBY7US1SQTeQ2SD6iNadM4Mu-aHMh1WYL-nY" />
   </head>
-  <body ng-app="siteApp">
+  <body>
 <!-- navbar-default -->
     <div class="navbar navbar-default navbar-fixed-top top_menu">
       <div class="container">
@@ -40,10 +41,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">library</a>
+        <a class="navbar-brand" href="/"><h1>Знайди книгу!</h1></a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-              <li><a href="/">Головна</a></li>
+              <li><a href="/">Пошук</a></li>
               <li><a href="/genres">Жанри</a></li>
               <li><a href="/tags">Теги</a></li>
               <li><a href="/authors">Автори</a></li>

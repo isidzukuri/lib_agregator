@@ -1,12 +1,14 @@
-<a href='/books/<%= item.seo%>'><%= item.title%></a><br/>
-<% if item.authors.loaded? %>
-  <% item.authors.each do |author|%>
-    <a href='/authors/<%= author.seo%>'><%= author.full_name%></a><br/>
-  <% end %>
-<% end %>
+<div class="book_item">
+    <a href='/books/<%= item.seo%>'><%= item.title%></a><br/>
+    <% if item.authors.loaded? %>
+      <% item.authors.each do |author|%>
+        <a class="author_link" href='/authors/<%= author.seo%>'><%= author.full_name%></a><br/>
+      <% end %>
+    <% end %>
 
-<% ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu', 'paper'].each do |frmt| %>
-  <% next unless item[frmt] %>
-  <small><%=frmt%></small>
-<% end %>
-<hr/>
+    <% ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu', 'paper'].each do |frmt| %>
+      <% next unless item[frmt] %>
+      <% frmt = 'папір' if frmt == 'paper' %>
+      <span class="label label-warning"><%=frmt%></span>
+    <% end %>
+</div>

@@ -36,6 +36,11 @@ class ChtyvoImporter
 		entry['authors'] = authors
 		entry['genre'] = genre
 		entry['tags'] = tags
+        entry['cover'] = "http://chtyvo.org.ua#{entry['cover']}" if entry['cover'].present?
+        
+        ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu'].each do |frmt|
+            entry[frmt] = "http://chtyvo.org.ua#{entry[frmt]}" if entry[frmt].present?
+        end
 
 		Book.create(entry)
 	end

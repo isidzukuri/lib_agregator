@@ -1,5 +1,3 @@
-<% @items.each do |item|%>
-  <a href='/authors/<%= item.seo%>'><%= item.title%></a><br/>
-<% end %>
+<%= render partial: "authors/list", collection: @items, as: :item  %>
 
 <%= render partial: "layouts/paginator" %>

@@ -1,6 +1,14 @@
 
-<h2>пошук книг</h2>
-<form action="/search" method="get">
-  <input type="text" name="word" value="" required>
-  <input type="submit" value="шукати">
-</form>
+<div class="row">
+  <div class="col-lg-4 block_center">
+    <h2>пошук книг</h2>
+    <form action="/search" method="get">
+        <div class="input-group">
+          <input name="word" value="" required type="text" class="form-control" placeholder="введіть назву книги або ім'я автора">
+          <span class="input-group-btn">
+            <input type="submit" value="Шукати!" class="btn btn-default search_btn" type="button">
+          </span>
+        </div>
+    </form>
+  </div>
+</div>

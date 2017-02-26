@@ -1,4 +1,4 @@
-<h2><%= @author.full_name %></h2>
+<h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= @author.full_name %></h2>
 
 <%= render partial: "books/list", collection: @items, as: :item  %>
 
