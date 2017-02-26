@@ -67,8 +67,6 @@ GEM
     capistrano-rails (1.2.2)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rails-db (0.0.2)
-      capistrano-rails (~> 1.1)
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
@@ -249,10 +247,9 @@ DEPENDENCIES
   awesome_print
   bootstrap-sass (~> 3.3.6)
   byebug
-  capistrano (~> 3.6)
-  capistrano-bundler (~> 1.2)
-  capistrano-rails (~> 1.2)
-  capistrano-rails-db
+  capistrano
+  capistrano-bundler
+  capistrano-rails
   capistrano-rvm
   capistrano3-puma
   capybara
