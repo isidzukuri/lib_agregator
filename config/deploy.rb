@@ -1,8 +1,3 @@
-# config valid only for current version of Capistrano
-# require 'capistrano-db-tasks'
-
-
-
 server "185.25.118.190", user: 'root', roles: %w{web app db}
 set :user, "root"
 
@@ -10,52 +5,60 @@ set :application, "lib_agregator"
 set :repo_url, "https://github.com/isidzukuri/lib_agregator.git"
 set :deploy_to, '/var/www/lib_agregator'
 
+# set :rvm_bin_path, "/usr/local/rvm/bin"
+# set :rvm_ruby_version, 'ruby-2.4.0'
+# set :rvm_map_bins, fetch(:rvm_map_bins, []).push('rvmsudo')
+# set :rvm_type, :system
+
+# set :default_env, { rvm_bin_path: "/usr/local/rvm/bin" }
+# set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"") 
+
 # Don't change these unless you know what you're doing
-set :pty,             true
+# set :pty,             true
 # set :use_sudo,        false
-# set :deploy_via,      :remote_cache
-set :puma_bind,       "unix:///tmp/lib_agregator.sock"
-set :puma_state,      "/tmp/lib_agregator_puma.state"
-set :puma_pid,        "/tmp/lib_agregator_puma.pid"
+# # set :deploy_via,      :remote_cache
+# set :puma_bind,       "unix:///tmp/lib_agregator.sock"
+# set :puma_state,      "/tmp/lib_agregator_puma.state"
+# set :puma_pid,        "/tmp/lib_agregator_puma.pid"
 
-set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
-set :puma_preload_app, true
-set :puma_init_active_record, true  # Change to true if using ActiveRecord
+# # set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
+# set :puma_preload_app, true
+# set :puma_init_active_record, true  # Change to true if using ActiveRecord
 
-## Defaults:
-# set :scm,           :git
-# set :branch,        :master
-# set :format,        :pretty
-# set :log_level,     :debug
-# set :keep_releases, 5
+# ## Defaults:
+# # set :scm,           :git
+# # set :branch,        :master
+# # set :format,        :pretty
+# # set :log_level,     :debug
+# # set :keep_releases, 5
 
-append :linked_files, "config/database.yml", "config/secrets.yml"
+# append :linked_files, "config/database.yml", "config/secrets.yml"
 
-# Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+# # Default value for linked_dirs is []
+# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 
-namespace :deploy do
+# namespace :deploy do
 
-  desc 'Initial Deploy'
-  task :initial do
-    on roles(:app) do
-      before 'deploy:restart', 'puma:start'
-      invoke 'deploy'
-    end
-  end
+#   desc 'Initial Deploy'
+#   task :initial do
+#     on roles(:app) do
+#       before 'deploy:restart', 'puma:start'
+#       invoke 'deploy'
+#     end
+#   end
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
-    end
-  end
+#   desc 'Restart application'
+#   task :restart do
+#     on roles(:app), in: :sequence, wait: 5 do
+#       invoke 'puma:restart'
+#     end
+#   end
 
-  after  :finishing,    :compile_assets
-  after  :finishing,    :cleanup
-  after  :finishing,    :restart
-end
+#   after  :finishing,    :compile_assets
+#   after  :finishing,    :cleanup
+#   after  :finishing,    :restart
+# end
 
 # ps aux | grep puma    # Get puma pid
 # kill -s SIGUSR2 pid   # Restart puma

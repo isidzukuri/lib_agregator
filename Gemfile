@@ -31,19 +31,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 group :development do
-  # gem 'capistrano', '~> 3.6'
-  # gem 'capistrano-rails', '~> 1.2'
-  # gem 'capistrano-bundler', '~> 1.2'
+  gem 'capistrano'
+  gem 'capistrano-rvm'
+  # gem 'capistrano-rails'
+  gem 'capistrano-bundler'
   # gem 'capistrano-rails-db'
-  # gem 'capistrano-rvm'
   # gem 'capistrano3-puma'
-  # gem "capistrano-scm-gitcopy"
-
-    gem 'capistrano',         require: false
-    gem 'capistrano-rvm',     require: false
-    gem 'capistrano-rails',   require: false
-    gem 'capistrano-bundler', require: false
-    gem 'capistrano3-puma',   require: false
 end
 
 group :development, :test do

@@ -64,15 +64,9 @@ GEM
       capistrano (~> 3.1)
       sshkit (~> 1.2)
     capistrano-harrow (0.5.3)
-    capistrano-rails (1.2.2)
-      capistrano (~> 3.1)
-      capistrano-bundler (~> 1.1)
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    capistrano3-puma (1.2.1)
-      capistrano (~> 3.0)
-      puma (>= 2.6)
     capybara (2.12.1)
       addressable
       mime-types (>= 1.16)
@@ -89,7 +83,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.0.4)
+    concurrent-ruby (1.0.5)
     crass (1.0.2)
     debug_inspector (0.0.2)
     domain_name (0.5.20170223)
@@ -248,9 +242,7 @@ DEPENDENCIES
   byebug
   capistrano
   capistrano-bundler
-  capistrano-rails
   capistrano-rvm
-  capistrano3-puma
   capybara
   coffee-rails (~> 4.1.0)
   colorize
