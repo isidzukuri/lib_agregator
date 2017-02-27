@@ -14,7 +14,7 @@ class Book < ActiveRecord::Base
     indexes :description
   end
 
-  def self.search_by_title word, limit = 2, offset = 0
+  def self.search_by_title word, limit = 100, offset = 0
     search = Tire::Search::Search.new('books', load: true)
     search.query  { string("title:#{word}") }
     # p '@'*88

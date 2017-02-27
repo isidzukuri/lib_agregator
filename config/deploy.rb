@@ -32,7 +32,7 @@ set :deploy_to, '/var/www/lib_agregator'
 # # set :log_level,     :debug
 # # set :keep_releases, 5
 
-# append :linked_files, "config/database.yml", "config/secrets.yml"
+append :linked_files, "config/database.yml", "config/secrets.yml", "public/sd-feed-269.xml"
 
 # # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
@@ -63,6 +63,7 @@ set :deploy_to, '/var/www/lib_agregator'
 # ps aux | grep puma    # Get puma pid
 # kill -s SIGUSR2 pid   # Restart puma
 # kill -s SIGTERM pid   # Stop puma
+
 
 
 
