@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Library" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Книги. Скачати безплатно, купити" %></title>
     <meta name="keywords" content="<%= yield(:keywords) if content_for?(:keywords) %>" />
-    <meta name="description" content="<%= yield(:description) if content_for?(:description) %>" />
-    <meta name="og:title" content="<%= content_for?(:title) ? yield(:title) : "Library" %>" />
-    <meta name="og:description" content="<%= yield(:description) if content_for?(:description) %>" />
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Онлайн бібліотека електронних книг txt, rtf, doc, pdf, fb2, epub, mobi, djvu. Пошук паперових книг' %>" />
+    <meta name="og:title" content="<%= content_for?(:title) ? yield(:title) : "Книги. Скачати безплатно, купити" %>" />
+    <meta name="og:description" content="<%= content_for?(:description) ? yield(:description) : 'Онлайн бібліотека електронних книг txt, rtf, doc, pdf, fb2, epub, mobi, djvu. Пошук паперових книг' %>" />
 
 
     <%= csrf_meta_tags %>

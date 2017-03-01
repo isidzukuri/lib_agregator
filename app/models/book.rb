@@ -28,4 +28,8 @@ class Book < ActiveRecord::Base
     pointers
   end
 
+  def author_title
+    authors.present? ? authors[0].title : ''
+  end
+
 end
