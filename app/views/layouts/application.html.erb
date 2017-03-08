@@ -56,7 +56,7 @@
           <ul class="nav navbar-nav">
               <li><a href="/">Пошук</a></li>
               <li><a href="/genres">Жанри</a></li>
-              <li><a href="/tags">Теги</a></li>
+              <!-- <li><a href="/tags">Теги</a></li> -->
               <li><a href="/authors">Автори</a></li>
           </ul>          
         </div>
@@ -72,22 +72,20 @@
 
     <footer>
         <!-- <p>&copy; Company 2016</p> -->
+        <div class='soc_chains pull-left'>
+          <div class="soc_butt_wrap" style="width:60px"><div class="g-plusone" data-size="medium" data-annotation="bubble"></div></div>
+          <div class="soc_butt_wrap"><div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="true"></div></div>
+          <div class="soc_butt_wrap">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-lang="uk">Твіт</a>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+
+        <small class="pull-right"><a href="/contacts">контакти</a></small>
+        <div class="clearfix"></div>
     </footer>
 
-
-
-    <script type="text/javascript">
-        // var angular_dependencies = [];
-        // <%= yield(:plain_js) if content_for?(:plain_js) %>
-        // var site_app = angular.module('siteApp', angular_dependencies); 
-
-        // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        // })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        // ga('create', 'UA-81900102-1', 'auto');
-        // ga('send', 'pageview');
-    </script>
     <%= yield(:footer_js) if content_for?(:footer_js) %>
   </body>
 </html>
