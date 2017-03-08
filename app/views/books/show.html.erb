@@ -1,41 +1,42 @@
-<h2><%= @book.title %></h2>
-<% @book.authors.each do |author|%>
-  <a href='/authors/<%= author.seo%>'><%= author.full_name%></a>
-<% end %>
-<% if @book.genre.present? %>
-/ <a href='/genres/<%= @book.genre.seo%>'><%= @book.genre.title %></a><br/>
-<% end %>
-
-<% @book.tags.each do |item|%>
-  <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.title%></a>
-<% end %>
-<hr/>
-
-<% if @book.cover.present? %>
-  <img src="<%= @book.cover %>" alt='<%= @book.title %>' title='<%= @book.title %>' class="book_cover" />
-<% end %>
-<% if @book.description.present? %>
-<div>
-    <strong>Опис:</strong><br/>
-    <%== @book.description %>
-</div>
-<% end %>
-<div class="clearfix"></div>
-
-<div>
-  <h3>Доступні формати:</h3>
-
-  <% ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu', 'paper'].each do |frmt| %>
-    <% next unless @book[frmt] %>
-    <a href="<%=@book[frmt]%>" class="download_href" target="_blank" rel="nofollow">
-
-        
-        <span class="glyphicon glyphicon-<%=frmt == 'paper' ? 'book' : 'cloud-download' %>" aria-hidden="true"></span>    
-        <%=frmt == 'paper' ? 'папір' : frmt.upcase %>
-    </a>
+<div itemscope itemtype="http://schema.org/Book">
+  <h2 itemprop="name"><%= @book.title %></h2>
+  <% @book.authors.each do |author|%>
+    <a href='/authors/<%= author.seo%>' itemprop="author"><%= author.full_name%></a>
   <% end %>
+  <% if @book.genre.present? %>
+  / <a href='/genres/<%= @book.genre.seo%>' itemprop="genre"><%= @book.genre.title %></a><br/>
+  <% end %>
+
+  <% @book.tags.each do |item|%>
+    <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.title%></a>
+  <% end %>
+  <hr/>
+
+  <% if @book.cover.present? %>
+    <img src="<%= @book.cover %>" alt='<%= @book.title %>' title='<%= @book.title %>' class="book_cover" itemprop="image" />
+  <% end %>
+  <% if @book.description.present? %>
+  <div itemprop="description">
+      <strong>Опис:</strong><br/>
+      <%== @book.description %>
+  </div>
+  <% end %>
+  <div class="clearfix"></div>
+
+  <div>
+    <h3>Доступні формати:</h3>
+
+    <% ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu', 'paper'].each do |frmt| %>
+      <% next unless @book[frmt] %>
+      <a href="<%=@book[frmt]%>" class="download_href" target="_blank" rel="nofollow">
+
+          
+          <span class="glyphicon glyphicon-<%=frmt == 'paper' ? 'book' : 'cloud-download' %>" aria-hidden="true"></span>    
+          <%=frmt == 'paper' ? 'папір' : frmt.upcase %>
+      </a>
+    <% end %>
+  </div>
 </div>
 
-
-<% content_for(:title, "#{@book.title}. #{@book.author_title}. Книга скачати безкоштовно або купити") %> 
-<% content_for(:description, "#{@book.title}. #{@book.author_title}. Скачати книжку безкоштовно або купити з доставкою") %> 
+  <% content_for(:title, "#{@book.title}. #{@book.author_title}. Книга скачати безкоштовно або купити") %> 
+  <% content_for(:description, "#{@book.title}. #{@book.author_title}. Скачати книжку безкоштовно або купити з доставкою") %> 
