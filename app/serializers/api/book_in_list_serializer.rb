@@ -1,7 +1,8 @@
-class BookInListSerializer < ActiveModel::Serializer
-  attributes :id, :name, :seo, :link
+class Api::BookInListSerializer < ActiveModel::Serializer
+  attributes :id, :title, :source, :author_title, :cover
 
-  def link
-    object.respond_to?(:link) ? object.link : nil  
+  def source
+    object.source == 'xml' ? nil : "http://#{object.domain}#{object.source}"
   end
+
 end
