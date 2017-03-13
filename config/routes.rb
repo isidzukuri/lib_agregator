@@ -21,6 +21,14 @@ Rails.application.routes.draw do
   get 'search' => 'search#index'
   get 'contacts' => 'contacts#index'
 
+
+  namespace :api, :defaults => { :format => 'json' } do
+    get 'search' => 'search#index'
+     # namespace :v1 do
+     #    resources :productOp, :path => "product", 
+     # end
+  end
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

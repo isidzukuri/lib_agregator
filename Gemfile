@@ -36,6 +36,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano3-puma', github: "seuros/capistrano-puma"
+  # gem 'sqlite3'
   # gem 'capistrano-rails-db'
   # gem 'capistrano3-puma'
 end
@@ -68,3 +69,5 @@ gem 'mysql2'
 gem 'tire'
 gem 'puma'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'sitemap_generator'
+gem 'active_model_serializers'
