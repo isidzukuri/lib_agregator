@@ -2,4 +2,6 @@
   <a href='/genres/<%= item.seo%>'><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> <%= item.title%></a><br/>
 <% end %>
 
+<%= render partial: "layouts/book_search_form" %>
+
 <% content_for(:title, "Книги по жанрах") %> 

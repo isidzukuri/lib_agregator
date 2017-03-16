@@ -1,17 +1,5 @@
 
-<div class="row">
-  <div class="col-lg-4 block_center">
-    <h2>пошук книг</h2>
-    <form action="/search" method="get">
-        <div class="input-group">
-          <input name="word" value="" required type="text" class="form-control" placeholder="введіть назву книги або ім'я автора">
-          <span class="input-group-btn">
-            <input type="submit" value="Шукати!" class="btn btn-default search_btn" type="button">
-          </span>
-        </div>
-    </form>
-  </div>
-</div>
+<%= render partial: "layouts/book_search_form" %>
 
 <!-- <br/>
 <br/>
@@ -21,3 +9,13 @@
 <div class="row">
   <h3>Рекомендовані книги</h3>
 </div> -->
+
+<div class="row">
+  <% @paper_books.each do |book|%>
+  <a href="/books/<%= book.seo %>" class="col-md-4 col-xs-6 book_panel_link">
+    <img src="<%= book.cover %>" alt="<%= book.title %>" title="<%= book.title %>" />
+    <!-- <%= book.title %> -->
+  </a>
+  <% end %>
+
+</div>
