@@ -109,6 +109,10 @@ a:hover{
 }
 .book_search_form{
     margin-bottom: 50px;
+    
+    h2{
+        text-align: center;
+    }
 }
 .book_panel_link{
     display: block;
@@ -130,4 +134,9 @@ a:hover{
 .search_description{
     margin-top:15px;
     text-align:center;
+}
+@media (max-width: 415px) {
+    .book_panel_link{
+        height: 280px;
+    }
 }
