@@ -18,7 +18,7 @@
   <% if @book.description.present? %>
   <div itemprop="description">
       <strong>Опис:</strong><br/>
-      <%== @book.description %>
+      <%== HTMLEntities.new.decode(@book.description) %>
   </div>
   <% end %>
   <div class="clearfix"></div>
