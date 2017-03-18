@@ -25,7 +25,8 @@ class Book < ActiveRecord::Base
     pointers = pointers.first(limit)
 
     ActiveRecord::Associations::Preloader.new.preload(pointers, :authors)
-    pointers
+    
+    pointers.reverse#.uniq { |i| [i.title, i.domain, i.description] } # remove old duplicates from yakaboo
   end
 
   def self.extended_search params, limit = 100, offset = 0
@@ -51,6 +52,10 @@ class Book < ActiveRecord::Base
       
       cols = attribute_names - ['description', 'source', 'domain', 'genre_id'] 
       result = query.select(cols).includes(:authors).all
+
+      # result = query.includes(:authors)
+      #         .limit(limit).offset(offset)
+      #         .all.reverse.uniq { |i| [i.title, i.domain, i.description] }
     end
 
     result
