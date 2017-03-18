@@ -26,7 +26,7 @@
   <div>
     <h3>Доступні формати:</h3>
 
-    <% ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu', 'paper'].each do |frmt| %>
+    <% $book_formats.each do |frmt| %>
       <% next unless @book[frmt] %>
       <a href="<%=@book[frmt]%>" class="download_href" target="_blank" rel="nofollow">
 
