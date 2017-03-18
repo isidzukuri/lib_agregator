@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118114158) do
+ActiveRecord::Schema.define(version: 20170318161304) do
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "full_name"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20170118114158) do
     t.string  "doc"
     t.string  "pdf"
     t.string  "fb2"
-    t.string  "ebup"
+    t.string  "epub"
     t.string  "mobi"
     t.string  "djvu"
     t.integer "genre_id"

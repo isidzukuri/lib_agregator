@@ -1,0 +1,4 @@
+<%= render partial: "layouts/book_search_form" %>
+
+<h2>книги:</h2>
+<%= render partial: "books/list", collection: @books, as: :item  %>

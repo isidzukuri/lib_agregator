@@ -6,7 +6,7 @@
       <% end %>
     <% end %>
 
-    <% ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu', 'paper'].each do |frmt| %>
+    <% $book_formats.each do |frmt| %>
       <% next unless item[frmt] %>
       <% frmt = 'папір' if frmt == 'paper' %>
       <span class="label label-warning"><%=frmt%></span>

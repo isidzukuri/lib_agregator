@@ -28,6 +28,34 @@ class Book < ActiveRecord::Base
     pointers
   end
 
+  def self.extended_search params, limit = 100, offset = 0
+    result = []
+
+    search = Tire::Search::Search.new('books')
+    search.query  { string("title:#{params[:word]}") }
+    
+    ids = search.results.pluck(:id)
+
+    if ids.present?
+      query = self.where(id: ids)
+      query = query.where(genre_id: params[:genre]) if params[:genre]
+      
+      if params[:format]
+        formats = []
+        params[:format].each do |frmt|
+          formats << "`#{frmt}` IS NOT NULL"
+        end
+        frmt_condition = formats.join(' OR ')
+        query = query.where(frmt_condition) 
+      end
+      
+      cols = attribute_names - ['description', 'source', 'domain', 'genre_id'] 
+      result = query.select(cols).includes(:authors).all
+    end
+
+    result
+  end
+
   def author_title
     authors.present? ? authors[0].title : ''
   end
