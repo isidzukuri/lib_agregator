@@ -11,6 +11,7 @@ class Author < ActiveRecord::Base
 
   mapping do
     indexes :full_name
+    indexes :uk
   end
 
   def seo_source
