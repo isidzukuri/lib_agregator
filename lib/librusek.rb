@@ -1,6 +1,14 @@
 class Librusek < WebParser::Parser
 
-	
+
+	# translate main genres to uk. Take main from original site
+	# other make tags
+	# check if books lang is uk
+
+	# translate tags
+	# translate authors
+
+
 	def parse_now
 		# add skip urls 
 		sitemap = WebParser::Sitemap.new(:threads_number => 10)
