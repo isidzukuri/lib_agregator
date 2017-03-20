@@ -17,9 +17,9 @@ class Author < ActiveRecord::Base
     :full_name
   end
 
-  def self.search_by_full_name word
+  def self.search_by_full_name(word)
     search = Tire::Search::Search.new('authors', load: true)
-    search.query  { string("full_name:#{word}") }
+    search.query { string("full_name:#{word}") }
     search.results
   end
 end

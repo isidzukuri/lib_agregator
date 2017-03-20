@@ -4,5 +4,4 @@ class Api::BookInListSerializer < ActiveModel::Serializer
   def source
     object.source == 'xml' ? nil : "http://#{object.domain}#{object.source}"
   end
-
 end

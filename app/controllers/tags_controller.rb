@@ -1,6 +1,5 @@
 class TagsController < ApplicationController
-
-  def index 
+  def index
     @items = Tag.order(:title).limit(@per_page).offset(@offset).all
     @items_total = Tag.count
   end
@@ -10,5 +9,4 @@ class TagsController < ApplicationController
     @items = @tag.books.includes(:authors).limit(@per_page).offset(@offset)
     @items_total = @tag.books.count
   end
-
 end

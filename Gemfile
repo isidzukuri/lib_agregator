@@ -39,6 +39,8 @@ group :development do
   # gem 'sqlite3'
   # gem 'capistrano-rails-db'
   # gem 'capistrano3-puma'
+  gem 'easy_translate'
+  gem 'google-api-client'
 end
 
 group :development, :test do

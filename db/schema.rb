@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318161304) do
+ActiveRecord::Schema.define(version: 20170319181154) do
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "full_name"
     t.string "last_name"
     t.string "first_name"
     t.string "seo"
+    t.string "uk"
     t.index ["full_name"], name: "index_authors_on_full_name", using: :btree
     t.index ["last_name"], name: "index_authors_on_last_name", using: :btree
     t.index ["seo"], name: "index_authors_on_seo", unique: true, using: :btree
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170318161304) do
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.string "seo"
+    t.string "uk"
     t.index ["seo"], name: "index_tags_on_seo", unique: true, using: :btree
   end
 

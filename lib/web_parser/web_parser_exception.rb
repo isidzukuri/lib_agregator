@@ -1,4 +1,4 @@
 module WebParser
-	class WebParserException < Exception
-	end
+  class WebParserException < RuntimeError
+  end
 end
