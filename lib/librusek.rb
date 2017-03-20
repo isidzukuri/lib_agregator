@@ -15,10 +15,13 @@ class Librusek < WebParser::Parser
 
 		result = {
 			'title' => title,
-			# 'author' => page.search('.author_name_book').text,
+			# 'author' => page.search('.author_name_book').text, # page.links_with(attribute) /\/a\/\d/
+			# 'category' => page.search('[itemprop="genre"]').text.mb_chars.downcase.to_s, #$('a.genre h9').eq(0).text()
+
+
+
 			# 'description' => description(page),
 			# 'cover' => img(page),
-			# 'category' => page.search('[itemprop="genre"]').text.mb_chars.downcase.to_s,
 			# 'tags' => page.search('.book_type').text.mb_chars.downcase.to_s,
 
 			# 'paper' => nil,
