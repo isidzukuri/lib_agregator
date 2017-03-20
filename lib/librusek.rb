@@ -1,9 +1,11 @@
 class Librusek < WebParser::Parser
+
 	
 	def parse_now
 		# add skip urls 
 		sitemap = WebParser::Sitemap.new(:threads_number => 10)
-		queue = sitemap.get_urls_queue('http://lib.rus.ec/g', '.bookrow1 a:first-child', '.pager-item a', '.main .content a.colorlnk')
+		queue = sitemap.get_urls_queue('http://lib.rus.ec/g', {href: /\/b\/\d.*(?<!\bdownload|read)$/}, '.pager-item a', '.main .content a.colorlnk')
+		ap queue.store
 		p '---end---'
 		# parse(queue)
 	end			
@@ -14,7 +16,7 @@ class Librusek < WebParser::Parser
 		# parse site with learning books, pidruchnyky
 
 		result = {
-			'title' => title,
+			'title' => title(page),
 			# 'author' => page.search('.author_name_book').text, # page.links_with(attribute) /\/a\/\d/
 			# 'category' => page.search('[itemprop="genre"]').text.mb_chars.downcase.to_s, #$('a.genre h9').eq(0).text()
 
