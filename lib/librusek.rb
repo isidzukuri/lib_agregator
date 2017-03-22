@@ -2,81 +2,110 @@ class Librusek < WebParser::Parser
 
 
 	# translate main genres to uk. Take main from original site
-	# other make tags
-	# check if books lang is uk
+	# add if not present in db
+
 
 	# translate tags
 	# translate authors
 
 
 	def parse_now
-		# add skip urls 
 		sitemap = WebParser::Sitemap.new(:threads_number => 10)
-		queue = sitemap.get_urls_queue('http://lib.rus.ec/g', {href: /\/b\/\d.*(?<!\bdownload|read)$/}, '.pager-item a', '.main .content a.colorlnk')
-		ap queue.store
-		p '---end---'
-		# parse(queue)
+		queue = sitemap.get_urls_queue('http://lib.rus.ec/g', {href: /\/b\/\d.*(?<!\bdownload|read)$/}, '.pager-item a', '.main .content a.colorlnk', true)
+		# ap queue.store
+		# p '---end---'
+		# queue = WebParser::SimpleQueue.new(['http://lib.rus.ec/b/241557', 'http://lib.rus.ec/b/618608'])
+		parse(queue)
 	end			
 		
 
 	def extract_data page
-		# validation of data
-		# parse site with learning books, pidruchnyky
+		return if !page.search('._ga1_on_').present?
+		return if !is_ua?(page)
+		return if !download_format(page).present?
+
+		# ap page.uri.path
+
+		# ap "ukrainian:"
+		# ap is_ua?(page)
+		# ap  "include fb2:"
+		# ap download_format(page).present?
 
 		result = {
 			'title' => title(page),
-			# 'author' => page.search('.author_name_book').text, # page.links_with(attribute) /\/a\/\d/
-			# 'category' => page.search('[itemprop="genre"]').text.mb_chars.downcase.to_s, #$('a.genre h9').eq(0).text()
-
-
-
-			# 'description' => description(page),
-			# 'cover' => img(page),
-			# 'tags' => page.search('.book_type').text.mb_chars.downcase.to_s,
-
-			# 'paper' => nil,
-			# 'txt' => url_for('txt', page),
-			# 'rtf' => url_for('rtf', page),
-			# 'doc' => url_for('doc', page),
-			# 'pdf' => url_for('pdf', page),
-			# 'fb2' => url_for('fb2', page),
-			# 'ebup' => url_for('ebup', page),
-			# 'mobi' => url_for('mobi', page),
-			# 'djvu' => url_for('djvu', page),
+			'author' => author(page),
+			'category' => category(page), 
+			'tags' => tags(page),
+			'description' => description(page),
 			'source' => page.uri.path,
 			'domain' => page.uri.host
 		}
+		result.merge!(download_format(page))
 		ap result
 		result
 	end
 
 	def title page
-		str = page.search('.h1.title').text
+		str = page.search('h1.title').text
+
 		str.split(' (')[0]
 	end
 
-	# def url_for frmt, page
-	# 	file_url = nil
-	# 	link = page.link_with(:text => frmt)
-	# 	link = page.link_with(:text => "#{frmt}.zip") unless link
-	# 	link = page.link_with(:text => "#{frmt}.rar") unless link
-	# 	file_url = link.uri.path if link
-	# 	file_url
-	# end
+	def author page
+		page.links_with(href: /\/a\/\d/)[0].text
+	end
 
-	# def img page
-	# 	img_url = nil
-	# 	el = page.search('[itemprop="image"]')
-	# 	# img_url = URI.parse(el.attribute('src')).path if el.present?
-	# 	img_url = el.attribute('src') if el.present?
-	# 	img_url
-	# end
+	def tags page
+		arr = []
+		page.search('a.genre h9').each_with_index do |tag, i|
+			next if i == 0
+			arr << tag.text.mb_chars.downcase.to_s
+		end
 
-	# def description page
-	# 	content = page.search('[itemprop="description"]').text
-	# 	content = content.gsub! "\r\n", '<br/>' if content.present?
-	# 	content
-	# end
+
+		page.search('.vocabulary-tag a').each_with_index do |tag, i|
+			next if i == 0
+			arr << tag.text.mb_chars.downcase.to_s
+		end
+		arr
+	end
+
+	def description page
+		str = ''
+		html_str = page.search('._ga1_on_ h2 + p').to_html
+		str = Sanitize.fragment(html_str, elements: %w(b ul ol li p br u i h5 strong pre small)) if html_str
+		str
+	end
+
+	def download_format page
+		frmts = {}
+		title_str = page.search('h1.title').text
+		['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu'].each do |f|
+			next unless title_str.include?("(#{f})")
+			path = page.link_with(:text => /скачать/).uri.path
+			frmts[f] = "http://#{page.uri.host}#{path}"
+		end
+		frmts
+	end
+
+	def is_ua? page
+		page.search('._ga1_on_').text.include?(' [uk] ')
+	end
+
+	def category page
+		str = ''
+		elements = page.search('a.genre h9')
+		str = elements[0].text.mb_chars.downcase.to_s if elements
+		str
+	end
+
+	def method_name
+		
+	end
+
+	# GENRES = {
+	# 	'' => '',
+	# }
 
 end
 
