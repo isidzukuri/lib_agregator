@@ -1,5 +1,5 @@
 <% @items.each do |item|%>
-  <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.title%></a>
+  <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.uk%></a>
 <% end %>
 <%= render partial: "layouts/paginator" %>
 <% content_for(:title, 'Книги по тегах') %>

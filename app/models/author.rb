@@ -20,7 +20,11 @@ class Author < ActiveRecord::Base
 
   def self.search_by_full_name(word)
     search = Tire::Search::Search.new('authors', load: true)
-    search.query { string("full_name:#{word}") }
+    search.query { string("full_name:#{word} OR uk:#{word}") }
     search.results
+  end
+
+  def display_title
+    uk.present? ? uk : title
   end
 end

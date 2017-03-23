@@ -1,14 +1,14 @@
 <div itemscope itemtype="http://schema.org/Book">
   <h2 itemprop="name"><%= @book.title %></h2>
   <% @book.authors.each do |author|%>
-    <a href='/authors/<%= author.seo%>' itemprop="author"><%= author.full_name%></a>
+    <a href='/authors/<%= author.seo%>' itemprop="author"><%= author.display_title%></a>
   <% end %>
   <% if @book.genre.present? %>
   / <a href='/genres/<%= @book.genre.seo%>' itemprop="genre"><%= @book.genre.title %></a><br/>
   <% end %>
 
   <% @book.tags.each do |item|%>
-    <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.title%></a>
+    <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.uk%></a>
   <% end %>
   <hr/>
 
@@ -16,7 +16,7 @@
     <img src="<%= @book.cover %>" alt='<%= @book.title %>' title='<%= @book.title %>' class="book_cover" itemprop="image" />
   <% end %>
   <% if @book.description.present? %>
-  <div itemprop="description">
+  <div itemprop="description" class="justify">
       <strong>Опис:</strong><br/>
       <%== HTMLEntities.new.decode(@book.description) %>
   </div>
