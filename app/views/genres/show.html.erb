@@ -3,6 +3,6 @@
 <%= render partial: "books/list", collection: @items, as: :item  %>
 
 <%= render partial: "layouts/paginator" %>
-
+<%= render partial: "layouts/book_search_form" %>
 
 <% content_for(:title, "#{@genre.title}. Тег. Книги") %> 

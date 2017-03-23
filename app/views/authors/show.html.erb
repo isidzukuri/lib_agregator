@@ -1,7 +1,7 @@
-<h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= @author.full_name %></h2>
+<h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= @author.display_title %></h2>
 
 <%= render partial: "books/list", collection: @items, as: :item  %>
 
 <%= render partial: "layouts/paginator" %>
 
-<% content_for(:title, "#{@author.full_name}. Скачати книги безкоштовно або купити з доставкою") %> 
+<% content_for(:title, "#{@author.display_title}. Скачати книги безкоштовно або купити з доставкою") %> 

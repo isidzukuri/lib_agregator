@@ -1,5 +1,4 @@
 class GenresController < ApplicationController
-
   def index
     @items = Genre.all
   end
@@ -9,5 +8,4 @@ class GenresController < ApplicationController
     @items = @genre.books.includes(:authors).limit(@per_page).offset(@offset)
     @items_total = @genre.books.count
   end
-
 end

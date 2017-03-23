@@ -39,6 +39,8 @@ group :development do
   # gem 'sqlite3'
   # gem 'capistrano-rails-db'
   # gem 'capistrano3-puma'
+  gem 'easy_translate'
+  gem 'google-api-client'
 end
 
 group :development, :test do
@@ -70,3 +72,4 @@ gem 'tire'
 gem 'puma'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sitemap_generator'
+gem 'active_model_serializers'

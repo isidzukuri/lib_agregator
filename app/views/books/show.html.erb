@@ -1,14 +1,14 @@
 <div itemscope itemtype="http://schema.org/Book">
   <h2 itemprop="name"><%= @book.title %></h2>
   <% @book.authors.each do |author|%>
-    <a href='/authors/<%= author.seo%>' itemprop="author"><%= author.full_name%></a>
+    <a href='/authors/<%= author.seo%>' itemprop="author"><%= author.display_title%></a>
   <% end %>
   <% if @book.genre.present? %>
   / <a href='/genres/<%= @book.genre.seo%>' itemprop="genre"><%= @book.genre.title %></a><br/>
   <% end %>
 
   <% @book.tags.each do |item|%>
-    <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.title%></a>
+    <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.uk%></a>
   <% end %>
   <hr/>
 
@@ -16,17 +16,17 @@
     <img src="<%= @book.cover %>" alt='<%= @book.title %>' title='<%= @book.title %>' class="book_cover" itemprop="image" />
   <% end %>
   <% if @book.description.present? %>
-  <div itemprop="description">
+  <div itemprop="description" class="justify">
       <strong>Опис:</strong><br/>
-      <%== @book.description %>
+      <%== HTMLEntities.new.decode(@book.description) %>
   </div>
   <% end %>
   <div class="clearfix"></div>
 
   <div>
-    <h3>Доступні формати:</h3>
+    <h3 class="bold">Доступні формати:</h3>
 
-    <% ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu', 'paper'].each do |frmt| %>
+    <% $book_formats.each do |frmt| %>
       <% next unless @book[frmt] %>
       <a href="<%=@book[frmt]%>" class="download_href" target="_blank" rel="nofollow">
 
@@ -35,6 +35,12 @@
           <%=frmt == 'paper' ? 'папір' : frmt.upcase %>
       </a>
     <% end %>
+  </div>
+
+  <div class="bottom_description">
+    <p>
+      В бібліотеці зібрані всі книги українською мовою в електронному (txt, rtf, doc, pdf, fb2, epub, mobi, djvu) та паперовому форматі. Книжку можна безкоштовно скачати клікнувши на необхідний Вам формат або купити паперовий варіант тексту з доставкою по Україні. Сайт бібліотеки оптимізований для роботи на смартфонах і планшетах. Потрібну книгу Ви можете легко знайти за допомогою пошуку.
+    </p>
   </div>
 </div>
 

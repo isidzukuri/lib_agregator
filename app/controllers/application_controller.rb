@@ -8,14 +8,10 @@ class ApplicationController < ActionController::Base
   def paginator_params
     @per_page = 100
     @page = params[:page] ? params[:page].to_i : 0
-    @offset = @page * @per_page     
+    @offset = @page * @per_page
   end
 
   def set_vars
     @current_path = request.fullpath.split('?')[0]
   end
-
-
 end
-
-
