@@ -21,8 +21,7 @@ html{
     position:relative;
 }
 footer{
-    position: absolute;
-    bottom:0;
+    margin-top: 35px;
     padding: 0 10px 3px;
     width:100%;
 }
@@ -97,6 +96,7 @@ a:hover{
     font-size: 25px;
     font-weight: 900;
     margin: 0 20px 20px 0;
+    cursor:pointer;
 }
 .soc_butt_wrap {
     float: left;
@@ -107,4 +107,54 @@ a:hover{
 }
 .pagination{
     margin-bottom: 27px;
+}
+.book_search_form{
+    margin-bottom: 50px;
+    
+    h2{
+        text-align: center;
+    }
+}
+.book_panel_link{
+    display: block;
+    text-align:center;
+    height:400px;
+    margin-bottom: 10px;
+
+    img{
+        max-width:100%;
+        max-height:350px;
+        display: block;
+        margin: 0 auto;
+    }
+    img:hover{
+        box-shadow: 0 0 6px #e68d08;
+        transition: all 200ms ease-out;
+    }
+}
+.search_description{
+    margin-top:15px;
+    text-align:center;
+}
+@media (max-width: 415px) {
+    .book_panel_link{
+        height: 280px;
+    }
+}
+.bottom_description{
+    border-top: 1px dashed #9e9c98;
+    border-bottom: 1px dashed #9e9c98;
+    margin-top: 30px; 
+    padding: 10px 0 5px;
+
+    p{
+        color: #7b7874;
+        text-align: justify;
+    }
+}
+.bold{
+    font-weight: 700;
+}
+.justify{
+    text-align: justify;
 }

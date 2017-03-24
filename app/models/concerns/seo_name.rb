@@ -1,7 +1,5 @@
 module SeoName
-
   def self.included(base)
-
     base.instance_eval do
       validates_uniqueness_of :seo
 
@@ -9,14 +7,14 @@ module SeoName
     end
   end
 
-  def transliterate str
+  def transliterate(str)
     str.to_ascii
   end
 
-  def create_seo_name str = nil, column_key = 'seo', attempt = 0
+  def create_seo_name(str = nil, column_key = 'seo', attempt = 0)
     str = send(seo_source) unless str
     seo = transliterate(str).parameterize[0..75]
-    if self.class.where({column_key => seo}).first
+    if self.class.where(column_key => seo).first
       attempt += 1
       seo = create_seo_name("#{attempt}_#{seo}", column_key, attempt)
     end
@@ -27,5 +25,4 @@ module SeoName
   def seo_source
     :title
   end
-
 end
