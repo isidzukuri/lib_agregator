@@ -2,11 +2,12 @@ module WebParser
 	class Parser < Initializator
 		include PageParser, ThreadLock, WorkWithFiles
 
-		attr_reader :log, :data
+		attr_reader :log, :data, :name_prefix
 		
 		def initialize init_vars = {}
 			@log = {}
 			@data = []
+			@name_prefix = self.class.to_s.split('<')[0]
 			@html_entities = HTMLEntities.new
 			ActiveRecord::Base.logger = nil
 		    super
@@ -50,10 +51,13 @@ module WebParser
 			# printer.print(STDOUT, {})
 			puts "fails: #{@fails}".red
 			puts "[end]".green
-			append("public/data_#{DateTime.now.strftime('%Y_%m_%d')}.json", data.to_json) if data.present?
+			save_data()
 			data
 		end
 
+		def save_data
+			append("public/#{name_prefix}/data_#{DateTime.now.strftime('%Y_%m_%d')}.json", data.to_json) if data.present?
+		end
 		# get page data
 		# get text file
 		# get img

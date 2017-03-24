@@ -15,9 +15,30 @@ class Librusek < WebParser::Parser
 		# ap queue.store
 		# p '---end---'
 		# queue = WebParser::SimpleQueue.new(['http://lib.rus.ec/b/241557', 'http://lib.rus.ec/b/618608'])
+		@skip.times {queue.next_item } if @skip
 		parse(queue)
 	end			
+
+
+	def save_data
+		prefix = self.class.to_s.split('<')[0]
+
+		@data = []
 		
+		Dir["public/#{name_prefix}/parts/*"].each do |file|
+			@data.merge(JSON.parse(open(file).read))
+		end
+
+		append("public/#{name_prefix}/data_#{DateTime.now.strftime('%Y_%m_%d')}.json", data.to_json) if data.present?
+	end
+		
+	def save_part
+		shifted_count = @url_queue.shifted
+		return unless (shifted_count % 100 == 0 ) || @url_queue.items_left == 0
+		part_number = shifted_count/100
+
+		append("public/#{name_prefix}/parts/#{part_number}.json", data.shift(100).to_json)
+	end
 
 	def extract_data page
 		return if !page.search('._ga1_on_').present?
@@ -41,7 +62,9 @@ class Librusek < WebParser::Parser
 			'domain' => page.uri.host
 		}
 		result.merge!(download_format(page))
-		ap result
+		
+		save_part()
+
 		result
 	end
 
