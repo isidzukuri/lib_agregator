@@ -7,6 +7,7 @@ class Librusek < WebParser::Parser
 
 	# translate tags
 	# translate authors
+# [283086/366870] http://lib.rus.ec/b/91302
 
 
 	def parse_now
@@ -26,10 +27,13 @@ class Librusek < WebParser::Parser
 		@data = []
 		
 		Dir["public/#{name_prefix}/parts/*"].each do |file|
-			@data.merge(JSON.parse(open(file).read))
+			begin
+				@data += JSON.parse(open(file).read)
+			rescue
+			end
 		end
 
-		append("public/#{name_prefix}/data_#{DateTime.now.strftime('%Y_%m_%d')}.json", data.to_json) if data.present?
+		append("public/#{name_prefix}/data_#{DateTime.now.strftime('%Y_%m_%d')}.json", data.uniq.to_json) if data.present?
 	end
 		
 	def save_part
@@ -41,6 +45,7 @@ class Librusek < WebParser::Parser
 	end
 
 	def extract_data page
+		save_part()
 		return if !page.search('._ga1_on_').present?
 		return if !is_ua?(page)
 		return if !download_format(page).present?
@@ -63,8 +68,6 @@ class Librusek < WebParser::Parser
 		}
 		result.merge!(download_format(page))
 		
-		save_part()
-
 		result
 	end
 
@@ -122,9 +125,7 @@ class Librusek < WebParser::Parser
 		str
 	end
 
-	def method_name
-		
-	end
+
 
 	# GENRES = {
 	# 	'' => '',
