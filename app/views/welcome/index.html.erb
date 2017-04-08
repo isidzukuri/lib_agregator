@@ -19,3 +19,18 @@
   <% end %>
 
 </div>
+
+
+<!-- <div class="row">
+  <h2 class="section_title">Книги для скачування:</h2>
+</div>  -->
+
+<div class="row">
+  <% @free_books.each do |book|%>
+  <a href="/books/<%= book.seo %>" class="col-md-4 col-xs-6 book_panel_link">
+    <img src="<%= book.cover %>" alt="<%= book.title %>" title="<%= book.title %>" />
+    <!-- <%= book.title %> -->
+  </a>
+  <% end %>
+
+</div>
