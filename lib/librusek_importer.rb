@@ -9,15 +9,6 @@ class LibrusekImporter
     @data = JSON.parse open('public/Librusek/data_2017_03_28.json').read
   end
 
-
-
-
-
-
-
-  # add if not present in db
-
-
   # translate tags
   # translate authors
 
@@ -25,6 +16,7 @@ class LibrusekImporter
   def import
     data.each do |entry|
       # begin
+        next if Book.find_by_title(entry['title'])
         author = [book_author(entry['author'])]
 
         tags = []
@@ -35,7 +27,7 @@ class LibrusekImporter
           end
         end
 
-        create_book(entry, author, tags)# if book_not_exists
+        create_book(entry, author, tags)
       # rescue
       # end
     end
@@ -55,8 +47,8 @@ class LibrusekImporter
       entry[frmt] = entry[frmt] if entry[frmt].present?
     end
 
-    ap entry
-    # Book.create(entry)
+    # ap entry
+    Book.create(entry)
   end
 
   def book_author(full_name)
@@ -101,22 +93,29 @@ class LibrusekImporter
 
 
   
-  # def stats
-  #   stats_categories = {}
+  def stats
+    stats_categories = {}
+    exists = 0
 
-  #   data.each do |item|
-  #     if stats_categories[item['category']].nil?
-  #       stats_categories[item['category']] = 1 
-  #     else
-  #       stats_categories[item['category']] += 1
-  #     end
+    data.each do |item|
+      if stats_categories[item['category']].nil?
+        stats_categories[item['category']] = 1 
+      else
+        stats_categories[item['category']] += 1
+      end
+      stored_book = Book.find_by_title(item['title'])
+      if stored_book
+        exists += 1
+        ap "#{stored_book.author_title} == #{item['author']}"
+      end
 
-  #   end
+    end
 
-  #   ap data.first
-  #   ap stats_categories
-  #   ap data.count
-  # end
+    ap data.first
+    ap stats_categories
+    ap data.count
+    ap "exists: #{exists}"
+  end
 
   
 end
