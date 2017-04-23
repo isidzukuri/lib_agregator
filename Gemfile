@@ -52,6 +52,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'ruby-prof'
 end
 
 gem 'mechanize'
@@ -63,7 +64,6 @@ gem 'poltergeist'
 gem 'awesome_print'
 
 gem 'colorize'
-gem 'ruby-prof'
 gem 'htmlentities'
 gem 'unidecoder'
 # gem 'mysql'
@@ -73,3 +73,5 @@ gem 'puma'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sitemap_generator'
 gem 'active_model_serializers'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'

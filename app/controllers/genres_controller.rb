@@ -5,7 +5,6 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find_by_seo(params[:key])
-    @items = @genre.books.includes(:authors).limit(@per_page).offset(@offset)
-    @items_total = @genre.books.count
+    @items = @genre.books.includes(:authors).paginate(page: params[:page], per_page: @per_page)
   end
 end

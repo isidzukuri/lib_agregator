@@ -1,12 +1,10 @@
 class AuthorsController < ApplicationController
   def index
-    @items = Author.order(:full_name).limit(@per_page).offset(@offset).all
-    @items_total = Author.count
+    @items = Author.order(:full_name).paginate(page: params[:page], per_page: @per_page).all
   end
 
   def show
     @author = Author.find_by_seo(params[:key])
-    @items = @author.books.limit(@per_page).offset(@offset)
-    @items_total = @author.books.count
+    @items = @author.books.includes(:authors).paginate(page: params[:page], per_page: @per_page)
   end
 end
