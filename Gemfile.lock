@@ -67,9 +67,10 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-wysihtml5-rails (0.3.3.8)
+      railties (>= 3.0)
     builder (3.2.3)
     byebug (9.0.6)
-    cancancan (1.15.0)
     capistrano (3.7.2)
       airbrussh (>= 1.0.0)
       capistrano-harrow
@@ -329,8 +330,8 @@ DEPENDENCIES
   active_model_serializers
   awesome_print
   bootstrap-sass (~> 3.3.6)
+  bootstrap-wysihtml5-rails
   byebug
-  cancancan (= 1.15.0)
   capistrano
   capistrano-bundler
   capistrano-rails

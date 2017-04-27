@@ -5,4 +5,12 @@ class Admin::ArticlesController < Admin::AdminController
     end
 
 
+    def new
+        @article = Article.new status: 'unpublished'
+    end
+
+    def create
+        
+    end
+
 end
