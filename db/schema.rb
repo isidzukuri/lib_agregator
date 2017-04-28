@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319181154) do
+ActiveRecord::Schema.define(version: 20170427081117) do
+
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "title"
+    t.text    "description", limit: 65535
+    t.text    "text",        limit: 65535
+    t.string  "cover"
+    t.string  "seo"
+    t.integer "user_id"
+    t.string  "status",                    default: "published"
+    t.index ["seo"], name: "index_articles_on_seo", unique: true, using: :btree
+    t.index ["title"], name: "index_articles_on_title", using: :btree
+  end
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "full_name"
@@ -53,6 +65,14 @@ ActiveRecord::Schema.define(version: 20170319181154) do
     t.index ["title"], name: "index_books_on_title", using: :btree
   end
 
+  create_table "books_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "list_id", null: false
+    t.integer "book_id", null: false
+    t.index ["book_id"], name: "index_books_lists_on_book_id", using: :btree
+    t.index ["list_id", "book_id"], name: "index_books_lists_on_list_id_and_book_id", unique: true, using: :btree
+    t.index ["list_id"], name: "index_books_lists_on_list_id", using: :btree
+  end
+
   create_table "books_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "tag_id",  null: false
     t.integer "book_id", null: false
@@ -65,11 +85,41 @@ ActiveRecord::Schema.define(version: 20170319181154) do
     t.index ["seo"], name: "index_genres_on_seo", unique: true, using: :btree
   end
 
+  create_table "lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "title"
+    t.text    "description", limit: 65535
+    t.string  "cover"
+    t.string  "seo"
+    t.integer "user_id"
+    t.index ["seo"], name: "index_lists_on_seo", unique: true, using: :btree
+    t.index ["title"], name: "index_lists_on_title", using: :btree
+    t.index ["user_id"], name: "index_lists_on_user_id", using: :btree
+  end
+
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.string "seo"
     t.string "uk"
     t.index ["seo"], name: "index_tags_on_seo", unique: true, using: :btree
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.string   "role"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
