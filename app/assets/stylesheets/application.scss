@@ -22,10 +22,22 @@ html{
     position:relative;
 }
 footer{
-    margin-top: 35px;
     padding: 0 10px 3px;
     width:100%;
+  position: absolute;
+  bottom: 0;
 }
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+
+
+
+
+
 
 a{
     color: #653306;
@@ -165,4 +177,7 @@ a:hover{
 }
 .paginator_wrapper{
     text-align: center;
+}
+.contacts_href{
+    margin-top: -20px;
 }
