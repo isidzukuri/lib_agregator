@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'admin#index'
     resources :articles
+    resources :lists
   end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
