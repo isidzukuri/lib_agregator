@@ -1,5 +1,4 @@
 class CoverUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -14,7 +13,7 @@ class CoverUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{model.id}/#{mounted_as}"
   end
 
-   version :thumb do
+  version :thumb do
     process resize_to_fill: [400, -1]
   end
 
@@ -49,5 +48,4 @@ class CoverUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end
