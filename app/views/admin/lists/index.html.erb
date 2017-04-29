@@ -1,6 +1,6 @@
 
 
-<a href="/admin/articles/new" class="btn btn-primary">Create</a>
+<a href="/admin/lists/new" class="btn btn-primary">Create</a>
 
 <br/>
 <br/>
@@ -8,7 +8,7 @@
 
 <div class="panel panel-primary"> 
     <div class="panel-heading"> 
-        <h3 class="panel-title">Articles</h3> 
+        <h3 class="panel-title">Lists</h3> 
     </div> 
     <div class="panel-body"> 
 
@@ -28,8 +28,8 @@
                 <td><%= item.title %></td> 
                 <td><%= item.status %></td> 
                 <td>
-                    <a href="/admin/articles/<%= item.id %>/edit" class="btn btn-primary btn-xs">edit</a>
-                    <%= link_to 'Destroy',  "/admin/articles/#{item.id}",  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
+                    <a href="/admin/lists/<%= item.id %>/edit" class="btn btn-primary btn-xs">edit</a>
+                    <%= link_to 'Destroy',  "/admin/lists/#{item.id}",  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
                 </td> 
             </tr> 
             <% end %>

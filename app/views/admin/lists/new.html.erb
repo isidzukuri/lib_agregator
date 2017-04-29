@@ -1,4 +1,4 @@
-<%= form_for @article, url: @url do |f| %>
+<%= form_for @list, url: @url do |f| %>
   
   <div class="form-group">
     <label>Title</label>
@@ -10,9 +10,10 @@
   </div>
 
   <div class="form-group">
-    <label>Text</label>
-    <%= f.text_area :text, rows: 18, class: "form-control wysihtml5" %>
+    <label>With descriptions</label>
+    <%= f.check_box :descriptions %>
   </div>
+
 
   <div class="form-group">
     <label>Published</label><br/>
@@ -24,8 +25,8 @@
     <label>File</label>
     <%= f.file_field :cover, class: "form-control" %>
   </div>
-    <% if @article.cover %>
-      <img src='<%= @article.thumb %>' />
+    <% if @list.cover %>
+      <img src='<%= @list.thumb %>' />
     <% end %>
 
   <hr/>
@@ -34,13 +35,3 @@
 
 <% end %>
 
-
-  <script type="text/javascript">
-    $(document).ready(function(){
-
-      $('.wysihtml5').each(function(i, elem) {
-        $(elem).wysihtml5();
-      });
-
-    })
-  </script>

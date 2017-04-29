@@ -9,12 +9,11 @@ class Admin::ListsController < Admin::AdminController
   end
 
   def create
-    @list = List.new(list_params)
-    @list.user = current_user
-    if @list.save
-      redirect_to admin_lists_path
-    else
+    @list = SaveList.new(list_params, List.new, current_user).call
+    if @list.errors.any?
       render 'new'
+    else
+      redirect_to admin_lists_path      
     end
   end
 
@@ -24,12 +23,12 @@ class Admin::ListsController < Admin::AdminController
     render 'new'
   end
 
-  def update
-    @list = List.find(params[:id])
-    if @list.update(list_params)
-      redirect_to admin_lists_path
-    else
+  def update    
+    @list = SaveList.new(list_params, List.find(params[:id])).call
+    if @list.errors.any?
       render 'new'
+    else
+      redirect_to admin_lists_path      
     end
   end
 
@@ -39,6 +38,6 @@ class Admin::ListsController < Admin::AdminController
   end
 
   def list_params
-    params.require(:list).permit(:title, :description, :descriptions, :cover)
+    params.require(:list).permit(:title, :description, :descriptions, :cover, :status)
   end
 end
