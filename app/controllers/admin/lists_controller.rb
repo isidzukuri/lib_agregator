@@ -38,6 +38,6 @@ class Admin::ListsController < Admin::AdminController
   end
 
   def list_params
-    params.require(:list).permit(:title, :description, :descriptions, :cover, :status)
+    params.require(:list).permit(:title, :description, :descriptions, :cover, :status, books_ids: [])
   end
 end

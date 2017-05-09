@@ -9,11 +9,11 @@ class SaveList
   attr_accessor :params, :item, :user
 
   def call
-    item.attributes = params
-    if params[:books_ids]
+    # if params[:books_ids]
       item.books = Book.where(id: params[:books_ids])
       params.delete :books_ids
-    end
+    # end
+    item.attributes = params
     item.user = user if user
     item.save
     item

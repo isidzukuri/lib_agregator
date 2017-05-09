@@ -11,6 +11,7 @@ class Book < ActiveRecord::Base
 
   mapping do
     indexes :title
+    indexes :seo
     indexes :description
   end
 
@@ -61,7 +62,14 @@ class Book < ActiveRecord::Base
     result
   end
 
+  def self.autocomplete_with_seo word, limit = 10
+    like = "%#{word}%"
+    items = Book.where("LOWER(title) LIKE :query OR seo LIKE :query", query: like)
+              .limit(limit)
+              .select(:id, :title).includes(:authors)
+  end
+
   def author_title
-    authors.present? ? authors[0].title : ''
+    authors.present? ? authors[0].display_title : ''
   end
 end

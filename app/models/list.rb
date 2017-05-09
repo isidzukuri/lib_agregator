@@ -10,4 +10,5 @@ class List < ActiveRecord::Base
   def thumb
     cover ? cover.thumb.url : nil
   end
+
 end
