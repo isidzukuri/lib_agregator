@@ -28,6 +28,14 @@
 </div>
 
 
-<!-- <div class="row">
-  <h2 class="section_title">Книги для скачування:</h2>
-</div>  -->
+<% if @lists %>
+<div class="row">
+  <h2 class="section_title">Списки книг:</h2>
+  <% @lists.each do |list|%>
+  <a href="/lists/<%= list.seo %>" class="list_href col-centered col-xs-10">
+    <img src="<%= list.thumb %>" alt="<%= list.title %>" title="<%= list.title %>" />
+    <div><%= list.title %></div>
+  </a>
+  <% end %>
+</div> 
+<% end %>
