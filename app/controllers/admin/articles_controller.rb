@@ -12,6 +12,7 @@ class Admin::ArticlesController < Admin::AdminController
     @article = Article.new(article_params)
     @article.user = current_user
     if @article.save
+      $cache.delete('last_articles')
       redirect_to admin_articles_path
     else
       render 'new'
@@ -27,6 +28,7 @@ class Admin::ArticlesController < Admin::AdminController
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)
+      $cache.delete('last_articles')
       redirect_to admin_articles_path
     else
       render 'new'
@@ -35,6 +37,7 @@ class Admin::ArticlesController < Admin::AdminController
 
   def destroy
     Article.find(params[:id]).destroy
+    $cache.delete('last_articles')
     redirect_to admin_articles_path
   end
 

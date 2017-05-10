@@ -46,3 +46,8 @@
 
   <% content_for(:title, "#{@book.title}. #{@book.author_title}. Книга скачати безкоштовно або купити") %> 
   <% content_for(:description, "#{@book.title}. #{@book.author_title}. Скачати книжку безкоштовно або купити з доставкою") %> 
+<% content_for :meta do %>
+<meta content='<%= @book.description %>' property='og:description'>
+<meta content='<%= @book.cover %>' property='og:image'>
+<meta content='website' property='og:type'>
+<% end %>

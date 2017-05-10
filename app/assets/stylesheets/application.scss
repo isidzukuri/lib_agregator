@@ -224,3 +224,28 @@ a:hover{
 .description_book_item{
     margin-bottom: 30px;
 }
+.article_href{
+    margin-bottom:20px;
+    display: block;
+    font-family: 'Fira Sans', sans-serif;
+    cursor:pointer;
+
+    .href_content{
+        text-align:justify;
+    }
+    span{
+        color: #333;
+    }
+    img{
+        max-width:100%;
+        margin: 0 auto;
+        display:block;
+    }
+}
+.article_image{
+    text-align:center;
+    margin-bottom: 15px;
+    img{
+        max-width:100%;
+    }
+}

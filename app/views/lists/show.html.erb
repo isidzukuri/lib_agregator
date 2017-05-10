@@ -10,4 +10,11 @@
 
 <%= render partial: "books/descriptions_list", collection: @items, as: :item, locals:{descriptions: @list.descriptions }  %>
 <%= render partial: "layouts/paginator" %>
+
 <% content_for(:title, "#{@list.title}. Підбірка книг") %> 
+<% content_for(:description, "#{@list.description}") %> 
+<% content_for :meta do %>
+<meta content='<%= @list.description %>' property='og:description'>
+<meta content='<%= @list.thumb %>' property='og:image'>
+<meta content='website' property='og:type'>
+<% end %>

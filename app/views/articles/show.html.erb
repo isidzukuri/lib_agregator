@@ -1,0 +1,22 @@
+<div class="justify row">
+  <div class="col-xs-12" itemscope itemtype="http://schema.org/Article">
+    <div class="article_image">
+      <h2 itemprop="name"><%= @article.title %></h2>
+      <% if @article.poster %>
+        <img src="<%= @article.poster %>" alt="<%= @article.title %>" title="<%= @article.title %>" itemprop="image" />
+      <% end %>
+    </div>
+    <div itemprop="articleBody">
+      <%== @article.text %>
+    </div>
+  </div>
+</div>
+<% content_for(:title, "#{@article.title}") %>
+<% content_for(:description, "#{@article.description}") %> 
+<% content_for :meta do %>
+<meta content='<%= @article.title %>' property='og:title'>
+<meta content='<%= @article.description %>' property='og:description'>
+<meta content='<%= @article.poster %>' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='article' property='og:type'>
+<% end %>

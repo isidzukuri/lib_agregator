@@ -5,3 +5,7 @@
 <%= render partial: "layouts/paginator" %>
 
 <% content_for(:title, "#{@author.display_title}. Скачати книги безкоштовно або купити з доставкою") %> 
+<% content_for :meta do %>
+<meta content='<%= @author.title %>' property='og:title'>
+<meta content='website' property='og:type'>
+<% end %>

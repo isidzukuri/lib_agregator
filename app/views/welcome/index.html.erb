@@ -31,11 +31,13 @@
 <% if @lists %>
 <div class="row">
   <h2 class="section_title">Списки книг:</h2>
-  <% @lists.each do |list|%>
-  <a href="/lists/<%= list.seo %>" class="list_href col-centered col-xs-10">
-    <img src="<%= list.thumb %>" alt="<%= list.title %>" title="<%= list.title %>" />
-    <div><%= list.title %></div>
-  </a>
-  <% end %>
+  <%= render partial: "lists/item", collection: @lists, as: :list  %>
+</div> 
+<% end %>
+
+<% if @articles %>
+<div class="row">
+  <h2 class="section_title">Статті:</h2>
+  <%= render partial: "articles/item", collection: @articles, as: :item  %>
 </div> 
 <% end %>
