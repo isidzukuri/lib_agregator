@@ -216,9 +216,9 @@ a:hover{
     color:#fff;
 
     img {
-        -moz-transform: scale(1.1);
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
+        -moz-transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
     }
 }
 .description_book_item{
@@ -240,6 +240,9 @@ a:hover{
         max-width:100%;
         margin: 0 auto;
         display:block;
+    }
+    b{
+        font-size:19px;
     }
 }
 .article_image{
