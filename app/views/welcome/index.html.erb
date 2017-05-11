@@ -28,6 +28,16 @@
 </div>
 
 
-<!-- <div class="row">
-  <h2 class="section_title">Книги для скачування:</h2>
-</div>  -->
+<% if @lists %>
+<div class="row">
+  <h2 class="section_title">Списки книг:</h2>
+  <%= render partial: "lists/item", collection: @lists, as: :list  %>
+</div> 
+<% end %>
+
+<% if @articles %>
+<div class="row">
+  <h2 class="section_title">Статті:</h2>
+  <%= render partial: "articles/item", collection: @articles, as: :item  %>
+</div> 
+<% end %>

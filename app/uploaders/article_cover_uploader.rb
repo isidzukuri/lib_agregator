@@ -1,4 +1,4 @@
-class CoverUploader < CarrierWave::Uploader::Base
+class ArticleCoverUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -14,7 +14,11 @@ class CoverUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process resize_to_fill: [800, 400]
+    process resize_to_fill: [300, 300]
+  end
+
+  version :poster do
+    process resize_to_fill: [800, 500]
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

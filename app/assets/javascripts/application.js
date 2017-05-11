@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require bootstrap-wysihtml5
+//= require jquery-ui
 
 
 $(window).load(function(){

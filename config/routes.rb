@@ -12,13 +12,21 @@ Rails.application.routes.draw do
   get 'genres/' => 'genres#index'
   get 'genres/:key' => 'genres#show'
 
+  get 'articles/' => 'articles#index'
+  get 'articles/:key' => 'articles#show'
+
+  get 'lists/' => 'lists#index'
+  get 'lists/:key' => 'lists#show'
+
   get 'tags/' => 'tags#index'
   get 'tags/:key' => 'tags#show'
 
   get 'authors/' => 'authors#index'
   get 'authors/:key' => 'authors#show'
 
+  get 'books/autocomplete_with_seo' => 'books#autocomplete_with_seo'
   get 'books/:key' => 'books#show'
+
   get 'search' => 'search#index'
   get 'extended_search' => 'search#extended_form'
   get 'extended_search_results' => 'search#extended_search_results'
@@ -37,6 +45,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'admin#index'
     resources :articles
+    resources :lists
   end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

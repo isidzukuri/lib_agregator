@@ -1,0 +1,22 @@
+<div class="description_book_item">
+
+  <% if item.cover.present? %>
+  <a href='/books/<%= item.seo%>'>
+    <img src="<%= item.cover %>" alt='<%= item.title %>' title='<%= item.title %>' class="book_cover" itemprop="image" />
+  </a>
+  <% end %>
+
+  <b><a href='/books/<%= item.seo%>'><%= item.title%></a></b><br/>
+
+  <% item.authors.each do |author|%>
+    <a href='/authors/<%= author.seo%>' itemprop="author"><%= author.display_title%></a>
+  <% end %>
+
+  <% if descriptions && item.description.present? %>
+  <div class="justify">
+      <%== HTMLEntities.new.decode(item.description) %>
+  </div>
+  <% end %>
+  
+  <div class="clearfix"></div>
+</div>

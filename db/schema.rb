@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170427081117) do
+ActiveRecord::Schema.define(version: 20170429201613) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170427081117) do
     t.integer "user_id"
     t.string  "status",                    default: "published"
     t.index ["seo"], name: "index_articles_on_seo", unique: true, using: :btree
+    t.index ["status"], name: "index_articles_on_status", using: :btree
     t.index ["title"], name: "index_articles_on_title", using: :btree
   end
 
@@ -87,11 +88,14 @@ ActiveRecord::Schema.define(version: 20170427081117) do
 
   create_table "lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "title"
-    t.text    "description", limit: 65535
+    t.text    "description",  limit: 65535
     t.string  "cover"
     t.string  "seo"
     t.integer "user_id"
+    t.boolean "descriptions",               default: false
+    t.string  "status",                     default: "unpublished"
     t.index ["seo"], name: "index_lists_on_seo", unique: true, using: :btree
+    t.index ["status"], name: "index_lists_on_status", using: :btree
     t.index ["title"], name: "index_lists_on_title", using: :btree
     t.index ["user_id"], name: "index_lists_on_user_id", using: :btree
   end

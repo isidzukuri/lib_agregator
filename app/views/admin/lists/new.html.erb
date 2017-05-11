@@ -1,0 +1,81 @@
+<%= simple_form_for @list, url: @url do |f| %>
+  
+  <div class="form-group">
+    <label>Title</label>
+    <%= f.text_field :title, class: "form-control", required: true %>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>With descriptions</label>
+    <%= f.check_box :descriptions %>
+  </div>
+
+
+  <div class="form-group">
+    <label>Published</label><br/>
+    <%= f.radio_button :status, 'published' %> yes 
+    <%= f.radio_button :status, 'unpublished' %> no
+  </div>
+
+  <div class="form-group">
+    <label>File</label>
+    <%= f.file_field :cover, class: "form-control" %>
+  </div>
+    <% if @list.cover %>
+      <img src='<%= @list.thumb %>' />
+    <% end %>
+  <hr/>
+
+  <div class="form-group">
+    <label>Books</label>
+    <!-- <div class="input-group"> -->
+    <%= text_field_tag :books_autocomplete, nil, class: "form-control books_selector" %>
+    <!-- </div>/input-group -->
+    <div class="books_pool">
+      <% @list.books.each_with_index do |book, i|%>
+      <div>
+        <%= "#{i+1}) #{book.title}" %> 
+        <input type='hidden' name='list[books_ids][]' value='<%= book.id %>'>
+        <button type="button" class="btn btn-danger btn-xs">remove</button>
+      </div>
+      <% end %>
+    </div>
+</div>
+
+  <hr/>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+
+<% end %>
+
+
+<script type="text/javascript">
+  $( function() {
+    function append_book( item ) {
+      html = "<input type='hidden' name='list[books_ids][]' value='"+item.id+"'>";
+      html += item.value; 
+      html += '<button type="button" class="btn btn-danger btn-xs">remove</button>';
+      $( "<div>" ).append( html ).prependTo( ".books_pool" );
+    }
+ 
+    $( ".books_selector" ).autocomplete({
+      source: "/books/autocomplete_with_seo",
+      minLength: 2,
+      select: function( event, ui ) {
+        $(this).val('');
+        append_book(ui.item);
+      }
+    });
+
+    $(document).on('click', '.books_pool .btn-danger' ,function(){
+      $(this).parent().remove();
+    });
+  });
+
+</script>
+
+

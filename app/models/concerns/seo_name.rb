@@ -1,10 +1,14 @@
 module SeoName
   def self.included(base)
     base.instance_eval do
-      validates_uniqueness_of :seo
-
-      before_validation :create_seo_name, on: :create
+      validates_uniqueness_of :seo, if: 'seo.present?'
+      after_create :save_seo_name
     end
+  end
+
+  def save_seo_name
+    create_seo_name
+    save
   end
 
   def transliterate(str)
@@ -14,12 +18,12 @@ module SeoName
   def create_seo_name(str = nil, column_key = 'seo', attempt = 0)
     str = send(seo_source) unless str
     seo = transliterate(str).parameterize[0..75]
-    if self.class.where(column_key => seo).first
-      attempt += 1
-      seo = create_seo_name("#{attempt}_#{seo}", column_key, attempt)
+    
+    exists = self.class.where({column_key => seo}).where.not(id: id).first
+    if exists 
+      seo = "#{seo}_#{id}"
     end
     self.seo = seo
-    seo
   end
 
   def seo_source

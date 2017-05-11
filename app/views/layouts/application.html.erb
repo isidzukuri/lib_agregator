@@ -12,6 +12,8 @@
 
 
     <%= csrf_meta_tags %>
+    <%= yield(:meta) if content_for?(:meta) %>
+
 
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= favicon_link_tag 'apple-touch-icon-144x144.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => '144x144' %>
@@ -58,6 +60,8 @@
               <li><a href="/genres">Жанри</a></li>
               <!-- <li><a href="/tags">Теги</a></li> -->
               <li><a href="/authors">Автори</a></li>
+              <li><a href="/lists">Підбірки</a></li>
+              <li><a href="/articles">Статті</a></li>
           </ul>          
         </div>
       </div>
