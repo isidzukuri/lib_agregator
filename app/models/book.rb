@@ -27,7 +27,7 @@ class Book < ActiveRecord::Base
 
     ActiveRecord::Associations::Preloader.new.preload(pointers, :authors)
 
-    pointers.reverse # .uniq { |i| [i.title, i.domain, i.description] } # remove old duplicates from yakaboo
+    pointers#.reverse # .uniq { |i| [i.title, i.domain, i.description] } # remove old duplicates from yakaboo
   end
 
   def self.extended_search(params, _limit = 100, _offset = 0)

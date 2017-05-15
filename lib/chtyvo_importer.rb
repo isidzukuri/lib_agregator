@@ -64,7 +64,8 @@ class ChtyvoImporter
   def find_author(full_name)
     author = authors[full_name]
     unless author
-      author = Author.find_by_full_name(full_name)
+      # author = Author.find_by_full_name(full_name)
+      author = Author.where("full_name = '#{full_name}' OR uk = '#{full_name}' ").first
       authors[full_name] = author
     end
     author
