@@ -65,11 +65,22 @@ class Book < ActiveRecord::Base
   def self.autocomplete_with_seo word, limit = 10
     like = "%#{word}%"
     items = Book.where("LOWER(title) LIKE :query OR seo LIKE :query", query: like)
-              .limit(limit)
-              .select(:id, :title).includes(:authors)
+              .limit(limit).includes(:authors)
   end
 
   def author_title
     authors.present? ? authors[0].display_title : ''
+  end
+
+  def only_paper?
+    only_paper = true
+    $book_formats.each do |frmt|
+      next if frmt == 'paper'
+      if send(frmt.to_sym)
+        only_paper = false
+        break
+      end
+    end
+    only_paper
   end
 end
