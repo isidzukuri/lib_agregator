@@ -51,7 +51,7 @@ class YakabooImporter
 
       result = {
         'title' => b_data['name'],
-        'description' => b_data['description'],
+        'description' => b_data['description'].sub!('От издателя:', '').sub!('От Yakaboo:', ''),
         'cover' => b_data['picture'],
         'authors' => b_authors.uniq,
         'genre' => book_genre,

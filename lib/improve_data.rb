@@ -1,5 +1,10 @@
 class ImproveData
 
+  # От издателя:"
+
+
+  
+
   def initialize
     ActiveRecord::Base.logger.level = 1
   end
