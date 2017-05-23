@@ -1,8 +1,4 @@
 class ImproveData
-
-  # От издателя:"
-
-
   
 
   def initialize
@@ -58,6 +54,17 @@ class ImproveData
 
       author.destroy
     end
+  end
+
+  def books_descriptions
+    entries = Book.where(domain: 'yakaboo.ua').where("description LIKE 'От издателя:%' OR description LIKE 'От yakaboo:%' OR description LIKE 'От Yakaboo:%'").select(:id, :description)
+    total = entries.length
+    entries.each_with_index do |book, i|
+      ap "#{i+1}/#{total}"
+      description = book.description.sub('От издателя:', '').sub('От Yakaboo:', '').sub('От yakaboo:', '')
+      book.update_attribute(:description, description)
+    end
+    
   end
 
 
