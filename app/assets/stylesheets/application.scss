@@ -36,6 +36,12 @@ body {
   margin-bottom: 60px;
 }
 
+@media (max-width: 480px) {
+    body {
+      /* Margin bottom by footer height */
+      margin-bottom: 80px;
+    }
+}
 
 
 
