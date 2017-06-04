@@ -6,4 +6,12 @@ class Api::SearchController < ApplicationController
       render json: books, each_serializer: Api::BookInListSerializer
     end
   end
+
+  def paper
+    if params[:word].present?
+      books = Book.search_by_title(params[:word], @per_page, @offset)
+      books = books.select { |b| !b.paper.nil? }
+      render json: books, each_serializer: Api::BookInListSerializer
+    end
+  end
 end

@@ -41,6 +41,8 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => { :format => 'json' } do
     get 'search' => 'search#index'
+    get 'paper' => 'search#paper'
+
      # namespace :v1 do
      #    resources :productOp, :path => "product", 
      # end

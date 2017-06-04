@@ -30,7 +30,7 @@ class Book < ActiveRecord::Base
     pointers#.reverse # .uniq { |i| [i.title, i.domain, i.description] } # remove old duplicates from yakaboo
   end
 
-  def self.extended_search(params, _limit = 100, _offset = 0)
+  def self.extended_search(params, limit = 100, offset = 0)
     result = []
 
     search = Tire::Search::Search.new('books')
@@ -52,7 +52,7 @@ class Book < ActiveRecord::Base
       end
 
       cols = attribute_names - %w(description source domain genre_id)
-      result = query.select(cols).includes(:authors).all
+      result = query.select(cols).includes(:authors).limit(limit).offset(offset).all
 
       # result = query.includes(:authors)
       #         .limit(limit).offset(offset)
