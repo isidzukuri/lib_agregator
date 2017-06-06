@@ -11,10 +11,10 @@ class Bambook < WebParser::Parser
 
 
   def parse_now
-    sitemap = WebParser::Sitemap.new(:threads_number => 10)
+    sitemap = WebParser::Sitemap.new(:threads_number => 10, :path_suffix => '/scripts/')
     queue = sitemap.get_urls_queue(
-      'http://www.bambook.com/scripts/catalog.sect?v=2&sid=10&rid=10&xcustid=0&prlo=&prhi=&vlang=1&vnositel=0&ord=3+desc&x=33&y=12', 
-      {href: /pos.showitem/}, {href: /catalog.sect\?v=2&sid=10&vs=/}, nil, false)
+      'http://www.bambook.com/', 
+      {href: /pos.showitem/}, {href: /catalog.sect\?v=2&sid=\d+&vs=/},  {href: /&sid=\d+/}, false)
     # ap queue.store
     # p '---end---'
     # queue = WebParser::SimpleQueue.new(['http://lib.rus.ec/b/241557', 'http://lib.rus.ec/b/618608'])

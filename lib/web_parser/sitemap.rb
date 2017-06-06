@@ -1,7 +1,7 @@
 module WebParser
   class Sitemap < Initializator
     include PageParser, ThreadLock, WorkWithFiles
-    attr_reader :urls, :agent, :host
+    attr_reader :urls, :agent, :host, :path_suffix
 
     def get_urls_queue(url, item_attr, paginator_attr, category_attr = nil, from_file = nil)
       set_host(url)
@@ -79,10 +79,10 @@ module WebParser
       if links
         urls = links.map do |l|
           if attribute.is_a?(Hash)
-            l.href.include?(@host) ? l.href : "#{@scheme}://#{@host}#{l.href}"
+            l.href.include?(@host) ? l.href : "#{base_path}#{l.href}"
           else
             href = l.attribute('href').to_s
-            href.include?(@host) ? href : "#{@scheme}://#{@host}#{href}"
+            href.include?(@host) ? href : "#{base_path}#{href}"
           end
         end
       end
@@ -95,6 +95,7 @@ module WebParser
       @parsed_urls ||= []
       urls, agent = urls_from_page_by_attribute(url, attribute, agent)
       @paginator_urls |= urls if urls
+      
       @parsed_urls << url
       to_parse = @paginator_urls - @parsed_urls
       to_parse.each do |url|
@@ -112,5 +113,12 @@ module WebParser
     def save_urls(urls)
       append("public/webparser/sitemap/#{@host}/#{DateTime.now.strftime('%Y_%m_%d')}.json", urls.to_json) if urls.present?
     end
+
+    def base_path
+      "#{@scheme}://#{@host}#{path_suffix}"
+    end
   end
 end
+
+
+
