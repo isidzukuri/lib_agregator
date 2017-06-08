@@ -27,10 +27,10 @@ class Book < ActiveRecord::Base
 
     ActiveRecord::Associations::Preloader.new.preload(pointers, :authors)
 
-    pointers.reverse # .uniq { |i| [i.title, i.domain, i.description] } # remove old duplicates from yakaboo
+    pointers#.reverse # .uniq { |i| [i.title, i.domain, i.description] } # remove old duplicates from yakaboo
   end
 
-  def self.extended_search(params, _limit = 100, _offset = 0)
+  def self.extended_search(params, limit = 100, offset = 0)
     result = []
 
     search = Tire::Search::Search.new('books')
@@ -52,7 +52,7 @@ class Book < ActiveRecord::Base
       end
 
       cols = attribute_names - %w(description source domain genre_id)
-      result = query.select(cols).includes(:authors).all
+      result = query.select(cols).includes(:authors).limit(limit).offset(offset).all
 
       # result = query.includes(:authors)
       #         .limit(limit).offset(offset)
@@ -65,11 +65,22 @@ class Book < ActiveRecord::Base
   def self.autocomplete_with_seo word, limit = 10
     like = "%#{word}%"
     items = Book.where("LOWER(title) LIKE :query OR seo LIKE :query", query: like)
-              .limit(limit)
-              .select(:id, :title).includes(:authors)
+              .limit(limit).includes(:authors)
   end
 
   def author_title
     authors.present? ? authors[0].display_title : ''
+  end
+
+  def only_paper?
+    only_paper = true
+    $book_formats.each do |frmt|
+      next if frmt == 'paper'
+      if send(frmt.to_sym)
+        only_paper = false
+        break
+      end
+    end
+    only_paper
   end
 end

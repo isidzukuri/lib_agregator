@@ -5,6 +5,6 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by_seo(params[:key])
-    @items = @list.books.includes(:authors).paginate(page: params[:page], per_page: @per_page)
+    @items = @list.books.includes(:authors).paginate(page: params[:page], per_page: @per_page).order(:title)
   end
 end

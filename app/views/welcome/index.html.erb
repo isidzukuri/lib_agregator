@@ -28,14 +28,14 @@
 </div>
 
 
-<% if @lists %>
+<% if @lists.present? %>
 <div class="row">
   <h2 class="section_title">Списки книг:</h2>
   <%= render partial: "lists/item", collection: @lists, as: :list  %>
 </div> 
 <% end %>
 
-<% if @articles %>
+<% if @articles.present? %>
 <div class="row">
   <h2 class="section_title">Статті:</h2>
   <%= render partial: "articles/item", collection: @articles, as: :item  %>

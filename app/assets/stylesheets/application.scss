@@ -36,6 +36,12 @@ body {
   margin-bottom: 60px;
 }
 
+@media (max-width: 480px) {
+    body {
+      /* Margin bottom by footer height */
+      margin-bottom: 80px;
+    }
+}
 
 
 
@@ -113,6 +119,7 @@ a:hover{
     font-weight: 900;
     margin: 0 20px 20px 0;
     cursor:pointer;
+    white-space: nowrap;
 }
 .soc_butt_wrap {
     float: left;
@@ -192,34 +199,31 @@ a:hover{
     display: block;
     font-family: 'Fira Sans', sans-serif;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 20px;
     color:#fff;
-    text-shadow: 0px 0px 2px #000;
+    text-shadow: 0px 0px 10px #000;
     margin-bottom: 30px;
+    padding: 0;
 
     img{
         width:100%;
         max-width: 100%;
-        -moz-transition: all 0.3s;
-        -webkit-transition: all 0.3s;
-        transition: all 0.3s;
     }
 
     div{
         position: absolute;
-        top:40%;
+        top:0;
         width: 100%;
+        height: 100%;
+        padding-top:20%;
         text-align:center;
+        background: url('http://findbook.in.ua/assets/images/fake-brick.png') repeat 0% 0%;
     }
 }
 .list_href:hover{
     color:#fff;
-
-    img {
-        -moz-transform: scale(1.05);
-        -webkit-transform: scale(1.05);
-        transform: scale(1.05);
-    }
+    box-shadow: 0 0 6px #e68d08;
+    transition: all 200ms ease-out;
 }
 .description_book_item{
     margin-bottom: 30px;
@@ -251,4 +255,8 @@ a:hover{
     img{
         max-width:100%;
     }
+}
+#disqus_thread{
+    border-top: 1px dashed #9e9c98;
+    margin-top: 45px;
 }

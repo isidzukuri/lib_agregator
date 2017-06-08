@@ -6,6 +6,8 @@ class YakabooImporter
     @authors = {}
     @genres = {}
     @tags = {}
+    $updated = []
+    $skiped = 0
   end
 
   def import
@@ -13,39 +15,47 @@ class YakabooImporter
     skip = Book.where(domain: 'yakaboo.ua').pluck(:paper)
 
     # ap doc.xpath("//offers/offer").first
-
-    doc.xpath('//offers/offer').each do |el|
+    entries = doc.xpath('//offers/offer')
+    total = entries.count
+    entries.each_with_index do |el, i|
+      ap "#{i+1}/#{total}"
       b_data = Hash.from_xml(el.to_s)['offer']
       next if b_data['type'] != 'book'
-      next if skip.delete(b_data['url'])
+      if skip.delete(b_data['url'])
+        $skiped += 1
+        ap '-skiped'
+        next
+      end
 
-      categories_path = b_data['category_path'].split(' > ')
-      catecory_str = categories_path[1]
+      # categories_path = b_data['category_path'].split(' > ')
+      # catecory_str = categories_path[1]
 
       b_data['param'].delete('Книги')
       tags_arr = b_data['param']
 
-      authors = []
+      b_authors = []
       if b_data['author']
         b_data['author'].split(',').each do |author|
-          authors << book_author(author)
+          b_authors << book_author(author)
         end
       end
 
-      tags = []
+      next if update_item(b_data, b_authors)
+
+      b_tags = []
       if tags_arr.present?
         tags_arr.each do |tag|
-          tags << book_tag(tag.mb_chars.downcase.to_s)
+          b_tags << book_tag(tag.mb_chars.downcase.to_s)
         end
       end
 
       result = {
         'title' => b_data['name'],
-        'description' => b_data['description'],
+        'description' => b_data['description'].sub!('От издателя:', '').sub!('От Yakaboo:', ''),
         'cover' => b_data['picture'],
-        'authors' => authors.uniq,
+        'authors' => b_authors.uniq,
         'genre' => book_genre,
-        'tags' => tags.uniq,
+        'tags' => b_tags.uniq,
         'paper' => b_data['url'],
         'source' => 'xml',
         'domain' => 'yakaboo.ua'
@@ -81,7 +91,8 @@ class YakabooImporter
   def find_author(full_name)
     author = authors[full_name]
     unless author
-      author = Author.find_by_full_name(full_name)
+      # author = Author.find_by_full_name(full_name)
+      author = Author.where("full_name = '#{full_name}' OR uk = '#{full_name}' ").first
       authors[full_name] = author
     end
     author
@@ -103,4 +114,24 @@ class YakabooImporter
     end
     tag
   end
+
+  def update_item b_data, authors
+    result = false
+    authors_ids = authors.map(&:id).join(',')
+    query = Book.where(title: b_data['name'])
+    query = query.joins(:authors).where("authors_books.author_id in(#{authors_ids})") if authors.present?
+
+    entry = query.first
+    return result unless entry
+
+    diff = entry.authors.ids - authors.map(&:id)
+    if diff.empty?
+      entry.update_attribute(:paper, b_data['url'])
+      $updated << entry
+      result = true
+      ap "- updated"
+    end
+    result
+  end
+
 end

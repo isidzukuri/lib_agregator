@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -37,6 +41,8 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => { :format => 'json' } do
     get 'search' => 'search#index'
+    get 'paper' => 'search#paper'
+
      # namespace :v1 do
      #    resources :productOp, :path => "product", 
      # end
@@ -46,7 +52,11 @@ Rails.application.routes.draw do
     get '/' => 'admin#index'
     resources :articles
     resources :lists
+    resources :books
   end
+
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
