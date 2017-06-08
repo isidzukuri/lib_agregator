@@ -7,7 +7,6 @@ class Bambook < WebParser::Parser
 
   # translate tags
   # translate authors
-# [283086/366870] http://lib.rus.ec/b/91302
 
 
   def parse_now
@@ -17,9 +16,9 @@ class Bambook < WebParser::Parser
       {href: /pos.showitem/}, {href: /catalog.sect\?v=2&sid=\d+&vs=/},  {href: /&sid=\d+/}, false)
     # ap queue.store
     # p '---end---'
-    # queue = WebParser::SimpleQueue.new(['http://www.bambook.com/scripts/pos.showitem?v=2&ite=841407','http://www.bambook.com/scripts/pos.showitem?v=2&ite=1626909','http://www.bambook.com/scripts/pos.showitem?v=2&ite=1639474', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=1288118', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=15487', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=16437', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=1288485'])
-    # @skip.times {queue.next_item } if @skip
-    # parse(queue)
+    # queue = WebParser::SimpleQueue.new(['http://www.bambook.com/scripts/pos.showitem?v=2&ite=991388', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=841407','http://www.bambook.com/scripts/pos.showitem?v=2&ite=1626909','http://www.bambook.com/scripts/pos.showitem?v=2&ite=1639474', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=1288118', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=15487', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=16437', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=1288485'])
+    @skip.times {queue.next_item } if @skip
+    parse(queue)
   end     
 
 
@@ -74,7 +73,10 @@ class Bambook < WebParser::Parser
   end
 
   def author page
-    page.search('[itemprop="author"]').attribute('content').to_s
+    val = ''
+    elm = page.search('[itemprop="image"]')
+    val = elm.attribute('author').to_s if elm.present?
+    val
   end
 
   def cover page
@@ -101,7 +103,7 @@ class Bambook < WebParser::Parser
     str = ''
     html_str = page.search('[itemprop="description"]').to_html
     str = Sanitize.fragment(html_str, elements: %w(b ul ol li p br u i h5 strong pre small)) if html_str
-    str
+    str.gsub(/\n|\t|\r/, '')
   end
 
   def is_ua? page
