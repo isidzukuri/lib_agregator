@@ -11,9 +11,9 @@ class Bambook < WebParser::Parser
 
 
   def parse_now
-    sitemap = WebParser::Sitemap.new(:threads_number => 10, :path_suffix => '/scripts/')
+    sitemap = BambookSitemap.new(:threads_number => 10, :path_suffix => '/scripts/')
     queue = sitemap.get_urls_queue(
-      'http://www.bambook.com/', 
+      'http://www.bambook.com/scripts/catalog.sect?v=2&sid=10&xcustid=0', 
       {href: /pos.showitem/}, {href: /catalog.sect\?v=2&sid=\d+&vs=/},  {href: /&sid=\d+/}, false)
     # ap queue.store
     # p '---end---'
@@ -132,5 +132,25 @@ class Bambook < WebParser::Parser
   # GENRES = {
   #   '' => '',
   # }
+
+end
+
+class BambookSitemap < WebParser::Sitemap
+
+
+  def get_urls_from_categories(url, attribute, agent = nil)
+    puts "#{url} checking categories".green
+    pages_with_paginator, agent  = urls_from_page_by_attribute(url, attribute, agent)
+
+    sub_categories = []
+    pages_with_paginator.each do |category_url|
+      puts " - #{category_url} checking sub category".green
+      sub_category_links, agent  = urls_from_page_by_attribute(category_url, attribute, agent)
+      sub_categories += sub_category_links #sub categories
+    end
+    pages_with_paginator += sub_categories
+
+    return pages_with_paginator.uniq!, agent 
+  end
 
 end
