@@ -17,7 +17,7 @@ class Bambook < WebParser::Parser
       {href: /pos.showitem/}, {href: /catalog.sect\?v=2&sid=\d+&vs=/},  {href: /&sid=\d+/}, false)
     # ap queue.store
     # p '---end---'
-    # queue = WebParser::SimpleQueue.new(['http://lib.rus.ec/b/241557', 'http://lib.rus.ec/b/618608'])
+    # queue = WebParser::SimpleQueue.new(['http://www.bambook.com/scripts/pos.showitem?v=2&ite=841407','http://www.bambook.com/scripts/pos.showitem?v=2&ite=1626909','http://www.bambook.com/scripts/pos.showitem?v=2&ite=1639474', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=1288118', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=15487', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=16437', 'http://www.bambook.com/scripts/pos.showitem?v=2&ite=1288485'])
     # @skip.times {queue.next_item } if @skip
     # parse(queue)
   end     
@@ -48,95 +48,73 @@ class Bambook < WebParser::Parser
 
   def extract_data page
     save_part()
-    return if !page.search('._ga1_on_').present?
     return if !is_ua?(page)
-    return if !download_format(page).present?
+    return if !available?(page)
 
-    # ap page.uri.path
-
-    # ap "ukrainian:"
     # ap is_ua?(page)
-    # ap  "include fb2:"
-    # ap download_format(page).present?
+    # ap available?(page)
+
+    
 
     result = {
       'title' => title(page),
       'author' => author(page),
-      'category' => category(page), 
+      'cover' => cover(page),
       'tags' => tags(page),
       'description' => description(page),
-      'source' => page.uri.path,
+      'source' => page.uri.to_s,
       'domain' => page.uri.host
     }
-    result.merge!(download_format(page))
     
     result
   end
 
   def title page
-    str = page.search('h1.title').text
-
-    str.split(' (')[0]
+    page.search('[itemprop="name"]').text
   end
 
   def author page
-    page.links_with(href: /\/a\/\d/)[0].text
+    page.search('[itemprop="author"]').attribute('content').to_s
+  end
+
+  def cover page
+    val = ''
+    elm = page.search('[itemprop="image"]')
+    val = elm.attribute('content').to_s if elm.present?
+    val
   end
 
   def tags page
+    elms = page.search('[itemtype="http://data-vocabulary.org/Breadcrumb"] a')
     arr = []
-    page.search('a.genre h9').each_with_index do |tag, i|
+    elms.each_with_index do |tag, i|
       next if i == 0
-      arr << tag.text.mb_chars.downcase.to_s
+      str = tag.text.mb_chars.downcase.to_s
+      next if ['акции и предложения', "новые поступления", "разное"].include?(str)
+      arr << str
     end
 
-
-    page.search('.vocabulary-tag a').each_with_index do |tag, i|
-      next if i == 0
-      arr << tag.text.mb_chars.downcase.to_s
-    end
     arr
   end
 
   def description page
     str = ''
-    html_str = page.search('._ga1_on_ h2 + p').to_html
+    html_str = page.search('[itemprop="description"]').to_html
     str = Sanitize.fragment(html_str, elements: %w(b ul ol li p br u i h5 strong pre small)) if html_str
     str
   end
 
-  def download_format page
-    frmts = {}
-    title_str = page.search('h1.title').text
-    ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu'].each do |f|
-      next unless title_str.include?("(#{f})")
-      path = page.link_with(:text => /скачать/).uri.path
-      frmts[f] = "http://#{page.uri.host}#{path}"
-    end
-    frmts
-  end
-
   def is_ua? page
-    page.search('._ga1_on_').text.include?(' [uk] ')
+    page.search('[itemprop="inLanguage"]').text == 'Украинский'
   end
 
-  def category page
-    str = ''
-    elements = page.search('a.genre h9')
-    str = elements[0].text.mb_chars.downcase.to_s if elements
-    str
+  def available? page
+    page.search('.hidden_buy').present?
   end
-
-
-
-  # GENRES = {
-  #   '' => '',
-  # }
 
 end
 
 class BambookSitemap < WebParser::Sitemap
-
 
   def get_urls_from_categories(url, attribute, agent = nil)
     puts "#{url} checking categories".green
