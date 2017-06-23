@@ -2,13 +2,23 @@ class WelcomeController < ApplicationController
   # 'shchighol', '1_filosofiia-svobodi', 'liudina-v-poshukakh-spravzhn-ogho-siensu-psikhologh-u-kontstabori', 'moie-zhittia-ta-robota', 'orighinali-iak-nonkonformisti-rukhaiut-svit', 'rework-tsia-knigha-pierieviernie-vash-poghliad-na-biznies', 'ilon-mask-tesla-spacex-i-shliakh-u-fantastichnie-maibutnie', 'chomu-natsiyi-zaniepadaiut-pokhodzhiennia-vladi-baghatstva-i-bidnosti', 'atlant-rozpraviv-pliechi-kompliekt-iz-3-knigh'
 
   def index
-    @paper_books = Book.where(id: [114_629, 78_556, 264_418, 78_153, 85_199, 65_867, 101_084, 87_251, 101_015]).select(:title, :seo, :cover).order(id: :desc)
+    @paper_books = paper_books
     @free_books = free_books
     @lists = lists()
     @articles = articles()
   end
 
   private
+
+  def paper_books
+    items = $cache.read('paper_books')
+    unless items
+      ids = Recomendation.pluck(:book_id)
+      items = Book.where(id: ids).select(:title, :seo, :cover).order(id: :desc)
+      $cache.write('paper_books', items, expires_in: 1.day)
+    end
+    items
+  end
 
   def free_books
     items = $cache.read('free_books')

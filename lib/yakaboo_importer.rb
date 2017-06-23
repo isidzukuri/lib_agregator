@@ -51,7 +51,7 @@ class YakabooImporter
 
       result = {
         'title' => b_data['name'],
-        'description' => b_data['description'].sub!('От издателя:', '').sub!('От Yakaboo:', ''),
+        'description' => clear_description(b_data['description']),
         'cover' => b_data['picture'],
         'authors' => b_authors.uniq,
         'genre' => book_genre,
@@ -68,6 +68,12 @@ class YakabooImporter
     end
 
     true
+  end
+
+  def clear_description str
+    return '' if str.nil?
+    str.sub!('От издателя:', '')
+    str.sub!('От Yakaboo:', '')
   end
 
   def book_genre
@@ -92,7 +98,7 @@ class YakabooImporter
     author = authors[full_name]
     unless author
       # author = Author.find_by_full_name(full_name)
-      author = Author.where("full_name = '#{full_name}' OR uk = '#{full_name}' ").first
+      author = Author.where("full_name = #{Author.sanitize(full_name)} OR uk = #{Author.sanitize(full_name)} ").first
       authors[full_name] = author
     end
     author

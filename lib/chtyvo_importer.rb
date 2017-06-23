@@ -9,19 +9,17 @@ class ChtyvoImporter
   end
 
   def import
-    # take all parsed urls from db by domain
-    # build sitemap
-    # sitemap - existed urls
-    # parse
-
     @data = JSON.parse open('public/data_2017_01_17.json').read
 
     data.each do |entry|
       begin
+
         author = [book_author(entry['author'])]
         genre = book_genre(entry['category'])
         tags = [book_tag(entry['tags'])]
 
+        # skip allready existing books
+        # new json - old json
         create_book(entry, author, genre, tags)
       rescue
       end
