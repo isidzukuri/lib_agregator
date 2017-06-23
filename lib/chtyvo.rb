@@ -3,7 +3,16 @@ class Chtyvo < WebParser::Parser
     # add skip urls
     sitemap = WebParser::Sitemap.new(threads_number: 1)
     queue = sitemap.get_urls_queue('http://chtyvo.org.ua/', '.books a:first-child', 'a.paging', '#menu_2 .menu a')
+    parsed_urls = last_sitemap
+    urls_to_parse = queue.store - parsed_urls
+    ap "urls_to_parse #{urls_to_parse}"
+    queue = WebParser::SimpleQueue.new(urls_to_parse)
     parse(queue)
+  end
+
+  def last_sitemap
+    files_sorted_by_time = Dir["public/webparser/sitemap/chtyvo.org.ua/*"].sort_by { |f| File.mtime(f) }
+    JSON.parse open(files_sorted_by_time[(files_sorted_by_time.length-2)]).read
   end
 
   def extract_data(page)
@@ -24,7 +33,7 @@ class Chtyvo < WebParser::Parser
       'doc' => url_for('doc', page),
       'pdf' => url_for('pdf', page),
       'fb2' => url_for('fb2', page),
-      'ebup' => url_for('ebup', page),
+      'epub' => url_for('epub', page),
       'mobi' => url_for('mobi', page),
       'djvu' => url_for('djvu', page),
       'source' => page.uri.path,

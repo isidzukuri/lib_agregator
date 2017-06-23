@@ -2,18 +2,18 @@ class ChtyvoImporter
   attr_accessor :data, :authors, :genres, :tags
 
   def initialize
-    ActiveRecord::Base.logger.level = 1
+    # ActiveRecord::Base.logger.level = 1
     @authors = {}
     @genres = {}
     @tags = {}
   end
 
   def import
-    @data = JSON.parse open('public/data_2017_01_17.json').read
+    @data = JSON.parse open('public/Chtyvo/data_2017_06_23.json').read
 
-    data.each do |entry|
+    data.each_with_index do |entry, i|
       begin
-
+        ap i
         author = [book_author(entry['author'])]
         genre = book_genre(entry['category'])
         tags = [book_tag(entry['tags'])]
@@ -22,6 +22,7 @@ class ChtyvoImporter
         # new json - old json
         create_book(entry, author, genre, tags)
       rescue
+        ap "error"
       end
     end
 
@@ -33,6 +34,9 @@ class ChtyvoImporter
     entry.delete('tags')
     entry.delete('category')
 
+
+    entry['epub'] = entry['ebup']
+    entry.delete('ebup')
     entry['authors'] = authors
     entry['genre'] = genre
     entry['tags'] = tags

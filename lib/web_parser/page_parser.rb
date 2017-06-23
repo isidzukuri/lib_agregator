@@ -24,9 +24,12 @@ module WebParser
         end
       else
         if defined?(CACHE) && !page = CACHE.read(url)
-          # begin
+          # 
           page = agent.get(url)
-          CACHE.write(url, page.body)
+          begin
+            CACHE.write(url, page.body)
+          rescue
+          end
         # rescue NoMethodError
         # 	raise NoMethodError.new("Parameter 'agent' should be Mechanize object")
         # rescue

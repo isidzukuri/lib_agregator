@@ -11,7 +11,7 @@ module WebParser
 
     def get_site_urls_from_file
       files_sorted_by_time = Dir["public/webparser/sitemap/#{@host}/*"].sort_by { |f| File.mtime(f) }
-      JSON.parse open(files_sorted_by_time.first).read
+      JSON.parse open(files_sorted_by_time.last).read
     end
 
     def set_host(url)
