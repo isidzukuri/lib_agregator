@@ -12,11 +12,11 @@ class WelcomeController < ApplicationController
 
   def paper_books
     items = $cache.read('paper_books')
-    # unless items
+    unless items
       ids = Recomendation.pluck(:book_id)
       items = Book.where(id: ids).select(:title, :seo, :cover).order(id: :desc)
       $cache.write('paper_books', items, expires_in: 1.day)
-    # end
+    end
     items
   end
 
