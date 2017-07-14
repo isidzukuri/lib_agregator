@@ -57,7 +57,20 @@
   })();
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                                  
+         
+
+  <% if @read_also.present? %>
+  <div class="row">
+    <h3 class="section_title">читайте також:</h2>
+    
+    <% @read_also.each do |book|%>
+    <a href="/books/<%= book.seo %>" class="col-md-2 col-xs-2 book_panel_link read_also">
+      <img src="<%= book.cover %>" alt="<%= book.title %>" title="<%= book.title %>" />
+      <!-- <%= book.title %> -->
+    </a>
+    <% end %>
+  </div>
+  <% end%>
 
   <div class="bottom_description">
     <p>
