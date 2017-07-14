@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623100749) do
+ActiveRecord::Schema.define(version: 20170714164143) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "title"
@@ -59,8 +59,10 @@ ActiveRecord::Schema.define(version: 20170623100749) do
     t.string  "djvu"
     t.integer "genre_id"
     t.string  "seo"
+    t.string  "language"
     t.index ["domain"], name: "index_books_on_domain", using: :btree
     t.index ["genre_id"], name: "index_books_on_genre_id", using: :btree
+    t.index ["language"], name: "index_books_on_language", using: :btree
     t.index ["seo"], name: "index_books_on_seo", unique: true, using: :btree
     t.index ["source"], name: "index_books_on_source", using: :btree
     t.index ["title"], name: "index_books_on_title", using: :btree
