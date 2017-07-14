@@ -159,9 +159,17 @@ a:hover{
     margin-top:15px;
     text-align:center;
 }
+.book_panel_link.read_also{
+    height: auto;
+    max-height: 270px;
+    overflow:hidden;
+}
 @media (max-width: 415px) {
     .book_panel_link{
         height: 280px;
+    }
+    .book_panel_link.read_also{
+        height: 160px;
     }
 }
 .bottom_description{
@@ -259,8 +267,4 @@ a:hover{
 #disqus_thread{
     border-top: 1px dashed #9e9c98;
     margin-top: 45px;
-}
-.read_also{
-    height: auto !important;
-    max-height: 270px;
 }

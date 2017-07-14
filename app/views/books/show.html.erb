@@ -64,7 +64,7 @@
     <h3 class="section_title">читайте також:</h2>
     
     <% @read_also.each do |book|%>
-    <a href="/books/<%= book.seo %>" class="col-md-2 col-xs-2 book_panel_link read_also">
+    <a href="/books/<%= book.seo %>" class="col-md-2 col-xs-4 book_panel_link read_also">
       <img src="<%= book.cover %>" alt="<%= book.title %>" title="<%= book.title %>" />
       <!-- <%= book.title %> -->
     </a>
