@@ -40,6 +40,7 @@ class ChtyvoImporter
     entry['authors'] = authors
     entry['genre'] = genre
     entry['tags'] = tags
+    entry['language'] = 'uk'
     entry['cover'] = "http://chtyvo.org.ua#{entry['cover']}" if entry['cover'].present?
 
     %w(txt rtf doc pdf fb2 epub mobi djvu).each do |frmt|

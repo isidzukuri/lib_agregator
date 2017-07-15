@@ -42,6 +42,8 @@ class LibrusekImporter
 
     entry['authors'] = authors
     entry['tags'] = tags
+    entry['language'] = 'uk'
+    
 
     %w(txt rtf doc pdf fb2 epub mobi djvu).each do |frmt|
       entry[frmt] = entry[frmt] if entry[frmt].present?

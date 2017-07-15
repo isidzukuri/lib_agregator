@@ -58,7 +58,8 @@ class YakabooImporter
         'tags' => b_tags.uniq,
         'paper' => b_data['url'],
         'source' => 'xml',
-        'domain' => 'yakaboo.ua'
+        'domain' => 'yakaboo.ua',
+        'language' => language?(b_data)
       }
       # ap result
       begin
@@ -68,6 +69,12 @@ class YakabooImporter
     end
 
     true
+  end
+
+  def landuage?(b_data)
+    lang = nil
+    lang = 'uk' if QuessLanguage.is_uk?(b_data['title']) || QuessLanguage.is_uk?(b_data['description'])
+    lang
   end
 
   def clear_description str
