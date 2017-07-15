@@ -164,6 +164,11 @@ a:hover{
     max-height: 270px;
     overflow:hidden;
 }
+@media (max-width: 992px){
+    .book_panel_link.read_also{
+        height: 205px;
+    }
+}
 @media (max-width: 415px) {
     .book_panel_link{
         height: 280px;
