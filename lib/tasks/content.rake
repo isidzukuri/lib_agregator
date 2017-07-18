@@ -1,7 +1,7 @@
 namespace :content do
   desc "TODO"
   task optimize_yakaboo_images: :environment do
-    Book.where(domain: "yakaboo.ua").where.not(cover: nil).select(:id, :cover).all.each do |book|
+    Book.where(domain: "yakaboo.ua", optimized_cover: nil).where.not(cover: nil).select(:id, :cover).all.each do |book|
       ext = book.cover.split('.').last
       image = MiniMagick::Image.open(book.cover)
       image.resize "280x350\>"

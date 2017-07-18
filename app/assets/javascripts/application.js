@@ -45,3 +45,9 @@ $(window).load(function(){
     ";"+Math.random();
 
 });
+
+$(document).ready(function(){
+  $('img').on("error", function () {
+    $(this).parent().hide();
+  });
+});

@@ -63,12 +63,22 @@ class YakabooImporter
       }
       # ap result
       begin
-        Book.create(result)
+        book = Book.create(result)
       rescue
       end
+      optimize_image(book)
     end
 
     true
+  end
+
+  def optimize_image book
+    ext = book.cover.split('.').last
+    image = MiniMagick::Image.open(book.cover)
+    image.resize "280x350\>"
+    filename = "#{book.id}.#{ext}"
+    image.write("public/covers/#{filename}")
+    book.update_attribute(:optimized_cover, filename)
   end
 
   def landuage?(b_data)
