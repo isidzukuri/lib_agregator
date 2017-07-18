@@ -1,8 +1,8 @@
 <div class="description_book_item">
 
-  <% if item.cover.present? %>
+  <% if item.thumb.present? %>
   <a href='/books/<%= item.seo%>'>
-    <img src="<%= item.cover %>" alt='<%= item.title %>' title='<%= item.title %>' class="book_cover" itemprop="image" />
+    <img src="<%= item.thumb %>" alt='<%= item.title %>' title='<%= item.title %>' class="book_cover" itemprop="image" />
   </a>
   <% end %>
 

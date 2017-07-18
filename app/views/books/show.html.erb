@@ -13,7 +13,7 @@
   <hr/>
 
   <% if @book.cover.present? %>
-    <img src="<%= @book.cover %>" alt='<%= @book.title %>' title='<%= @book.title %>' class="book_cover" itemprop="image" />
+    <img src="<%= @book.thumb %>" alt='<%= @book.title %>' title='<%= @book.title %>' class="book_cover" itemprop="image" />
   <% end %>
   <% if @book.description.present? %>
   <div itemprop="description" class="justify">
@@ -65,7 +65,7 @@
     
     <% @read_also.each do |book|%>
     <a href="/books/<%= book.seo %>" class="col-md-2 col-xs-4 book_panel_link read_also">
-      <img src="<%= book.cover %>" alt="<%= book.title %>" title="<%= book.title %>" />
+      <img src="<%= book.thumb %>" alt="<%= book.title %>" title="<%= book.title %>" />
       <!-- <%= book.title %> -->
     </a>
     <% end %>

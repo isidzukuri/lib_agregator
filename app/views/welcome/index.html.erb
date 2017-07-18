@@ -13,14 +13,14 @@
 <div class="row">
   <% @paper_books.each do |book|%>
   <a href="/books/<%= book.seo %>" class="col-md-4 col-xs-6 book_panel_link">
-    <img src="<%= book.cover %>" alt="<%= book.title %>" title="<%= book.title %>" />
+    <img src="<%= book.thumb %>" alt="<%= book.title %>" title="<%= book.title %>" />
     <!-- <%= book.title %> -->
   </a>
   <% end %>
   
   <% @free_books.each do |book|%>
   <a href="/books/<%= book.seo %>" class="col-md-4 col-xs-6 book_panel_link">
-    <img src="<%= book.cover %>" alt="<%= book.title %>" title="<%= book.title %>" />
+    <img src="<%= book.thumb %>" alt="<%= book.title %>" title="<%= book.title %>" />
     <!-- <%= book.title %> -->
   </a>
   <% end %>

@@ -98,4 +98,8 @@ class Book < ActiveRecord::Base
     items
   end
 
+  def thumb
+    optimized_cover ? "/covers/#{optimized_cover}" : cover
+  end
+
 end
