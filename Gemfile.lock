@@ -274,9 +274,6 @@ GEM
       faraday (~> 0.9)
       jwt (~> 1.5)
       multi_json (~> 1.10)
-    simple_form (3.4.0)
-      actionpack (> 4, < 5.1)
-      activemodel (> 4, < 5.1)
     sitemap_generator (5.3.1)
       builder (~> 3.0)
     spring (2.0.1)
@@ -365,7 +362,6 @@ DEPENDENCIES
   sanitize
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  simple_form
   sitemap_generator
   spring
   tire

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714164143) do
+ActiveRecord::Schema.define(version: 20170718201612) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "title"
@@ -44,11 +44,11 @@ ActiveRecord::Schema.define(version: 20170714164143) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "title"
-    t.text    "description", limit: 65535
+    t.text    "description",     limit: 65535
     t.string  "cover"
     t.string  "domain"
     t.string  "source"
-    t.string  "paper",       limit: 500
+    t.string  "paper",           limit: 500
     t.string  "txt"
     t.string  "rtf"
     t.string  "doc"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20170714164143) do
     t.integer "genre_id"
     t.string  "seo"
     t.string  "language"
+    t.string  "optimized_cover"
     t.index ["domain"], name: "index_books_on_domain", using: :btree
     t.index ["genre_id"], name: "index_books_on_genre_id", using: :btree
     t.index ["language"], name: "index_books_on_language", using: :btree
