@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.includes(:authors, :tags, :genre).find_by_seo(params[:key])
     redirect_to(:root, status: 410) unless @book
-    @read_also = @book.read_also(6)
+    @read_also = @book.read_also(6) if @book
   end
 
   def autocomplete_with_seo
