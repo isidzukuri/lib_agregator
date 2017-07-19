@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718201612) do
+ActiveRecord::Schema.define(version: 20170719060149) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "title"
@@ -26,11 +26,12 @@ ActiveRecord::Schema.define(version: 20170718201612) do
   end
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "full_name"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "seo"
-    t.string "uk"
+    t.string  "full_name"
+    t.string  "last_name"
+    t.string  "first_name"
+    t.string  "seo"
+    t.string  "uk"
+    t.boolean "hide"
     t.index ["full_name"], name: "index_authors_on_full_name", using: :btree
     t.index ["last_name"], name: "index_authors_on_last_name", using: :btree
     t.index ["seo"], name: "index_authors_on_seo", unique: true, using: :btree
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170718201612) do
     t.string  "seo"
     t.string  "language"
     t.string  "optimized_cover"
+    t.boolean "hide"
     t.index ["domain"], name: "index_books_on_domain", using: :btree
     t.index ["genre_id"], name: "index_books_on_genre_id", using: :btree
     t.index ["language"], name: "index_books_on_language", using: :btree

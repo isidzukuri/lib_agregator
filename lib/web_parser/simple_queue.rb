@@ -6,8 +6,8 @@ module WebParser
     def initialize(items, lock = nil)
       @lock = lock if lock
       @store = items
-      @total = items.count
-      @items_count = items.count
+      @total = items.length
+      @items_count = items.length
       @items_shifted = 0
       super()
     end
