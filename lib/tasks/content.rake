@@ -4,11 +4,9 @@ namespace :content do
 
     books = Book.where(domain: "yakaboo.ua", optimized_cover: nil).where.not(cover: nil).select(:id, :cover).all
     queue = WebParser::SimpleQueue.new(books.to_a)
-
-
     threads = []
     fails = 0
-    60.times do 
+    40.times do 
       threads << Thread.new do
         book = queue.next_item
         while book do
@@ -18,7 +16,7 @@ namespace :content do
             image.resize "280x350\>"
             filename = "#{book.id}.#{ext}"
             image.write("public/covers/#{filename}")
-            book.update_attribute(:optimized_cover, filename)
+            # book.update_attribute(:optimized_cover, filename)
           rescue
             fails +=1
           end
@@ -27,13 +25,15 @@ namespace :content do
       end
     end
     threads.each { |thr| thr.join }
-    # profiler = RubyProf.stop
-    # printer = RubyProf::GraphPrinter.new(profiler)
-    # printer.print(STDOUT, {})
     puts "fails: #{fails}".red
     puts "[end]".green
-    
-
   end
 
+  task update_optimized_cover: :environment do
+    books = Book.where(domain: "yakaboo.ua").select(:id, :cover).all.each do |book|
+      ext = book.cover.split('.').last
+      filename = "#{book.id}.#{ext}"
+      book.update_attribute(:optimized_cover, filename)
+    end     
+  end
 end
