@@ -16,7 +16,7 @@ class LibrusekImporter
   def import
     data.each do |entry|
       # begin
-        next if Book.find_by_title(entry['title'])
+        next if Book.where(title: entry['title']).where.not(domain: 'yakaboo.ua').first
         author = [book_author(entry['author'])]
 
         tags = []
