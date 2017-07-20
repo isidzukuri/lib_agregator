@@ -78,6 +78,7 @@ class YakabooImporter
     image.resize "280x350\>"
     filename = "#{book.id}.#{ext}"
     image.write("public/covers/#{filename}")
+    `mogrify -quality 80 public/covers/#{filename}`
     book.update_attribute(:optimized_cover, filename)
   end
 
