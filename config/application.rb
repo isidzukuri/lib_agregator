@@ -28,6 +28,6 @@ module LibAgreagator
     config.autoload_paths += Dir["#{Rails.root}/app/serializers/**/"]
     config.autoload_paths += Dir["#{Rails.root}/app/services/**/"]
     config.exceptions_app = self.routes
-
+    config.middleware.use Rack::Deflater
   end
 end
