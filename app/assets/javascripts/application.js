@@ -38,7 +38,7 @@ $(window).load(function(){
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
     })();
 
-    new Image().src = "http://counter.yadro.ru/hit?r"+
+    new Image().src = "https://counter.yadro.ru/hit?r"+
     escape(document.referrer)+((typeof(screen)=="undefined")?"":
     ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
     screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
