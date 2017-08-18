@@ -9,4 +9,11 @@ namespace :update_books do
       book.save
     end
   end
+
+  task remove_www_from_yakaboo: :environment do
+    books = Book.where(domain: 'yakaboo.ua').select(:id, :paper).all
+    books.each do |book|
+      book.update_attribute(:paper, book.paper.gsub!("www.", ""))
+    end
+  end
 end

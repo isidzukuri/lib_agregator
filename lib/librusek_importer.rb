@@ -2,11 +2,11 @@ class LibrusekImporter
   attr_accessor :data, :authors, :genres, :tags
 
   def initialize
-    ActiveRecord::Base.logger.level = 1
+    # ActiveRecord::Base.logger.level = 1
     @authors = {}
     @genres = {}
     @tags = {}
-    @data = JSON.parse open('public/Librusek/data_2017_03_28.json').read
+    @data = JSON.parse open('public/Librusek/data_2017_07_30.json').read
   end
 
   # translate tags
@@ -71,7 +71,9 @@ class LibrusekImporter
     author = authors[full_name]
     unless author
       # author = Author.find_by_full_name(full_name)
-      author = Author.where("full_name = '#{full_name}' OR uk = '#{full_name}' ").first
+      str = Author.sanitize(full_name)
+      # author = Author.where("full_name = '#{str}' OR uk = '#{str}' ").first
+      author = Author.where(full_name: full_name).or(Author.where(uk: full_name)).first
       authors[full_name] = author
     end
     author

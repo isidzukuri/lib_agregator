@@ -56,7 +56,7 @@ class YakabooImporter
         'authors' => b_authors.uniq,
         'genre' => book_genre,
         'tags' => b_tags.uniq,
-        'paper' => b_data['url'],
+        'paper' => b_data['url'].gsub!("www.", ""),
         'source' => 'xml',
         'domain' => 'yakaboo.ua',
         'language' => language?(b_data)
