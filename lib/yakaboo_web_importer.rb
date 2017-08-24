@@ -1,8 +1,8 @@
-class YakabooImporter
+class YakabooWebImporter
   attr_accessor :data, :authors, :genres, :tags
 
-  def initialize
-    ActiveRecord::Base.logger.level = 1
+ def initialize
+    # ActiveRecord::Base.logger.level = 1
     @authors = {}
     @genres = {}
     @tags = {}
@@ -11,57 +11,46 @@ class YakabooImporter
   end
 
   def import
-    doc = Nokogiri::XML.parse(open('public/sd-feed-269.xml').read)
-    skip = Book.where(domain: 'yakaboo.ua').pluck(:paper)
-
-    # ap doc.xpath("//offers/offer").first
-    entries = doc.xpath('//offers/offer')
-    total = entries.count
-    entries.each_with_index do |el, i|
+    entries = JSON.parse open('public/Yakaboo/data_2017_08_24.json').read
+    
+    total = entries.length
+    entries.each_with_index do |b_data, i|
       ap "#{i+1}/#{total}"
-      b_data = Hash.from_xml(el.to_s)['offer']
-      next if b_data['type'] != 'book'
-      if skip.delete(b_data['url'])
-        $skiped += 1
-        ap '-skiped'
-        next
-      end
-
-      # categories_path = b_data['category_path'].split(' > ')
-      # catecory_str = categories_path[1]
-
-      b_data['param'].delete('Книги') if b_data['param'].present?
-      tags_arr = b_data['param']
+      tags_arr = b_data['categories']
+     
 
       b_authors = []
-      if b_data['author']
-        b_data['author'].split(',').each do |author|
-          b_authors << book_author(author)
-        end
-      end
+      b_authors << book_author(b_data['author']) if b_data['author']
 
-      next if update_item(b_data, b_authors)
+      frmts = {}
+      ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu'].each do |frmt|
+        frmts[frmt] = "https://rdr.salesdoubler.com.ua/in/offer/269?aid=20647&dlink=#{b_data[frmt]}" if b_data[frmt].present?
+      end
+      
+      next if update_item(b_data, b_authors, frmts)
 
       b_tags = []
       if tags_arr.present?
         tags_arr.each do |tag|
-          b_tags << book_tag(tag.mb_chars.downcase.to_s)
+          b_tags << book_tag(tag)
         end
       end
 
+
+
       result = {
-        'title' => b_data['name'],
-        'description' => clear_description(b_data['description']),
+        'title' => b_data['title'],
+        'description' => b_data['description'],
         'cover' => b_data['picture'],
         'authors' => b_authors.uniq,
-        'genre' => book_genre,
         'tags' => b_tags.uniq,
-        'paper' => b_data['url'].gsub!("www.", ""),
-        'source' => 'xml',
+        'source' => 'yakaboo.ua',
         'domain' => 'yakaboo.ua',
         'language' => language?(b_data)
       }
+      result.merge!(frmts)
       # ap result
+      # next
       begin
         book = Book.create(result)
       rescue
@@ -73,6 +62,7 @@ class YakabooImporter
   end
 
   def optimize_image book
+    return unless book.cover.present?
     ext = book.cover.split('.').last
     image = MiniMagick::Image.open(book.cover)
     image.resize "280x350\>"
@@ -94,9 +84,6 @@ class YakabooImporter
     str.sub!('От Yakaboo:', '')
   end
 
-  def book_genre
-    @genre ||= Genre.find_or_create_by(title: 'Паперові книги')
-  end
 
   def book_author(full_name)
     full_name = full_name.strip
@@ -139,10 +126,10 @@ class YakabooImporter
     tag
   end
 
-  def update_item b_data, authors
+  def update_item b_data, authors, frmts
     result = false
     authors_ids = authors.map(&:id).join(',')
-    query = Book.where(title: b_data['name'])
+    query = Book.where(title: b_data['title'])
     query = query.joins(:authors).where("authors_books.author_id in(#{authors_ids})") if authors.present?
 
     entry = query.first
@@ -150,7 +137,7 @@ class YakabooImporter
 
     diff = entry.authors.ids - authors.map(&:id)
     if diff.empty?
-      entry.update_attribute(:paper, b_data['url'])
+      entry.update_attributes(frmts)
       $updated << entry
       result = true
       ap "- updated"
@@ -158,4 +145,5 @@ class YakabooImporter
     result
   end
 
+  
 end
