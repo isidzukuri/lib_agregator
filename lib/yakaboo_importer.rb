@@ -82,7 +82,7 @@ class YakabooImporter
     book.update_attribute(:optimized_cover, filename)
   end
 
-  def landuage?(b_data)
+  def language?(b_data)
     lang = nil
     lang = 'uk' if QuessLanguage.is_uk?(b_data['title']) || QuessLanguage.is_uk?(b_data['description'])
     lang
