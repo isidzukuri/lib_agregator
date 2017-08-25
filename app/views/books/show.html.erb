@@ -1,4 +1,4 @@
-<div itemscope itemtype="http://schema.org/Book">
+<div itemscope itemtype="http://schema.org/Book" id="book_page">
   <h2 itemprop="name"><%= @book.title %></h2>
   <% @book.authors.each do |author|%>
     <a href='/authors/<%= author.seo%>' itemprop="author"><%= author.display_title%></a>
