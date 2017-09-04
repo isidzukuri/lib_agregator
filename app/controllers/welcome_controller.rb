@@ -23,7 +23,7 @@ class WelcomeController < ApplicationController
   def free_books
     items = $cache.read('free_books')
     unless items
-      items = Book.where(paper: nil).where.not(cover: nil).order('RAND()').limit(20)
+      items = Book.where.not(cover: nil, domain: 'yakaboo.ua').order('RAND()').limit(20)
       $cache.write('free_books', items, expires_in: 1.day)
     end
     items
