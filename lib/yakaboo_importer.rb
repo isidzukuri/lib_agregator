@@ -1,5 +1,5 @@
 class YakabooImporter
-  attr_accessor :data, :authors, :genres, :tags
+  attr_accessor :data, :authors, :genres, :tags, :skip_times
 
   def initialize
     ActiveRecord::Base.logger.level = 1
@@ -17,8 +17,17 @@ class YakabooImporter
     # ap doc.xpath("//offers/offer").first
     entries = doc.xpath('//offers/offer')
     total = entries.count
+
+
+
     entries.each_with_index do |el, i|
       ap "#{i+1}/#{total}"
+      if skip_times > i
+        $skiped += 1
+        ap '-skiped'
+        next
+      end
+
       b_data = Hash.from_xml(el.to_s)['offer']
       next if b_data['type'] != 'book'
       if skip.delete(b_data['url'])

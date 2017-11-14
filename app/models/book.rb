@@ -102,4 +102,8 @@ class Book < ActiveRecord::Base
     optimized_cover ? "/covers/#{optimized_cover}" : cover
   end
 
+  def self.e_yakaboo
+    where("domain = 'yakaboo.ua' AND ((`books`.`txt` IS NOT NULL) OR (`books`.`rtf` IS NOT NULL) OR (`books`.`doc` IS NOT NULL) OR (`books`.`pdf` IS NOT NULL) OR (`books`.`fb2` IS NOT NULL) OR (`books`.`epub` IS NOT NULL) OR (`books`.`mobi` IS NOT NULL) OR (`books`.`djvu` IS NOT NULL))").includes(:authors)
+  end
+
 end
