@@ -1,5 +1,6 @@
+<% title = HTMLEntities.new.decode(@book.title) %>
 <div itemscope itemtype="http://schema.org/Book" id="book_page">
-  <h2 itemprop="name"><%= @book.title %></h2>
+  <h2 itemprop="name"><%= title %></h2>
   <% @book.authors.each do |author|%>
     <a href='/authors/<%= author.seo%>' itemprop="author"><%= author.display_title%></a>
   <% end %>
@@ -79,8 +80,8 @@
   </div>
 </div>
 
-  <% content_for(:title, "#{@book.title}. #{@book.author_title}. Книга скачати безкоштовно або купити") %> 
-  <% content_for(:description, "#{@book.title}. #{@book.author_title}. Скачати книжку безкоштовно або купити з доставкою") %> 
+  <% content_for(:title, "#{title}. #{@book.author_title}. Книга скачати безкоштовно або купити") %> 
+  <% content_for(:description, "#{title}. #{@book.author_title}. Скачати книжку безкоштовно або купити з доставкою") %> 
 <% content_for :meta do %>
 <meta content='<%= @book.description %>' property='og:description'>
 <meta content='<%= @book.cover %>' property='og:image'>
