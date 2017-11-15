@@ -59,7 +59,7 @@ class YakabooImporter
       end
 
       result = {
-        'title' => b_data['name'],
+        'title' => HTMLEntities.new.decode(b_data['name']),
         'description' => clear_description(b_data['description']),
         'cover' => b_data['picture'],
         'authors' => b_authors.uniq,
@@ -101,6 +101,7 @@ class YakabooImporter
     return '' if str.nil?
     str.sub!('От издателя:', '')
     str.sub!('От Yakaboo:', '')
+    HTMLEntities.new.decode(str)
   end
 
   def book_genre
