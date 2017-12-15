@@ -1,0 +1,11 @@
+<h2><%= params[:key] %></h2>
+<p>
+  Тут зібрано всі доступні книги в <%= params[:key] %> форматі. Більшість можна скачати безкоштовно.
+</p>
+
+<%= render partial: "books/list", collection: @items, as: :item  %>
+
+<%= render partial: "layouts/paginator" %>
+<%= render partial: "layouts/book_search_form" %>
+
+<% content_for(:title, "#{params[:key]} книги. Cкачати українською.") %> 

@@ -32,6 +32,10 @@ SitemapGenerator::Sitemap.create do
   add 'authors/'
   # add 'authors/:key'
   # add 'books/:key'
+  add 'formats/'
+  $book_formats.each do |f|
+    add "formats/#{f}"
+  end
 
   Tag.select(:id, :seo).find_each do |item|
     add "tags/#{item.seo}"

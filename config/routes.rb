@@ -28,13 +28,16 @@ Rails.application.routes.draw do
   get 'authors/' => 'authors#index'
   get 'authors/:key' => 'authors#show'
 
+  get 'formats/' => 'formats#index'
+  get 'formats/:key' => 'formats#show'
+
   get 'books/autocomplete_with_seo' => 'books#autocomplete_with_seo'
   get 'books/:key' => 'books#show'
 
   get 'search' => 'search#index'
   get 'extended_search' => 'search#extended_form'
   get 'extended_search_results' => 'search#extended_search_results'
-
+\
   
   get 'contacts' => 'contacts#index'
 
