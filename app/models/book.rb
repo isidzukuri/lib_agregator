@@ -87,13 +87,15 @@ class Book < ActiveRecord::Base
   def read_also limit
     items = []
     return items unless tags
-
+      
+    random_id = rand(1..id)
     tags_ids = tags.map(&:id)#.join(',')
     rows = BooksTag.where(tag_id: tags_ids)
           .includes(:book)
           .where(books:{language: language})
+          .where("books.id > ?", random_id)
           .where.not(books: {cover: nil})
-          .order('RAND()').limit(limit)
+          .limit(limit)
     items = rows.map(&:book)
     items
   end
