@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719060149) do
+ActiveRecord::Schema.define(version: 20171220170046) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "title"
@@ -63,12 +63,21 @@ ActiveRecord::Schema.define(version: 20170719060149) do
     t.string  "language"
     t.string  "optimized_cover"
     t.boolean "hide"
+    t.index ["djvu"], name: "index_books_on_djvu", using: :btree
+    t.index ["doc"], name: "index_books_on_doc", using: :btree
     t.index ["domain"], name: "index_books_on_domain", using: :btree
+    t.index ["epub"], name: "index_books_on_epub", using: :btree
+    t.index ["fb2"], name: "index_books_on_fb2", using: :btree
     t.index ["genre_id"], name: "index_books_on_genre_id", using: :btree
     t.index ["language"], name: "index_books_on_language", using: :btree
+    t.index ["mobi"], name: "index_books_on_mobi", using: :btree
+    t.index ["paper"], name: "index_books_on_paper", using: :btree
+    t.index ["pdf"], name: "index_books_on_pdf", using: :btree
+    t.index ["rtf"], name: "index_books_on_rtf", using: :btree
     t.index ["seo"], name: "index_books_on_seo", unique: true, using: :btree
     t.index ["source"], name: "index_books_on_source", using: :btree
     t.index ["title"], name: "index_books_on_title", using: :btree
+    t.index ["txt"], name: "index_books_on_txt", using: :btree
   end
 
   create_table "books_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
