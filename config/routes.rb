@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   get 'search' => 'search#index'
   get 'extended_search' => 'search#extended_form'
   get 'extended_search_results' => 'search#extended_search_results'
-\
   
   get 'contacts' => 'contacts#index'
 
