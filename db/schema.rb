@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220170046) do
+ActiveRecord::Schema.define(version: 20171221181810) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "title"
@@ -40,7 +40,8 @@ ActiveRecord::Schema.define(version: 20171220170046) do
   create_table "authors_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "author_id", null: false
     t.integer "book_id",   null: false
-    t.index ["author_id", "book_id"], name: "index_authors_books_on_author_id_and_book_id", unique: true, using: :btree
+    t.index ["author_id"], name: "index_authors_books_on_author_id", using: :btree
+    t.index ["book_id"], name: "index_authors_books_on_book_id", using: :btree
   end
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -91,7 +92,8 @@ ActiveRecord::Schema.define(version: 20171220170046) do
   create_table "books_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "tag_id",  null: false
     t.integer "book_id", null: false
-    t.index ["tag_id", "book_id"], name: "index_books_tags_on_tag_id_and_book_id", unique: true, using: :btree
+    t.index ["book_id"], name: "index_books_tags_on_book_id", using: :btree
+    t.index ["tag_id"], name: "index_books_tags_on_tag_id", using: :btree
   end
 
   create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
