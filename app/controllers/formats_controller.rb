@@ -10,7 +10,7 @@ class FormatsController < ApplicationController
     @items = $cache.read(cache_key)
     unless @items
       @items = Book.select($book_required_fields).where.not(params[:key] => nil).paginate(page: params[:page], per_page: @per_page).includes(:authors)
-      $cache.write(cache_key, @items, expires_in: 1.day)
+      $cache.write(cache_key, @items, expires_in: 30.day)
     end
   end
 end
