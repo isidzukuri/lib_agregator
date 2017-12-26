@@ -9,7 +9,7 @@ class TagsController < ApplicationController
     @items = $cache.read(cache_key)
     unless @items
       @items = @tag.books.select($book_required_fields).includes(:authors).paginate(page: params[:page], per_page: @per_page)
-      $cache.write(cache_key, @items, expires_in: 1.day)
+      $cache.write(cache_key, @items, expires_in: 30.day)
     end
   end
 end
