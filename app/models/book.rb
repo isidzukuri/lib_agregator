@@ -101,7 +101,8 @@ class Book < ActiveRecord::Base
   end
 
   def thumb
-    optimized_cover ? "/covers/#{optimized_cover}" : cover
+    # optimized_cover ? "/covers/#{optimized_cover}" : cover
+    optimized_cover ? "https://lbacovers.s3.eu-central-1.amazonaws.com/#{optimized_cover}" : cover
   end
 
   def self.e_yakaboo
