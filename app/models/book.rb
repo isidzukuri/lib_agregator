@@ -100,9 +100,16 @@ class Book < ActiveRecord::Base
     items
   end
 
+  # def all_data seo
+  #   sql = "SELECT books.* 
+  #         FROM books
+  #         WHERE books.seo = #{seo}"
+  #   records_array = ActiveRecord::Base.connection.execute(sql)
+  # end
+
   def thumb
     # optimized_cover ? "/covers/#{optimized_cover}" : cover
-    optimized_cover ? "https://lbacovers.s3.eu-central-1.amazonaws.com/#{optimized_cover}" : cover
+    optimized_cover ? "https://d6ezdopzv6g4b.cloudfront.net/#{optimized_cover}" : cover
   end
 
   def self.e_yakaboo
