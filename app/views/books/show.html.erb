@@ -1,25 +1,25 @@
-<% title = HTMLEntities.new.decode(@book.title) %>
+<% title = HTMLEntities.new.decode(@book['title']) %>
 <div itemscope itemtype="http://schema.org/Book" id="book_page">
   <h2 itemprop="name"><%= title %></h2>
-  <% @book.authors.each do |author|%>
+  <% @authors.each do |author|%>
     <a href='/authors/<%= author.seo%>' itemprop="author"><%= author.display_title%></a>
   <% end %>
-  <% if @book.genre.present? %>
-  / <a href='/genres/<%= @book.genre.seo%>' itemprop="genre"><%= @book.genre.title %></a><br/>
+  <% if @book['genre_seo'].present? %>
+  / <a href='/genres/<%= @book['genre_seo']%>' itemprop="genre"><%= @book['genre_title'] %></a><br/>
   <% end %>
 
-  <% @book.tags.each do |item|%>
+  <% @tags.each do |item|%>
     <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.uk%></a>
   <% end %>
   <hr/>
 
-  <% if @book.cover.present? %>
-    <img src="<%= @book.thumb %>" alt='<%= @book.title %>' title='<%= @book.title %>' class="book_cover" itemprop="image" />
+  <% if @book['cover'].present? %>
+    <img src="<%= Book.thumb(@book) %>" alt='<%= @book['title'] %>' title='<%= @book['title'] %>' class="book_cover" itemprop="image" />
   <% end %>
-  <% if @book.description.present? %>
+  <% if @book['description'].present? %>
   <div itemprop="description" class="justify">
       <strong>Опис:</strong><br/>
-      <%== HTMLEntities.new.decode(@book.description) %>
+      <%== HTMLEntities.new.decode(@book['description']) %>
   </div>
   <% end %>
   <div class="clearfix"></div>
@@ -80,10 +80,10 @@
   </div>
 </div>
 
-  <% content_for(:title, "#{title}. #{@book.author_title}. Книга скачати безкоштовно або купити") %> 
-  <% content_for(:description, "#{title}. #{@book.author_title}. Скачати книжку безкоштовно або купити з доставкою") %> 
+  <% content_for(:title, "#{title}. #{@authors[0].try(:display_title)}. Книга скачати безкоштовно або купити") %> 
+  <% content_for(:description, "#{title}. #{@authors[0].try(:display_title)}. Скачати книжку безкоштовно або купити з доставкою") %> 
 <% content_for :meta do %>
-<meta content='<%= @book.description %>' property='og:description'>
-<meta content='<%= @book.cover %>' property='og:image'>
+<meta content='<%= @book['description'] %>' property='og:description'>
+<meta content='<%= Book.thumb(@book) %>' property='og:image'>
 <meta content='website' property='og:type'>
 <% end %>

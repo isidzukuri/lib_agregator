@@ -100,16 +100,36 @@ class Book < ActiveRecord::Base
     items
   end
 
-  # def all_data seo
-  #   sql = "SELECT books.* 
-  #         FROM books
-  #         WHERE books.seo = #{seo}"
-  #   records_array = ActiveRecord::Base.connection.execute(sql)
-  # end
+  def self.all_data seo
+    sql = "SELECT 
+            books.*, 
+            genres.title as genre_title, 
+            genres.seo as genre_seo, 
+            GROUP_CONCAT(DISTINCT authors_books.author_id SEPARATOR ',') as authors_ids,
+            GROUP_CONCAT(DISTINCT books_tags.tag_id SEPARATOR ',') as tags_ids
+          FROM books
+          LEFT JOIN genres ON genres.id = books.genre_id
+          LEFT JOIN authors_books ON authors_books.book_id = books.id
+          LEFT JOIN books_tags ON books_tags.book_id = books.id
+          WHERE books.seo = '#{seo}'
+          GROUP BY books.id"
+    data = ActiveRecord::Base.connection.exec_query(sql).to_hash[0]
+    tags_data, authors_data = []
+    if data
+      tags_data = Tag.where(id: data['tags_ids'].split(',')).to_a if data['tags_ids'].present?
+      authors_data = Author.where(id: data['authors_ids'].split(',')).to_a if data['authors_ids'].present?
+    end
+    return data, tags_data || [], authors_data || []
+  end
 
   def thumb
     # optimized_cover ? "/covers/#{optimized_cover}" : cover
     optimized_cover ? "https://d6ezdopzv6g4b.cloudfront.net/#{optimized_cover}" : cover
+  end
+
+  def self.thumb book
+    # optimized_cover ? "/covers/#{optimized_cover}" : cover
+    book['optimized_cover'] ? "https://d6ezdopzv6g4b.cloudfront.net/#{book['optimized_cover']}" : book['cover']
   end
 
   def self.e_yakaboo
