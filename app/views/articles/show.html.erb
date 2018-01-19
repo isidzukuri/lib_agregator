@@ -3,7 +3,7 @@
     <div class="article_image">
       <h2 itemprop="name"><%= @article.title %></h2>
       <% if @article.poster %>
-        <img src="<%= @article.poster %>" alt="<%= @article.title %>" title="<%= @article.title %>" itemprop="image" />
+        <img src="https://d15rt5giy0bfyx.cloudfront.net<%= @article.poster %>" alt="<%= @article.title %>" title="<%= @article.title %>" itemprop="image" />
       <% end %>
     </div>
     <div itemprop="articleBody">
