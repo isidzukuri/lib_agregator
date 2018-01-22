@@ -44,6 +44,36 @@ $(window).load(function(){
     screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
     ";"+Math.random();
 
+  
+
+    if(window.tags_list){
+      window.autocomplete_tags_data = $.map(window.tags_list, function (value, key) {
+                  return {
+                      label: value.uk,
+                      value: value.uk,
+                      href: "/tags/"+value.seo
+                  }
+              })
+
+      $( "#tags_autocomplete" ).autocomplete({
+        minLength: 2,
+        delay: 500,
+        source: window.autocomplete_tags_data,
+        response: function( event, ui ) {
+          $("#tags_results").empty();
+          $.each(ui.content, function( index, tag ) {
+            $("#tags_results").append("<a href='"+tag.href+"' class='label label-default'>"+tag.value+"</a>");
+          });
+          
+          tags_results
+        },
+        open: function( event, ui ) {
+          $(".ui-autocomplete").hide();
+        } 
+      });
+    }
+
+
 });
 
 $(document).ready(function(){

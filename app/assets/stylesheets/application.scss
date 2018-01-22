@@ -276,3 +276,11 @@ a:hover{
 #book_page{
     display: block !important;
 }
+#tags_autocomplete{
+    margin-bottom: 10px;
+}
+#tags_results a{
+    font-size: 12px;
+    margin: 0 2px 2px;
+    display: inline-block;
+}
