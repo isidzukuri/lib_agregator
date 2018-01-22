@@ -88,12 +88,13 @@
         </div>
     </footer>
 
+    <%= stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" %>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,700,800,900&amp;subset=cyrillic-ext" rel="stylesheet" async>
     <%= javascript_include_tag "application" %>
     <%= yield(:js) if content_for?(:js) %>
     <%= yield(:footer_js) if content_for?(:footer_js) %>
-    <script id="dsq-count-scr" src="//findbook-in-ua.disqus.com/count.js" async></script>
+<!--     <script id="dsq-count-scr" src="//findbook-in-ua.disqus.com/count.js" async></script> -->
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({

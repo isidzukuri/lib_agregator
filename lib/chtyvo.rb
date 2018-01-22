@@ -56,7 +56,7 @@ class Chtyvo < WebParser::Parser
     img_url = nil
     el = page.search('[itemprop="image"]')
     # img_url = URI.parse(el.attribute('src')).path if el.present?
-    img_url = el.attribute('src') if el.present?
+    img_url = el.attribute('src') if el.present? && el.attribute('src').to_s != '[]'
     img_url
   end
 
