@@ -9,9 +9,11 @@
 <div id="tags_results"></div>
 <hr/>
 
+<div class="tags_pool">
 <% @items.each do |item|%>
   <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.uk%></a>
 <% end %>
+</div>
 
 <% content_for(:title, 'Книги по тегах') %>
 
