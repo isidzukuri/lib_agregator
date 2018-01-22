@@ -1,6 +1,12 @@
 class TagsController < ApplicationController
+  caches_action :index, expires_in: 12.hour
+
   def index
-    @items = Tag.order(:title).paginate(page: params[:page], per_page: @per_page).all
+    @items = $cache.read('tags')
+    unless @items
+      @items = Tag.order(:title).all
+      $cache.write('tags', @items, expires_in: 5.day)
+    end
   end
 
   def show
