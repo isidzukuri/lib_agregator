@@ -1,5 +1,5 @@
 <script>
-  window.tags_list = <%== @items.to_json %>;
+  window.tags_list = <%== @all_items.to_json %>;
 </script>
 
 <div class="input-group">
@@ -14,7 +14,8 @@
   <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.uk%></a>
 <% end %>
 </div>
-
-<% content_for(:title, 'Книги по тегах') %>
+<%= render partial: "layouts/paginator" %>
 
 <%= render partial: "layouts/book_search_form" %> 
+
+<% content_for(:title, 'Книги по тегах') %>
