@@ -32,7 +32,7 @@ class WelcomeController < ApplicationController
 
 
   def articles
-    cached('last_lists') do
+    cached('last_articles') do
       Article.order(id: :desc).where(status: 'published').limit(3)
     end
   end
