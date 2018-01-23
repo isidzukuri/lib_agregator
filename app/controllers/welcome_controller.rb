@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   # 'shchighol', '1_filosofiia-svobodi', 'liudina-v-poshukakh-spravzhn-ogho-siensu-psikhologh-u-kontstabori', 'moie-zhittia-ta-robota', 'orighinali-iak-nonkonformisti-rukhaiut-svit', 'rework-tsia-knigha-pierieviernie-vash-poghliad-na-biznies', 'ilon-mask-tesla-spacex-i-shliakh-u-fantastichnie-maibutnie', 'chomu-natsiyi-zaniepadaiut-pokhodzhiennia-vladi-baghatstva-i-bidnosti', 'atlant-rozpraviv-pliechi-kompliekt-iz-3-knigh'
+  caches_action :index, expires_in: 12.hour
 
   def index
     @paper_books = paper_books
@@ -11,40 +12,28 @@ class WelcomeController < ApplicationController
   private
 
   def paper_books
-    items = $cache.read('paper_books_')
-    unless items
+    cached('paper_books') do
       ids = Recomendation.pluck(:book_id)
-      items = Book.where(id: ids).select(:title, :seo, :cover, :optimized_cover).order(id: :desc)
-      $cache.write('paper_books_', items, expires_in: 1.day)
+      Book.where(id: ids).select(:title, :seo, :cover, :optimized_cover).order(id: :desc)  
     end
-    items
   end
 
   def free_books
-    items = $cache.read('free_books')
-    unless items
-      items = Book.where.not(cover: nil, domain: 'yakaboo.ua').order('RAND()').limit(20)
-      $cache.write('free_books', items, expires_in: 1.day)
+    cached('free_books') do
+      Book.where.not(cover: nil, domain: 'yakaboo.ua').order('RAND()').limit(20)
     end
-    items
   end
 
   def lists
-    items = $cache.read('last_lists')
-    unless items
-      items = List.order(id: :desc).where(status: 'published').limit(3)
-      $cache.write('last_lists', items, expires_in: 1.day)
+    cached('last_lists') do
+      List.order(id: :desc).where(status: 'published').limit(3)
     end
-    items
   end
 
 
   def articles
-    items = $cache.read('last_articles')
-    unless items
-      items = Article.order(id: :desc).where(status: 'published').limit(3)
-      $cache.write('last_articles', items, expires_in: 1.day)
+    cached('last_lists') do
+      Article.order(id: :desc).where(status: 'published').limit(3)
     end
-    items
   end
 end

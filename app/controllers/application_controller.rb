@@ -14,4 +14,14 @@ class ApplicationController < ActionController::Base
   def set_vars
     @current_path = request.fullpath.split('?')[0]
   end
+
+  def cached(cache_key, expires_in = 1.day)
+    result = $cache.read(cache_key)
+    if result.nil?
+      result = yield
+      $cache.write(cache_key, result, expires_in: expires_in)
+    end
+    result
+  end
+  
 end
