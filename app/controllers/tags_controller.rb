@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  caches_action :index, expires_in: 12.hour
+  # caches_action :index, expires_in: 12.hour
 
   def index
     @all_items = cached('tags') do
