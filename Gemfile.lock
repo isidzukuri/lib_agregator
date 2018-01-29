@@ -113,6 +113,7 @@ GEM
     colorize (0.8.1)
     concurrent-ruby (1.0.5)
     crass (1.0.2)
+    dalli (2.7.6)
     debug_inspector (0.0.2)
     declarative (0.0.9)
     declarative-option (0.1.0)
@@ -347,6 +348,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   coffee-rails (~> 4.1.0)
   colorize
+  dalli
   devise (= 4.2.0)
   easy_translate
   fastimage
@@ -375,4 +377,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.14.4
+   1.15.1

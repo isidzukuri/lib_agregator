@@ -10,7 +10,7 @@ module LibAgreagator
   class Application < Rails::Application
     $book_formats = ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu', 'paper'] 
     $book_required_fields = ['id', 'title', 'seo'] + $book_formats
-    $cache = ActiveSupport::Cache::MemoryStore.new
+    $cache = ActiveSupport::Cache::MemCacheStore.new
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
