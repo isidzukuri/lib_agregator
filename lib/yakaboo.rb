@@ -13,7 +13,7 @@ class Yakaboo < WebParser::Parser
 	end			
 
 	def extract_data page
-		return nil if page.is_a?(Integer)
+		return nil if page.nil? || page.is_a?(Integer)
 		result = {
 			'title' => title(page),
 			'author' => author(page),

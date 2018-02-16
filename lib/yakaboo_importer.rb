@@ -8,6 +8,7 @@ class YakabooImporter
     @tags = {}
     $updated = []
     $skiped = 0
+    @skip_times = 0
   end
 
   def import
@@ -82,6 +83,7 @@ class YakabooImporter
   end
 
   def optimize_image book
+   begin
     ext = book.cover.split('.').last
     image = MiniMagick::Image.open(book.cover)
     image.resize "280x350\>"
@@ -89,6 +91,8 @@ class YakabooImporter
     image.write("public/covers/#{filename}")
     `mogrify -quality 80 public/covers/#{filename}`
     book.update_attribute(:optimized_cover, filename)
+  rescue
+  end
   end
 
   def language?(b_data)
