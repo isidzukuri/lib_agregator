@@ -1,7 +1,7 @@
 class Chtyvo < WebParser::Parser
   def parse_now
     # add skip urls
-    sitemap = WebParser::Sitemap.new(threads_number: 1)
+    sitemap = WebParser::Sitemap.new(threads_number: 1, from_file: false)
     queue = sitemap.get_urls_queue('http://chtyvo.org.ua/', '.books a:first-child', 'a.paging', '#menu_2 .menu a')
     parsed_urls = last_sitemap
     urls_to_parse = queue.store - parsed_urls
@@ -56,7 +56,7 @@ class Chtyvo < WebParser::Parser
     img_url = nil
     el = page.search('[itemprop="image"]')
     # img_url = URI.parse(el.attribute('src')).path if el.present?
-    img_url = el.attribute('src') if el.present? && el.attribute('src').to_s != '[]'
+    img_url = el.attribute('src').to_s if el.present? && el.attribute('src').to_s != '[]'
     img_url
   end
 

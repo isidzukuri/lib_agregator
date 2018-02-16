@@ -9,8 +9,10 @@ class ChtyvoImporter
   end
 
   def import
-    @data = JSON.parse open('public/Chtyvo/data_2017_06_23.json').read
+    @data = JSON.parse open('public/Chtyvo/data_2018_02_16.json').read
 
+    # ap data.count
+    # return
     data.each_with_index do |entry, i|
       begin
         ap i
@@ -47,7 +49,12 @@ class ChtyvoImporter
       entry[frmt] = "http://chtyvo.org.ua#{entry[frmt]}" if entry[frmt].present?
     end
 
-    Book.create(entry)
+    return if book_present?(entry, authors)
+
+    book = Book.create(entry)
+    optimize_image(book)
+
+    book
   end
 
   def book_author(full_name)
@@ -105,5 +112,47 @@ class ChtyvoImporter
       genres[title] = genre
     end
     genre
+  end
+
+  def optimize_image book
+    begin
+      return unless book.cover.present?
+      ext = book.cover.split('.').last
+      image = MiniMagick::Image.open(book.cover)
+      image.resize "280x350\>"
+      filename = "#{book.id}.#{ext}"
+      image.write("public/covers/#{filename}")
+      `mogrify -quality 80 public/covers/#{filename}`
+      book.update_attribute(:optimized_cover, filename)
+    rescue
+      p 'optimize_image error'
+    end
+  end
+
+  def book_present? b_data, authors
+    result = false
+    authors_ids = authors.map(&:id).join(',')
+    query = Book.where(domain: 'chtyvo.org.ua', title: b_data['title'])
+    query = query.joins(:authors).where("authors_books.author_id in(#{authors_ids})") if authors.present?
+
+    !!query.first
+  end
+
+
+
+
+  def fix_broken_covers
+    books_set = Book.where(domain: 'chtyvo.org.ua').where(cover: "[]")
+    books_set_total = books_set.count
+    agent = Mechanize.new
+    books_set.each_with_index do |book, i|
+      ap "#{(i+1)}/#{books_set_total}"
+      page, agent = WebParser::Parser.new.get_page("http://chtyvo.org.ua/#{book.source}", agent)
+      el = page.search('[itemprop="image"]')
+      img_url = el.attribute('src').to_s if el.present? && el.attribute('src').to_s != '[]'
+      next if !img_url
+      book.cover = img_url
+      optimize_image(book)
+    end
   end
 end
