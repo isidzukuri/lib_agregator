@@ -142,7 +142,7 @@ class ChtyvoImporter
 
 
   def fix_broken_covers
-    books_set = Book.where(domain: 'chtyvo.org.ua').where(cover: "[]")
+    books_set = Book.where(domain: 'chtyvo.org.ua').where.not(cover: nil).where(optimized_cover:nil)
     books_set_total = books_set.count
     agent = Mechanize.new
     books_set.each_with_index do |book, i|
