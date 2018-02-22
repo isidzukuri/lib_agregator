@@ -21,7 +21,7 @@ class BooksController < ApplicationController
     return nil unless tags_ids
       
     tags_ids = tags_ids.map(&:to_i).sort
-    cache_key = "also_#{tags_ids[0..3].join}" 
+    cache_key = "also_#{tags_ids[0..3].join}_1" 
     @items = cached(cache_key, 10.day) do
       Book.read_also book, tags_ids, book['language'], 6
     end

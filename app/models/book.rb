@@ -91,7 +91,8 @@ class Book < ActiveRecord::Base
     
     where = "books_tags.tag_id IN(#{tags_ids.join(',')}) AND 
             books.optimized_cover IS NOT NULL AND
-            books.id > #{random_id}
+            books.id > #{random_id} AND
+            books.is_copy = false
             "
     where += "AND books.language = '#{language}'" if language.present?
 
