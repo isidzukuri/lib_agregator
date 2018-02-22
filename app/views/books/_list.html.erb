@@ -1,3 +1,4 @@
+<% if !item.try(:is_copy) %>
 <div class="book_item">
     <a href='/books/<%= item.seo%>'><%= item.title%></a><br/>
     <% if item.authors.loaded? %>
@@ -12,3 +13,4 @@
       <span class="label label-warning"><%=frmt%></span>
     <% end %>
 </div>
+<%end%>
