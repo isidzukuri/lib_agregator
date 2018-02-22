@@ -96,7 +96,7 @@ class Book < ActiveRecord::Base
             "
     where += "AND books.language = '#{language}'" if language.present?
 
-    sql = "SELECT
+    sql = "SELECT DISTINCT
             books.id, 
             books.title, 
             books.seo, 
