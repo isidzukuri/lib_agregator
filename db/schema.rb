@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222174929) do
+ActiveRecord::Schema.define(version: 20180422062232) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "title"
@@ -116,6 +116,19 @@ ActiveRecord::Schema.define(version: 20180222174929) do
     t.index ["status"], name: "index_lists_on_status", using: :btree
     t.index ["title"], name: "index_lists_on_title", using: :btree
     t.index ["user_id"], name: "index_lists_on_user_id", using: :btree
+  end
+
+  create_table "quotes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "text",        limit: 65535
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "hide"
+    t.string   "book_name"
+    t.string   "author_name"
+    t.index ["book_id"], name: "index_quotes_on_book_id", using: :btree
+    t.index ["user_id"], name: "index_quotes_on_user_id", using: :btree
   end
 
   create_table "recomendations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

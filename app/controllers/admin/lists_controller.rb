@@ -9,7 +9,7 @@ class Admin::ListsController < Admin::AdminController
   end
 
   def create
-    @list = SaveList.new(list_params, List.new, current_user).call
+    @list = List::Save.new(list_params, List.new, current_user).call
     if @list.errors.any?
       render 'new'
     else
@@ -24,7 +24,7 @@ class Admin::ListsController < Admin::AdminController
   end
 
   def update    
-    @list = SaveList.new(list_params, List.find(params[:id])).call
+    @list = List::Save.new(list_params, List.find(params[:id])).call
     if @list.errors.any?
       render 'new'
     else

@@ -1,4 +1,4 @@
-class SaveList
+class List::Save
 
   def initialize params, item, user = nil
     @params = params

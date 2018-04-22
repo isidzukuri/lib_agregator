@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'formats/' => 'formats#index'
   get 'formats/:key' => 'formats#show'
 
+  get 'quotes/' => 'quotes#index'
+
   get 'books/autocomplete_with_seo' => 'books#autocomplete_with_seo'
   get 'books/:key' => 'books#show'
 
@@ -57,6 +59,7 @@ Rails.application.routes.draw do
     resources :articles
     resources :lists
     resources :books
+    resources :quotes
   end
 
   match "/404", :to => "errors#not_found", :via => :all

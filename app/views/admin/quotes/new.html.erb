@@ -1,0 +1,73 @@
+<%= form_for @quote, url: @url do |f| %>
+  
+  <div class="form-group">
+    <label>Text</label>
+    <%= f.text_area :text, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Book</label>
+    <!-- <div class="input-group"> -->
+    <%= text_field_tag :books_autocomplete, nil, class: "form-control books_selector" %>
+    <!-- </div>/input-group -->
+    <div class="books_pool">
+      <% if @quote.book%>
+      <div>
+
+        <% if @quote.book['cover'].present? %>
+          <img src="<%= Book.thumb(@quote.book) %>" class="book_cover" />
+        <% end %>
+        <%= @quote.book.title %><br/>
+        <%= @quote.book.author_title %><br/> 
+        <input type='hidden' name='quote[book_id]' value='<%= @quote.book.id %>'>
+        <div class="clearfix"></div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <hr/>
+
+
+  <div class="form-group">
+    <label>Hide</label>
+    <%= f.check_box :hide %>
+  </div>
+
+  <div class="form-group">
+    <label>Book title</label>
+    <%= f.text_field :book_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Author name</label>
+    <%= f.text_field :author_name, class: "form-control" %>
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+
+<% end %>
+
+
+<script type="text/javascript">
+  window.onload = function() {
+    function append_book( item ) {
+      $( ".books_pool" ).empty();
+      html = "<input type='hidden' name='quote[book_id]' value='"+item.id+"'>";
+      html += item.value; 
+      $( "<div>" ).append( html ).prependTo( ".books_pool" );
+    }
+ 
+    $( ".books_selector" ).autocomplete({
+      source: "/books/autocomplete_with_seo",
+      minLength: 2,
+      select: function( event, ui ) {
+        $(this).val('');
+        append_book(ui.item);
+      }
+    });
+  };
+
+</script>
+
+
