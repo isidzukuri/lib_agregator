@@ -269,10 +269,6 @@ a:hover{
         max-width:100%;
     }
 }
-#disqus_thread{
-    border-top: 1px dashed #9e9c98;
-    margin-top: 45px;
-}
 #book_page{
     display: block !important;
 }
@@ -301,6 +297,9 @@ a:hover{
         opacity: 1;
     }
     .book_cover{
-        max-width: 70px;
+        max-width: 60px;
+    }
+    .q_href{
+        float: right;
     }
 }

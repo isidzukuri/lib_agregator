@@ -7,8 +7,7 @@ class QuotesController < ApplicationController
     # end
   end
 
-  # def show
-  #   @list = Quote.find(params[:id])
-  #   @items = @list.books.includes(:authors).paginate(page: params[:page], per_page: @per_page).order(:title)
-  # end
+  def show
+    @quote = Quote.includes(book: :authors).find(params[:id])
+  end
 end

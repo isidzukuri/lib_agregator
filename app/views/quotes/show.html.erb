@@ -1,20 +1,29 @@
-<b>список книг:</b>
-<h2><%= @list.title %></h2>
-<div>
-  <% if false && @list.cover %>
-    <img src="https://d15rt5giy0bfyx.cloudfront.net<%= @list.thumb %>" alt="<%= @list.title %>" title="<%= @list.title %>" />
-  <% end %>
-  <%= @list.description %>
-</div>
+<h3>Цитата:</h3>
+<%= render partial: "quotes/item", locals: {quote: @quote, hide_comment_button: true}  %>
+
 <br/><br/>
 
-<%= render partial: "books/descriptions_list", collection: @items, as: :item, locals:{descriptions: @list.descriptions }  %>
-<%= render partial: "layouts/paginator" %>
+<div id="disqus_thread"></div>   
+<script>   
+ 
+/**    
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.   
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/    
+/*   
+var disqus_config = function () {    
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable   
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable   
+};   
+*/   
+(function() { // DON'T EDIT BELOW THIS LINE    
+var d = document, s = d.createElement('script');   
+s.src = 'https://findbook-in-ua.disqus.com/embed.js';    
+s.setAttribute('data-timestamp', +new Date());   
+(d.head || d.body).appendChild(s);   
+})();    
+</script>    
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-<% content_for(:title, "#{@list.title}. Підбірка книг") %> 
-<% content_for(:description, "#{@list.description}") %> 
-<% content_for :meta do %>
-<meta content='<%= @list.description %>' property='og:description'>
-<meta content='https://d15rt5giy0bfyx.cloudfront.net<%= @list.thumb %>' property='og:image'>
-<meta content='website' property='og:type'>
-<% end %>
+
+<% content_for(:title, 'Цитати з книг українською') %>
+<% content_for(:description, 'Цитати з книг українською мовою з посиланнями на джерела.') %>
