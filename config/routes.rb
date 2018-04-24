@@ -42,6 +42,9 @@ Rails.application.routes.draw do
   
   get 'contacts' => 'contacts#index'
 
+  resources :quotes, only: [:index, :show]
+
+
 
   namespace :api, :defaults => { :format => 'json' } do
     get 'search' => 'search#index'

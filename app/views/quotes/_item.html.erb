@@ -1,0 +1,23 @@
+<div class="quote_href col-centered col-xs-10">
+  <div class='q_text'><%= quote.text %></div>
+  <% if quote.book%>
+    <div class="q_book">
+      <% if quote.book['cover'].present? %>
+        <a href="/books/<%= quote.book.seo %>">
+          <img src="<%= Book.thumb(quote.book) %>" class="book_cover" alt='<%= "#{quote.book.title}. #{quote.book.author_title}" %>' title='<%= "#{quote.book.title}. #{quote.book.author_title}" %>' />
+        </a>
+      <% end %>
+        <a href="/books/<%= quote.book.seo %>"><%= quote.book.title %></a><br/>
+        <%= quote.book.author_title %><br/> 
+      <div class="clearfix"></div>
+    </div>
+  <% else %>
+    <div class="q_book">
+      <%== "#{quote.book_name}<br/>" if quote.book_name.present? %>
+      <%== "#{quote.author_name}<br/>" if quote.author_name? %>
+    </div>
+  <% end %>
+</div>
+
+<hr/>
+

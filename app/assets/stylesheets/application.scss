@@ -287,3 +287,20 @@ a:hover{
 .tags_pool{
     overflow: hidden;
 }
+
+
+.quote_href{
+    .q_text{
+        padding: 10px 0;
+        font-size: 16px;
+    }
+    .q_book{
+        opacity: 0.8;
+    }
+    .q_book:hover{
+        opacity: 1;
+    }
+    .book_cover{
+        max-width: 70px;
+    }
+}
