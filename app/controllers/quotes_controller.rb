@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-  caches_action :index, expires_in: 12.hour, :cache_path => Proc.new { |c| c.params }
+  caches_action :index, expires_in: 12.hour, :cache_path => Proc.new { |c| "quotes_action_#{c.params[:page]}" }
 
 
   def index
