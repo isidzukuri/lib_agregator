@@ -1,5 +1,8 @@
 <h2 class="section_title">Цитати:</h2>
 <%= render partial: "quotes/item", collection: @items, as: :quote  %>
 <%= render partial: "layouts/paginator" %>
+<hr/>
+<%= render partial: "layouts/book_search_form" %>
+
 <% content_for(:title, 'Цитати з книг українською') %>
 <% content_for(:description, 'Цитати з книг українською мовою з посиланнями на джерела.') %>
