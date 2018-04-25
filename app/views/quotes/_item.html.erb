@@ -1,5 +1,9 @@
 <div class="quote_href col-centered">
   <div class='q_text'><%= quote.text %></div>
+     <% unless defined?(hide_comment_button) && hide_comment_button %>
+      <a href="/quotes/<%= quote.id %>" class='q_href'>[коментувати]</a>
+      <% end %>
+      <div class="clearfix"></div>
   <% if quote.book%>
     <div class="q_book">
       <% if quote.book['cover'].present? %>
@@ -9,19 +13,14 @@
       <% end %>
         <a href="/books/<%= quote.book.seo %>"><%= quote.book.title %></a><br/>
         <%= quote.book.author_title %> 
-        <% unless defined?(hide_comment_button) && hide_comment_button %>
-        <a href="/quotes/<%= quote.id %>" class='q_href'>[коментувати]</a>
-        <% end %>
+        
       <div class="clearfix"></div>
     </div>
   <% else %>
     <div class="q_book">
       <%== "#{quote.book_name}<br/>" if quote.book_name.present? %>
       <%== "#{quote.author_name}" if quote.author_name? %>
-      <% unless defined?(hide_comment_button) && hide_comment_button %>
-      <a href="/quotes/<%= quote.id %>" class='q_href'>[коментувати]</a>
-      <% end %>
-      <div class="clearfix"></div>
+   
     </div>
   <% end %>
 </div>

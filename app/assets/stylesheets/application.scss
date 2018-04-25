@@ -301,5 +301,11 @@ a:hover{
     }
     .q_href{
         float: right;
+        font-size:10px;
+        opacity: 0.8;
+
+    }
+    .q_href:hover{
+        opacity: 1;
     }
 }
