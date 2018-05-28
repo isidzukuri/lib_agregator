@@ -64,3 +64,36 @@
 <meta content='<%= Book.thumb(@book) %>' property='og:image'>
 <meta content='website' property='og:type'>
 <% end %>
+
+
+<script type="application/ld+json">
+{
+  "@context":"http://schema.org",
+  "@type":"Book",
+  "name" : "<%= title %>",
+  "author": {
+    "@type":"Person",
+    "name":"<%= @authors.first&.display_title %>"
+  },
+  "url" : "<%= url_for(only_path: false)%>",
+  
+  "workExample" : [{
+    "@type": "Book",
+    "isbn": "031676948",
+    "bookFormat": "http://schema.org/<%= Book.only_paper?(@book) ? 'Hardcover' : 'EBook' %>",
+    "potentialAction":{
+      "@type":"ReadAction",
+      "target":
+        {
+          "@type":"EntryPoint",
+          "urlTemplate":"<%= url_for(only_path: false)%>",
+          "actionPlatform":[
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/IOSPlatform",
+            "http://schema.org/AndroidPlatform"
+          ]
+        }
+    }
+  }]
+}
+</script>

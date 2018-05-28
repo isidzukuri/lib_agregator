@@ -84,6 +84,18 @@ class Book < ActiveRecord::Base
     only_paper
   end
 
+  def self.only_paper?(book)
+    only_paper = true
+    $book_formats.each do |frmt|
+      next if frmt == 'paper'
+      if book[frmt]
+        only_paper = false
+        break
+      end
+    end
+    only_paper
+  end
+
   def self.read_also book, tags_ids, language, limit
     items = []
     return items unless tags_ids
