@@ -11,7 +11,7 @@ class YakabooWebImporter
   end
 
   def import
-    entries = JSON.parse open('public/Yakaboo/data_2017_11_14.json').read
+    entries = JSON.parse open('public/Yakaboo/data_2018_05_29.json').read
     
     total = entries.length
     entries.each_with_index do |b_data, i|
