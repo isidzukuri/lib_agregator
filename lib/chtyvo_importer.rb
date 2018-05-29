@@ -9,7 +9,7 @@ class ChtyvoImporter
   end
 
   def import
-    @data = JSON.parse open('public/Chtyvo/data_2018_02_16.json').read
+    @data = JSON.parse open('public/Chtyvo/data_2018_05_28.json').read
 
     # ap data.count
     # return

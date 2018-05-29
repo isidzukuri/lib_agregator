@@ -39,7 +39,7 @@ class Chtyvo < WebParser::Parser
       'source' => page.uri.path,
       'domain' => page.uri.host
     }
-    ap result
+    # ap result
     result
   end
 
