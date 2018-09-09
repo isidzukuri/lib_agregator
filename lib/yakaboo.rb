@@ -14,6 +14,7 @@ class Yakaboo < WebParser::Parser
 
 	def extract_data page
 		return nil if page.nil? || page.is_a?(Integer)
+		# begin
 		result = {
 			'title' => title(page),
 			'author' => author(page),
@@ -28,7 +29,9 @@ class Yakaboo < WebParser::Parser
 		# ap result
 		
 		result
-		
+		# rescue
+		# 	nil
+		# end
 	end
 
 	def title page
@@ -44,7 +47,7 @@ class Yakaboo < WebParser::Parser
 
 	def formats page
 		frmts = {}
-		page.search('.product-attributes #downloadable-links-list span').each do |frmt|
+		page.search('#downloadable-links-list-top span').each do |frmt|
 			frmts[frmt.text] = page.uri.to_s
 		end
 		frmts
