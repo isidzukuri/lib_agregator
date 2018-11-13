@@ -1,6 +1,6 @@
 class Admin::QuotesController < Admin::AdminController
   def index
-    @items = Quote.all
+    @items = Quote.paginate(page: params[:page], per_page: @per_page)
   end
 
   def new
