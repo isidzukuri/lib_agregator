@@ -10,7 +10,6 @@
     <meta name="og:title" content="<%= content_for?(:title) ? yield(:title) : "Книги. Скачати безплатно, купити" %>" />
     <meta name="og:description" content="<%= content_for?(:description) ? yield(:description) : 'Онлайн бібліотека електронних книг txt, rtf, doc, pdf, fb2, epub, mobi, djvu. Пошук паперових книг' %>" />
 
-    <meta name="verify-admitad" content="7e808e4236" />
     <%= csrf_meta_tags %>
     <%= yield(:meta) if content_for?(:meta) %>
 
@@ -38,6 +37,7 @@
 
     </script>
     <meta name="yandex-verification" content="15b57edcab4c0fee" />
+    <meta name="verify-admitad" content="7e808e4236" />
   </head>
   <body>
 <!-- navbar-default -->
