@@ -29,9 +29,13 @@
 
     <% $book_formats.each do |frmt| %>
       <% next unless @book[frmt] %>
-      <a href="<%=@book[frmt]%>" class="download_href" target="_blank" rel="nofollow">
+      <%
+        sls_d = "https://rdr.salesdoubler.com.ua/in/offer/269?aid=20647&dlink="
+        admitad = "https://ad.admitad.com/g/a4afb4f21a7e808e4236d32ae27335/?ulp="
+        link = @book[frmt].sub!(sls_d, admitad)
+      %>
 
-          
+      <a href="<%=link%>" class="download_href" target="_blank" rel="nofollow">
           <span class="glyphicon glyphicon-<%=frmt == 'paper' ? 'book' : 'cloud-download' %>" aria-hidden="true"></span>    
           <%=frmt == 'paper' ? 'папір' : frmt.upcase %>
       </a>
