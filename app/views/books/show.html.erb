@@ -32,7 +32,7 @@
       <%
         sls_d = "https://rdr.salesdoubler.com.ua/in/offer/269?aid=20647&dlink="
         admitad = "https://ad.admitad.com/g/a4afb4f21a7e808e4236d32ae27335/?ulp="
-        link = @book[frmt].sub!(sls_d, admitad)
+        link = @book[frmt].include?(sls_d) ? @book[frmt].sub!(sls_d, admitad) : @book[frmt]
       %>
 
       <a href="<%=link%>" class="download_href" target="_blank" rel="nofollow">
