@@ -8,6 +8,6 @@ class Api::BookInListSerializer < ActiveModel::Serializer
   def paper
     sls_d = "https://rdr.salesdoubler.com.ua/in/offer/269?aid=20647&dlink="
     admitad = "https://ad.admitad.com/g/a4afb4f21a7e808e4236d32ae27335/?ulp="
-    objectpaper.sub!(sls_d, admitad)
+    object.paper.sub!(sls_d, admitad) if object.paper
   end
 end
