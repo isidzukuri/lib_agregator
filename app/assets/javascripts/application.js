@@ -32,11 +32,6 @@ $(window).load(function(){
     
     window.___gcfg = {lang: 'uk'};
     
-    (function() {
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/plusone.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
 
 //     new Image().src = "https://counter.yadro.ru/hit?r"+
 //     escape(document.referrer)+((typeof(screen)=="undefined")?"":
