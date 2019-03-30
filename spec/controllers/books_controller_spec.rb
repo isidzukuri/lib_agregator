@@ -1,13 +1,9 @@
-require "rails_helper"
-RSpec.describe BooksController, :type => :controller do
-  
-  # before(:all) do
-  #   @user1 = create(:user)
-  # end
+require 'rails_helper'
+RSpec.describe BooksController, type: :controller do
 
-  let!(:book) {create(:book)}
-  
-  it "" do
+  let!(:book) { create(:book) }
+
+  it '' do
     ap book
     # expect(@user1).to be_valid
   end
