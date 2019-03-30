@@ -1,9 +1,13 @@
 module SeoName
   def self.included(base)
     base.instance_eval do
-      validates_uniqueness_of :seo, if: 'seo.present?'
+      validates_uniqueness_of :seo, if: :seo_present?
       after_create :save_seo_name
     end
+  end
+
+  def seo_present?
+    seo.present?
   end
 
   def save_seo_name
