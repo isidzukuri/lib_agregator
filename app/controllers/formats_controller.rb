@@ -6,7 +6,6 @@ class FormatsController < ApplicationController
   end
 
   def show
-    # model_method = "find_by_#{params[:key]}".to_sym 
     redirect_to '/formats' unless $book_formats.include?(params[:key])
     cache_key = "fb_#{params[:key]}_#{params[:page]}" 
     @items = cached(cache_key, 30.day) do

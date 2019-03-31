@@ -7,6 +7,12 @@ class ExtendedSearchController < ApplicationController
   def show
     redirect_to '/' unless params[:word].present?
 
+    @books = Book.extended_search(query_params)
+  end
+
+  private
+
+  def query_params
     query_params = { word: params[:word] }
 
     if params[:genre].present? && params[:genre].count != Genre.count
@@ -17,6 +23,6 @@ class ExtendedSearchController < ApplicationController
       query_params[:format] = params[:format]
     end
 
-    @books = Book.extended_search(query_params)
+    query_params
   end
 end

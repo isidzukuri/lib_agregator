@@ -5,14 +5,14 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :authors, only: [:index, :show]
-  resources :books, only: [:show]
-  resources :contacts, only:[:index]
-  resources :genres, only: [:index, :show]
-  resources :lists, only: [:index, :show]
+  resources :authors,         only: [:index, :show]
+  resources :books,           only: [:show]
+  resources :contacts,        only: [:index]
+  resources :genres,          only: [:index, :show]
+  resources :lists,           only: [:index, :show]
   resources :extended_search, only: [:new, :show]
-  resources :search, only: [:index]
-  resources :quotes, only: [:index, :show]
+  resources :search,          only: [:index]
+  resources :quotes,          only: [:index, :show]
 
   get 'articles/' => 'articles#index'
   get 'articles/:key' => 'articles#show'
