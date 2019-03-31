@@ -13,15 +13,10 @@ Rails.application.routes.draw do
   resources :extended_search, only: [:new, :show]
   resources :search,          only: [:index]
   resources :quotes,          only: [:index, :show]
+  resources :articles,        only: [:index, :show]
 
-  get 'articles/' => 'articles#index'
-  get 'articles/:key' => 'articles#show'
-
-  get 'tags/' => 'tags#index'
-  get 'tags/:key' => 'tags#show'
-
-  get 'formats/' => 'formats#index'
-  get 'formats/:key' => 'formats#show'
+  resources :tags,            only: [:index, :show]
+  resources :formats,         only: [:index, :show]
 
   get 'books/autocomplete_with_seo' => 'books#autocomplete_with_seo'
 
