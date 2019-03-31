@@ -25,13 +25,10 @@ Rails.application.routes.draw do
   get 'search' => 'search#index'
   get 'extended_search' => 'search#extended_form'
   get 'extended_search_results' => 'search#extended_search_results'
-  
+
   get 'contacts' => 'contacts#index'
 
-
-
-
-  namespace :api, :defaults => { :format => 'json' } do
+  namespace :api, defaults: { format: 'json' } do
     get 'search' => 'search#index'
     get 'paper' => 'search#paper'
     get 'recomendations/paper' => 'recomendations#paper'
@@ -45,6 +42,6 @@ Rails.application.routes.draw do
     resources :quotes
   end
 
-  match "/404", :to => "errors#not_found", :via => :all
-  match "/500", :to => "errors#internal_server_error", :via => :all
+  match '/404', to: 'errors#not_found', via: :all
+  match '/500', to: 'errors#internal_server_error', via: :all
 end
