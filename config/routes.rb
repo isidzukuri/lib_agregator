@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :contacts, only:[:index]
   resources :genres, only: [:index, :show]
   resources :lists, only: [:index, :show]
+  resources :extended_search, only: [:new, :show]
   resources :search, only: [:index]
   resources :quotes, only: [:index, :show]
 
@@ -23,9 +24,6 @@ Rails.application.routes.draw do
   get 'formats/:key' => 'formats#show'
 
   get 'books/autocomplete_with_seo' => 'books#autocomplete_with_seo'
-
-  get 'extended_search' => 'search#extended_form'
-  get 'extended_search_results' => 'search#extended_search_results'
 
   namespace :api, defaults: { format: 'json' } do
     get 'search' => 'search#index'
