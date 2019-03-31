@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :authors,         only: [:index, :show]
-  resources :books,           only: [:show]
   resources :contacts,        only: [:index]
   resources :genres,          only: [:index, :show]
   resources :lists,           only: [:index, :show]
@@ -14,11 +13,15 @@ Rails.application.routes.draw do
   resources :search,          only: [:index]
   resources :quotes,          only: [:index, :show]
   resources :articles,        only: [:index, :show]
+  resources :books,           only: [:show] do
+    collection do
+      get :autocomplete_with_seo
+    end
+  end
 
   resources :tags,            only: [:index, :show]
   resources :formats,         only: [:index, :show]
 
-  get 'books/autocomplete_with_seo' => 'books#autocomplete_with_seo'
 
   namespace :api, defaults: { format: 'json' } do
     get 'search' => 'search#index'
@@ -27,7 +30,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get '/' => 'admin#index'
+    root to: 'admin#index'
+
     resources :articles
     resources :lists
     resources :books
