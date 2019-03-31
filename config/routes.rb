@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
   get 'errors/not_found'
   get 'errors/internal_server_error'
 
   devise_for :users
-
-  root 'welcome#index'
 
   resources :authors, only: [:index, :show]
   resources :books, only: [:show]
