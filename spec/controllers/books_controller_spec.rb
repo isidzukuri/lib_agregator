@@ -12,7 +12,6 @@ RSpec.describe BooksController, type: :controller do
 
     expect(response.body).to include(book.description)
     expect(response.body).to include(book.title)
-
     expect(response.body).to include(book.paper)
     expect(response.body).to include(book.txt)
     expect(response.body).to include(book.rtf)
@@ -22,5 +21,7 @@ RSpec.describe BooksController, type: :controller do
     expect(response.body).to include(book.epub)
     expect(response.body).to include(book.mobi)
     expect(response.body).to include(book.djvu)
+    expect(response.body).to include(book.genre.title)
+    expect(response.body).to include(book.authors.pluck(:full_name).join)
   end
 end

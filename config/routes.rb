@@ -1,32 +1,26 @@
 Rails.application.routes.draw do
   get 'errors/not_found'
-
   get 'errors/internal_server_error'
 
   devise_for :users
 
   root 'welcome#index'
 
-  get 'genres/' => 'genres#index'
-  get 'genres/:key' => 'genres#show'
+  resources :authors, only: [:index, :show]
+  resources :books, only: [:show]
+  resources :genres, only: [:index, :show]
+  resources :lists, only: [:index, :show]
+  resources :quotes, only: [:index, :show]
 
   get 'articles/' => 'articles#index'
   get 'articles/:key' => 'articles#show'
 
-  get 'lists/' => 'lists#index'
-  get 'lists/:key' => 'lists#show'
-
   get 'tags/' => 'tags#index'
   get 'tags/:key' => 'tags#show'
-
-  get 'authors/' => 'authors#index'
-  get 'authors/:key' => 'authors#show'
 
   get 'formats/' => 'formats#index'
   get 'formats/:key' => 'formats#show'
 
-  resources :quotes, only: [:index]
-  resources :books, only: [:show]
   get 'books/autocomplete_with_seo' => 'books#autocomplete_with_seo'
 
   get 'search' => 'search#index'
@@ -35,7 +29,6 @@ Rails.application.routes.draw do
   
   get 'contacts' => 'contacts#index'
 
-  resources :quotes, only: [:index, :show]
 
 
 
