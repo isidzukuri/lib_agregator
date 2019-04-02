@@ -22,7 +22,7 @@
                 <h4>Формати</h4>
                 <div class="input-group">
                     <% Book::FORMATS.each do |frmt| %>
-                    <input type="checkbox" name="format[]" checked value="<%=frmt%>"> <%=frmt == 'paper' ? 'папір' : frmt.upcase %><br>
+                    <input type="checkbox" name="format[]" checked value="<%=frmt%>"> <%=frmt == :paper ? 'папір' : frmt.upcase %><br>
                     <% end %>
                 </div>
             </div>

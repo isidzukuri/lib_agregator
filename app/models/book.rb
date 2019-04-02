@@ -3,8 +3,8 @@ class Book < ActiveRecord::Base
   include Tire::Model::Callbacks
   include SeoName
 
-  FORMATS = ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu', 'paper'] 
-  REQUIRED_FIELDS = ['id', 'title', 'seo', 'is_copy'] + FORMATS
+  FORMATS = [:txt, :rtf, :doc, :pdf, :fb2, :epub, :mobi, :djvu, :paper] 
+  VIEW_ATTRIBUTES = [:id, :title, :seo, :is_copy] + FORMATS
 
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :tags
@@ -78,8 +78,8 @@ class Book < ActiveRecord::Base
   def only_paper?
     only_paper = true
     Book::FORMATS.each do |frmt|
-      next if frmt == 'paper'
-      if send(frmt.to_sym)
+      next if frmt == :paper
+      if send(frmt)
         only_paper = false
         break
       end
@@ -90,7 +90,7 @@ class Book < ActiveRecord::Base
   def self.only_paper?(book)
     only_paper = true
     Book::FORMATS.each do |frmt|
-      next if frmt == 'paper'
+      next if frmt == :paper
       if book[frmt]
         only_paper = false
         break
@@ -159,7 +159,7 @@ class Book < ActiveRecord::Base
       tags_data = Tag.where(id: data['tags_ids'].split(',')).to_a if data['tags_ids'].present?
       authors_data = Author.where(id: data['authors_ids'].split(',')).to_a if data['authors_ids'].present?
     end
-    return data, tags_data || [], authors_data || []
+    return data.with_indifferent_access, tags_data || [], authors_data || []
   end
 
   def thumb

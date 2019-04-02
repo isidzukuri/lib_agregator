@@ -9,7 +9,7 @@
 
     <% Book::FORMATS.each do |frmt| %>
       <% next unless item[frmt] %>
-      <% frmt = 'папір' if frmt == 'paper' %>
+      <% frmt = 'папір' if frmt == :paper %>
       <span class="label label-warning"><%=frmt%></span>
     <% end %>
 </div>

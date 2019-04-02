@@ -37,7 +37,7 @@
 
       <a href="<%=link%>" class="download_href" target="_blank" rel="nofollow">
           <span class="glyphicon glyphicon-<%=frmt == 'paper' ? 'book' : 'cloud-download' %>" aria-hidden="true"></span>    
-          <%=frmt == 'paper' ? 'папір' : frmt.upcase %>
+          <%=frmt == :paper ? 'папір' : frmt.upcase %>
       </a>
     <% end %>
   </div>
