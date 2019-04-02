@@ -4,7 +4,7 @@ class Admin::ListsController < Admin::AdminController
   end
 
   def new
-    @list = List.new status: 'unpublished'
+    @list = List.new status: :unpublished
     @url = admin_lists_path
   end
 
@@ -34,6 +34,7 @@ class Admin::ListsController < Admin::AdminController
 
   def destroy
     List.find(params[:id]).destroy
+    
     redirect_to admin_lists_path
   end
 

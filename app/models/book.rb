@@ -24,6 +24,18 @@ class Book < ActiveRecord::Base
               .limit(limit).includes(:authors)
   end
 
+  def self.thumb book
+    book['optimized_cover'] ? "https://d6ezdopzv6g4b.cloudfront.net/#{book['optimized_cover']}" : book['cover']
+  end
+
+  def thumb
+    optimized_cover ? "https://d6ezdopzv6g4b.cloudfront.net/#{optimized_cover}" : cover
+  end
+
+  def author_title
+    authors.present? ? authors[0].display_title : ''
+  end
+
   def self.only_paper?(book)
     only_paper = true
     Book::FORMATS.each do |frmt|
@@ -35,21 +47,4 @@ class Book < ActiveRecord::Base
     end
     only_paper
   end
-
-  def self.thumb book
-    book['optimized_cover'] ? "https://d6ezdopzv6g4b.cloudfront.net/#{book['optimized_cover']}" : book['cover']
-  end
-
-  def self.e_yakaboo
-    where("domain = 'yakaboo.ua' AND ((`books`.`txt` IS NOT NULL) OR (`books`.`rtf` IS NOT NULL) OR (`books`.`doc` IS NOT NULL) OR (`books`.`pdf` IS NOT NULL) OR (`books`.`fb2` IS NOT NULL) OR (`books`.`epub` IS NOT NULL) OR (`books`.`mobi` IS NOT NULL) OR (`books`.`djvu` IS NOT NULL))").includes(:authors)
-  end
-
-  def thumb
-    optimized_cover ? "https://d6ezdopzv6g4b.cloudfront.net/#{optimized_cover}" : cover
-  end
-
-  def author_title
-    authors.present? ? authors[0].display_title : ''
-  end
-
 end

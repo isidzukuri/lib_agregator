@@ -26,13 +26,13 @@ class WelcomeController < ApplicationController
 
   def lists
     cached('last_lists') do
-      List.order(id: :desc).where(status: 'published').limit(3)
+      List.order(id: :desc).where(status: :published).limit(3)
     end
   end
 
   def articles
     cached('last_articles') do
-      Article.order(id: :desc).where(status: 'published').limit(3)
+      Article.order(id: :desc).where(status: :published).limit(3)
     end
   end
 end

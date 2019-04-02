@@ -14,14 +14,14 @@ class Author < ActiveRecord::Base
     indexes :uk
   end
 
-  def seo_source
-    :full_name
-  end
-
   def self.search_by_full_name(word)
     search = Tire::Search::Search.new('authors', load: true)
     search.query { string("full_name:#{word} OR uk:#{word}") }
     search.results
+  end
+  
+  def seo_source
+    :full_name
   end
 
   def display_title

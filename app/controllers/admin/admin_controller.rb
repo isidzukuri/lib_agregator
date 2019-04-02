@@ -4,6 +4,6 @@ class Admin::AdminController < ApplicationController
   def index; end
 
   def check_admin!
-    redirect_to '/' if current_user.role != 'admin'
+    redirect_to :root if current_user.role != 'admin'
   end
 end
