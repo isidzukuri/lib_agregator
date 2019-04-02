@@ -2,10 +2,10 @@ class BooksController < ApplicationController
   
   def show
     @book, @tags, @authors = Book.all_data(params[:id])
-    # @book = Book.includes(:authors, :tags, :genre).find_by_seo(params[:id])
+
     redirect_to(:root, status: 410) unless @book
-    redirect_to(:root, status: 410) if @book && @book['hide']
-    # @read_also = @book.read_also(6) if @book
+    redirect_to(:root, status: 410) if @book['hide']
+
     @read_also = read_also(@book)
   end
 
