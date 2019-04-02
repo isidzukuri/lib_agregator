@@ -1,11 +1,10 @@
 class ExtendedSearchController < ApplicationController
-
   def new
     @genres = Genre.all
   end
 
   def show
-    redirect_to '/' unless params[:word].present?
+    redirect_to :root unless params[:word].present?
 
     @books = Book.extended_search(query_params)
   end

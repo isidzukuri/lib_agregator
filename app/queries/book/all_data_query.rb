@@ -42,7 +42,7 @@ class Book
     end
 
     def authors_data
-      if book_data&.fetch('tags_ids').present?
+      if book_data&.fetch('authors_ids').present?
         Author.where(id: book_data['authors_ids'].split(',')).to_a
       else
         []

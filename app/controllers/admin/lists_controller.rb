@@ -13,7 +13,7 @@ class Admin::ListsController < Admin::AdminController
     if @list.errors.any?
       render :new
     else
-      redirect_to admin_lists_path      
+      redirect_to admin_lists_path
     end
   end
 
@@ -23,12 +23,12 @@ class Admin::ListsController < Admin::AdminController
     render :new
   end
 
-  def update    
+  def update
     @list = List::Save.new(list_params, List.find(params[:id])).call
     if @list.errors.any?
       render :new
     else
-      redirect_to admin_lists_path      
+      redirect_to admin_lists_path
     end
   end
 

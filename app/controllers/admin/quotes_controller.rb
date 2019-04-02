@@ -13,7 +13,7 @@ class Admin::QuotesController < Admin::AdminController
     if @quote.errors.any?
       render :new
     else
-      redirect_to admin_quotes_path      
+      redirect_to admin_quotes_path
     end
   end
 
@@ -23,12 +23,12 @@ class Admin::QuotesController < Admin::AdminController
     render :new
   end
 
-  def update    
+  def update
     @quote = Quote::Save.new(quote_params, Quote.find(params[:id])).call
     if @quote.errors.any?
       render :new
     else
-      redirect_to admin_quotes_path      
+      redirect_to admin_quotes_path
     end
   end
 
