@@ -29,6 +29,8 @@ class Book
       ActiveRecord::Base.connection.exec_query(sql).to_hash
     end
 
+    private
+
     def limit
       params[:limit] || 6
     end

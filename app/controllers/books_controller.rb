@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
-  
   def show
-    @book, @tags, @authors = Book.all_data(params[:id])
+    @book, @tags, @authors = Book::AllDataQuery.new(seo: params[:id]).call
 
     redirect_to(:root, status: 410) unless @book
     redirect_to(:root, status: 410) if @book['hide']
