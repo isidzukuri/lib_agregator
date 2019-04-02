@@ -11,7 +11,7 @@ class Admin::ListsController < Admin::AdminController
   def create
     @list = List::Save.new(list_params, List.new, current_user).call
     if @list.errors.any?
-      render 'new'
+      render :new
     else
       redirect_to admin_lists_path      
     end
@@ -20,13 +20,13 @@ class Admin::ListsController < Admin::AdminController
   def edit
     @list = List.find(params[:id])
     @url = admin_list_path(@list)
-    render 'new'
+    render :new
   end
 
   def update    
     @list = List::Save.new(list_params, List.find(params[:id])).call
     if @list.errors.any?
-      render 'new'
+      render :new
     else
       redirect_to admin_lists_path      
     end

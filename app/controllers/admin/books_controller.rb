@@ -22,7 +22,7 @@ class Admin::BooksController < Admin::AdminController
   def edit
     @book = Book.find_by_seo(params[:id])
     @url = admin_book_path(@book)
-    render 'new'
+    render :new
   end
 
   def update
@@ -30,7 +30,7 @@ class Admin::BooksController < Admin::AdminController
     if @book.update(book_params)
       redirect_to admin_books_path
     else
-      render 'new'
+      render :new
     end
   end
 

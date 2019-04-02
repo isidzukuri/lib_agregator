@@ -15,14 +15,14 @@ class Admin::ArticlesController < Admin::AdminController
       LibAgreagator::CACHE.delete('last_articles')
       redirect_to admin_articles_path
     else
-      render 'new'
+      render :new
     end
   end
 
   def edit
     @article = Article.find(params[:id])
     @url = admin_article_path(@article)
-    render 'new'
+    render :new
   end
 
   def update
@@ -31,7 +31,7 @@ class Admin::ArticlesController < Admin::AdminController
       LibAgreagator::CACHE.delete('last_articles')
       redirect_to admin_articles_path
     else
-      render 'new'
+      render :new
     end
   end
 
