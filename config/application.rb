@@ -7,9 +7,9 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module LibAgreagator
-  class Application < Rails::Application
-    $cache = ActiveSupport::Cache::MemCacheStore.new
+  CACHE = ActiveSupport::Cache::MemCacheStore.new
 
+  class Application < Rails::Application
     config.autoload_paths << Rails.root.join('lib')
     config.autoload_paths += Dir["#{Rails.root}/app/serializers/**/"]
     config.autoload_paths += Dir["#{Rails.root}/app/services/**"]
