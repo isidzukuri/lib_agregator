@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     tags_ids = tags_ids.map(&:to_i).sort
     cache_key = "also_#{tags_ids[0..3].join}_2" 
     cached(cache_key, 10.day) do
-      Book.read_also book, tags_ids, book['language'], 6
+      Book::ReadAlsoQuery.new(book_id: book[:id], tags_ids: tags_ids, language: book[:language]).call
     end
   end
 end

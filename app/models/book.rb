@@ -79,47 +79,6 @@ class Book < ActiveRecord::Base
     only_paper
   end
 
-  def self.read_also book, tags_ids, language, limit
-    items = []
-    return items unless tags_ids
-    random_id = rand(1..book['id'].to_i)
-    
-    where = "books_tags.tag_id IN(#{tags_ids.join(',')}) AND 
-            books.optimized_cover IS NOT NULL AND
-            books.id > #{random_id} AND
-            books.is_copy = false
-            "
-    where += "AND books.language = '#{language}'" if language.present?
-
-    sql = "SELECT DISTINCT
-            books.id, 
-            books.title, 
-            books.seo, 
-            books.optimized_cover
-          FROM books_tags
-          INNER JOIN books ON books_tags.book_id = books.id
-          WHERE 
-            #{where}
-          LIMIT #{limit} 
-    "
-    ActiveRecord::Base.connection.exec_query(sql).to_hash
-  end
-  # def read_also limit
-  #   items = []
-  #   return items unless tags
-      
-  #   random_id = rand(1..id)
-  #   tags_ids = tags.map(&:id)#.join(',')
-  #   rows = BooksTag.where(tag_id: tags_ids)
-  #         .includes(:book)
-  #         .where(books:{language: language})
-  #         .where("books.id > ?", random_id)
-  #         .where.not(books: {cover: nil})
-  #         .limit(limit)
-  #   items = rows.map(&:book)
-  #   items
-  # end
-
   def self.all_data seo
     sql = "SELECT 
             books.*, 
