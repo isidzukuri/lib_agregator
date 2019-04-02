@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe ArticlesController, type: :controller do
   render_views
 
-  let!(:article) { create(:article, status: 'published',) }
+  let!(:article) { create(:article, status: 'published') }
   let!(:unpublished_article) { create(:article, status: 'unpublished') }
 
   it 'renders list of articles' do

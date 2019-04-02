@@ -13,15 +13,13 @@ Rails.application.routes.draw do
   resources :search,          only: [:index]
   resources :quotes,          only: [:index, :show]
   resources :articles,        only: [:index, :show]
+  resources :tags,            only: [:index, :show]
+  resources :formats,         only: [:index, :show]
   resources :books,           only: [:show] do
     collection do
       get :autocomplete_with_seo
     end
   end
-
-  resources :tags,            only: [:index, :show]
-  resources :formats,         only: [:index, :show]
-
 
   namespace :api, defaults: { format: 'json' } do
     get 'search' => 'search#index'
