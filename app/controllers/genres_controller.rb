@@ -9,7 +9,7 @@ class GenresController < ApplicationController
     @genre = Genre.find_by_seo(params[:id])
     cache_key = "genre_#{params[:id]}_#{params[:page]}" 
     @items = cached(cache_key, 30.day) do
-      @genre.books.select($book_required_fields).includes(:authors).paginate(page: params[:page], per_page: @per_page)
+      @genre.books.select(Book::VIEW_ATTRIBUTES).includes(:authors).paginate(page: params[:page], per_page: @per_page)
     end
   end
   

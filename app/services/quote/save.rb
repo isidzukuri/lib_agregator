@@ -12,7 +12,6 @@ class Quote::Save
     item.attributes = params
     item.user = user if user
     item.save
-    $cache.delete('last_lists')
     item
   end
 end

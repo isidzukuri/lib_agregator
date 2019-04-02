@@ -16,10 +16,10 @@ class ApplicationController < ActionController::Base
   end
 
   def cached(cache_key, expires_in = 1.day)
-    result = $cache.read(cache_key)
+    result = LibAgreagator::CACHE.read(cache_key)
     if result.nil?
       result = yield
-      $cache.write(cache_key, result, expires_in: expires_in)
+      LibAgreagator::CACHE.write(cache_key, result, expires_in: expires_in)
     end
     result
   end

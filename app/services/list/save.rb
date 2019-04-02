@@ -16,7 +16,7 @@ class List::Save
     item.attributes = params
     item.user = user if user
     item.save
-    $cache.delete('last_lists')
+    LibAgreagator::CACHE.delete('last_lists')
     item
   end
 end

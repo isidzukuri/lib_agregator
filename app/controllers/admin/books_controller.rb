@@ -12,7 +12,7 @@ class Admin::BooksController < Admin::AdminController
   #   @book = Book.new(book_params)
   #   @book.user = current_user
   #   if @book.save
-  #     $cache.delete('last_books')
+  #     LibAgreagator::CACHE.delete('last_books')
   #     redirect_to admin_books_path
   #   else
   #     render 'new'
