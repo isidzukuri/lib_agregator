@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @items = Article.order(id: :desc).where(status: 'published').paginate(page: params[:page], per_page: @per_page).all
+    @items = Article.order(id: :desc).where(status: :published).paginate(page: params[:page], per_page: @per_page).all
   end
 
   def show

@@ -5,8 +5,8 @@ class WelcomeController < ApplicationController
   def index
     @paper_books = paper_books
     @free_books = free_books
-    @lists = lists()
-    @articles = articles()
+    @lists = lists
+    @articles = articles
   end
 
   private
@@ -14,7 +14,7 @@ class WelcomeController < ApplicationController
   def paper_books
     cached('paper_books') do
       ids = Recomendation.pluck(:book_id)
-      Book.where(id: ids).select(:title, :seo, :cover, :optimized_cover).order(id: :desc)  
+      Book.where(id: ids).select(:title, :seo, :cover, :optimized_cover).order(id: :desc)
     end
   end
 
@@ -26,14 +26,13 @@ class WelcomeController < ApplicationController
 
   def lists
     cached('last_lists') do
-      List.order(id: :desc).where(status: 'published').limit(3)
+      List.order(id: :desc).where(status: :published).limit(3)
     end
   end
 
-
   def articles
     cached('last_articles') do
-      Article.order(id: :desc).where(status: 'published').limit(3)
+      Article.order(id: :desc).where(status: :published).limit(3)
     end
   end
 end

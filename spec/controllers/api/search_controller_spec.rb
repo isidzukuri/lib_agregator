@@ -9,7 +9,7 @@ RSpec.describe Api::SearchController, type: :controller do
 
   context 'GET /api/search' do
     it '' do
-      expect(Book).to receive(:search_by_title).and_return([book])
+      expect_any_instance_of(Book::SearchByTitleQuery).to receive(:call).and_return([book])
 
       get :index, params: { word: 'some' }
 
@@ -22,7 +22,7 @@ RSpec.describe Api::SearchController, type: :controller do
 
   context 'GET /api/paper' do
     it '' do
-      expect(Book).to receive(:search_by_title).and_return([book, book_paper])
+      expect_any_instance_of(Book::SearchByTitleQuery).to receive(:call).and_return([book, book_paper])
 
       get :paper, params: { word: 'some' }
 

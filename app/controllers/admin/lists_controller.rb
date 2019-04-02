@@ -4,36 +4,37 @@ class Admin::ListsController < Admin::AdminController
   end
 
   def new
-    @list = List.new status: 'unpublished'
+    @list = List.new status: :unpublished
     @url = admin_lists_path
   end
 
   def create
     @list = List::Save.new(list_params, List.new, current_user).call
     if @list.errors.any?
-      render 'new'
+      render :new
     else
-      redirect_to admin_lists_path      
+      redirect_to admin_lists_path
     end
   end
 
   def edit
     @list = List.find(params[:id])
     @url = admin_list_path(@list)
-    render 'new'
+    render :new
   end
 
-  def update    
+  def update
     @list = List::Save.new(list_params, List.find(params[:id])).call
     if @list.errors.any?
-      render 'new'
+      render :new
     else
-      redirect_to admin_lists_path      
+      redirect_to admin_lists_path
     end
   end
 
   def destroy
     List.find(params[:id]).destroy
+    
     redirect_to admin_lists_path
   end
 
