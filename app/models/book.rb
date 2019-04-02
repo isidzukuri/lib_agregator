@@ -18,12 +18,6 @@ class Book < ActiveRecord::Base
     indexes :description
   end
 
-  def self.autocomplete_with_seo word, limit = 10
-    like = "%#{word}%"
-    items = Book.where("LOWER(title) LIKE :query OR seo LIKE :query", query: like)
-              .limit(limit).includes(:authors)
-  end
-
   def self.thumb book
     book['optimized_cover'] ? "#{CloudFront::URL}#{book['optimized_cover']}" : book['cover']
   end

@@ -9,7 +9,8 @@ class BooksController < ApplicationController
   end
 
   def autocomplete_with_seo
-    items = Book.autocomplete_with_seo(params[:term])
+    items = Book::AutocompleteWithSeoQuery.new(word: params[:term]).call
+
     render json: items, each_serializer: BookAutocompleteSerializer
   end
 
