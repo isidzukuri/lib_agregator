@@ -30,7 +30,7 @@ class Book < ActiveRecord::Base
 
     ActiveRecord::Associations::Preloader.new.preload(pointers, :authors)
 
-    pointers#.reverse # .uniq { |i| [i.title, i.domain, i.description] } # remove old duplicates from yakaboo
+    pointers
   end
 
   def self.extended_search(params, limit = 100, offset = 0)
@@ -56,10 +56,6 @@ class Book < ActiveRecord::Base
 
       cols = attribute_names - %w(description source domain genre_id)
       result = query.select(cols).includes(:authors).limit(limit).offset(offset).all
-
-      # result = query.includes(:authors)
-      #         .limit(limit).offset(offset)
-      #         .all.reverse.uniq { |i| [i.title, i.domain, i.description] }
     end
 
     result
@@ -163,12 +159,10 @@ class Book < ActiveRecord::Base
   end
 
   def thumb
-    # optimized_cover ? "/covers/#{optimized_cover}" : cover
     optimized_cover ? "https://d6ezdopzv6g4b.cloudfront.net/#{optimized_cover}" : cover
   end
 
   def self.thumb book
-    # optimized_cover ? "/covers/#{optimized_cover}" : cover
     book['optimized_cover'] ? "https://d6ezdopzv6g4b.cloudfront.net/#{book['optimized_cover']}" : book['cover']
   end
 
