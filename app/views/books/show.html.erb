@@ -27,7 +27,7 @@
   <div>
     <h3 class="bold">Доступні формати:</h3>
 
-    <% $book_formats.each do |frmt| %>
+    <% Book::FORMATS.each do |frmt| %>
       <% next unless @book[frmt] %>
       <%
         sls_d = "https://rdr.salesdoubler.com.ua/in/offer/269?aid=20647&dlink="

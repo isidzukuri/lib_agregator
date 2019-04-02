@@ -21,7 +21,7 @@
             <div class="col-xs-6 col-sm-4">
                 <h4>Формати</h4>
                 <div class="input-group">
-                    <% $book_formats.each do |frmt| %>
+                    <% Book::FORMATS.each do |frmt| %>
                     <input type="checkbox" name="format[]" checked value="<%=frmt%>"> <%=frmt == 'paper' ? 'папір' : frmt.upcase %><br>
                     <% end %>
                 </div>

@@ -3,6 +3,9 @@ class Book < ActiveRecord::Base
   include Tire::Model::Callbacks
   include SeoName
 
+  FORMATS = ['txt', 'rtf', 'doc', 'pdf', 'fb2', 'epub', 'mobi', 'djvu', 'paper'] 
+  REQUIRED_FIELDS = ['id', 'title', 'seo', 'is_copy'] + FORMATS
+
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :tags
   belongs_to :genre
@@ -74,7 +77,7 @@ class Book < ActiveRecord::Base
 
   def only_paper?
     only_paper = true
-    $book_formats.each do |frmt|
+    Book::FORMATS.each do |frmt|
       next if frmt == 'paper'
       if send(frmt.to_sym)
         only_paper = false
@@ -86,7 +89,7 @@ class Book < ActiveRecord::Base
 
   def self.only_paper?(book)
     only_paper = true
-    $book_formats.each do |frmt|
+    Book::FORMATS.each do |frmt|
       next if frmt == 'paper'
       if book[frmt]
         only_paper = false

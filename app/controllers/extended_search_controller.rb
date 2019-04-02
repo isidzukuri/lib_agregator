@@ -19,7 +19,7 @@ class ExtendedSearchController < ApplicationController
       query_params[:genre] = params[:genre]
     end
 
-    if params[:format].present? && params[:format].count != $book_formats.count
+    if params[:format].present? && params[:format].count != Book::FORMATS.count
       query_params[:format] = params[:format]
     end
 
