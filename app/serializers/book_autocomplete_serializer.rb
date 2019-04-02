@@ -4,7 +4,7 @@ class BookAutocompleteSerializer < ActiveModel::Serializer
   def value
     str = object.title
     str += ". #{object.author_title}" if object.author_title.present?
-    str += " [PO]" if object.only_paper?
+    str += " [PO]" if Book.only_paper?(object)
     str
   end
 end
