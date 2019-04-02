@@ -25,11 +25,11 @@ class Book < ActiveRecord::Base
   end
 
   def self.thumb book
-    book['optimized_cover'] ? "https://d6ezdopzv6g4b.cloudfront.net/#{book['optimized_cover']}" : book['cover']
+    book['optimized_cover'] ? "#{CloudFront::URL}#{book['optimized_cover']}" : book['cover']
   end
 
   def thumb
-    optimized_cover ? "https://d6ezdopzv6g4b.cloudfront.net/#{optimized_cover}" : cover
+    optimized_cover ? "#{CloudFront::URL}#{optimized_cover}" : cover
   end
 
   def author_title
