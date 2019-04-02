@@ -4,6 +4,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find_by_seo(params[:key])
+    @article = Article.find_by_seo(params[:id])
   end
 end
