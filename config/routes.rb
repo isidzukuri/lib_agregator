@@ -21,10 +21,10 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api, defaults: { format: 'json' } do
-    get 'search' => 'search#index'
-    get 'paper' => 'search#paper'
-    get 'recomendations/paper' => 'recomendations#paper'
+  namespace :api, defaults: { format: :json } do
+    resources :search,   only: [:index]
+    get       :paper,    to: 'search#paper'
+    get       'recomendations/paper' => 'recomendations#paper'
   end
 
   namespace :admin do
