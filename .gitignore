@@ -16,7 +16,7 @@
 !/log/.keep
 /tmp
 /config/database.yml
-/config/secrets.yml
+/config/secretsff.yml
 /public/Librusek/parts/
 /public/uploads/
 /public/covers/
