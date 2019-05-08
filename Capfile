@@ -16,6 +16,9 @@ require 'capistrano/rvm'
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 
+require 'capistrano/puma'
+install_plugin Capistrano::Puma 
+
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
@@ -35,7 +38,7 @@ require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 # require "capistrano/passenger"
 
-require 'capistrano/puma'
+# require 'capistrano/puma'
     # require 'capistrano/puma/workers' # if you want to control the workers (in cluster mode)
     # require 'capistrano/puma/jungle'  # if you need the jungle tasks
     # require 'capistrano/puma/monit'   # if you need the monit tasks
