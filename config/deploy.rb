@@ -7,4 +7,4 @@ set :deploy_to, '/var/www/lib_agregator'
 
 append :linked_dirs, 'public/uploads', 'public/covers'
 
-append :linked_files, "config/database.yml", "config/secrets.yml", "config/nginx.conf"#, "public/sd-feed-269.xml"
+append :linked_files, "config/database.yml", "config/secrets.yml"#, "config/nginx.conf"#, "public/sd-feed-269.xml"
