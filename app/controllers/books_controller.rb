@@ -3,7 +3,7 @@ class BooksController < ApplicationController
     @book, @tags, @authors = Book::AllDataQuery.new(seo: params[:id]).call
 
     redirect_to(:root, status: 410) unless @book
-    redirect_to(:root, status: 410) if @book['hide']
+    redirect_to(:root, status: 410) if ActiveModel::Type::Boolean.new.cast(@book['hide'])
 
     @read_also = read_also(@book)
   end

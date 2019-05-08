@@ -34,6 +34,11 @@ Rails.application.routes.draw do
     resources :lists
     resources :books
     resources :quotes
+    resources :authors do
+      collection do
+        get :autocomplete
+      end
+    end
   end
 
   match '/404', to: 'errors#not_found', via: :all

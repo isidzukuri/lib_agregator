@@ -1,11 +1,11 @@
 
-<%= link_to 'Create',  new_admin_book_path, class: "btn btn-primary" %>
+<%= link_to 'Create',  new_admin_author_path, class: "btn btn-primary" %>
 <br/>
 <br/>
 
 <div class="panel panel-primary"> 
     <div class="panel-heading"> 
-        <h3 class="panel-title">Books</h3> 
+        <h3 class="panel-title"Authors</h3> 
     </div> 
     <div class="panel-body"> 
 
@@ -13,18 +13,18 @@
         <thead> 
             <tr> 
                 <th>#</th> 
-                <th>Title</th> 
-                <th>Status</th>  
+                <th>Name</th> 
+                <th>Actions</th>  
             </tr> 
         </thead> 
         <tbody> 
             <% @items.each do |item| %>
             <tr> 
                 <th scope="row"><%= item.id %></th> 
-                <td><%= item.title %></td>  
+                <td><%= item.full_name %></td>  
                 <td>
-                    <a href="/admin/books/<%= item.seo %>/edit" class="btn btn-primary btn-xs">edit</a>
-                    <%= link_to 'Destroy',  admin_book_path(item),  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
+                    <a href="/admin/authors/<%= item.seo %>/edit" class="btn btn-primary btn-xs">edit</a>
+                    <%= link_to 'Destroy',  admin_author_path(item),  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
                 </td> 
             </tr> 
             <% end %>
