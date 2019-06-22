@@ -1,14 +1,13 @@
 class Book::Save
-
-  def initialize params, item
+  def initialize(params, item)
     @params = params
-    @item = item  
+    @item = item
   end
 
   attr_accessor :params, :item
 
   def call
-    assign_authors()
+    assign_authors
     item.assign_attributes(params)
     assign_formats
     cover_changed = item.cover_changed?
@@ -22,7 +21,7 @@ class Book::Save
 
   def assign_formats
     Book::FORMATS.each do |format|
-      item[format] = params[format].presence      
+      item[format] = params[format].presence
     end
   end
 

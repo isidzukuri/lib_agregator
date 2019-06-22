@@ -1,6 +1,5 @@
 module Base
   class CachedData
-
     CACHE = ActiveSupport::Cache::MemCacheStore.new
 
     def self.call(cache_key, expires_in = 1.day)
