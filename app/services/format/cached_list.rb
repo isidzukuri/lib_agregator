@@ -14,7 +14,7 @@ class Format::CachedList
   private
 
   def cache_key
-    "fb_#{params[:id]}_#{params[:page]}"
+    "fb_#{params[:key]}_#{page}"
   end
 
   def limit
