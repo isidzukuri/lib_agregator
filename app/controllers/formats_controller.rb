@@ -9,7 +9,7 @@ class FormatsController < ApplicationController
     redirect_to formats_path unless Book::FORMATS.include?(params[:id]&.to_sym)
     
     cache_key = "fb_#{params[:id]}_#{params[:page]}" 
-    @items = cached(cache_key, 30.day) do
+    @items = Base::CachedData.call(cache_key, 30.day) do
       Book.select(Book::VIEW_ATTRIBUTES).where.not(params[:id] => nil).paginate(page: params[:page], per_page: @per_page).includes(:authors)
     end
   end

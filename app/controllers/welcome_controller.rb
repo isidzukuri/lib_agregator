@@ -12,26 +12,26 @@ class WelcomeController < ApplicationController
   private
 
   def paper_books
-    cached('paper_books') do
+    Base::CachedData.call('paper_books') do
       ids = Recomendation.pluck(:book_id)
       Book.where(id: ids).select(:title, :seo, :cover, :optimized_cover).order(id: :desc)
     end
   end
 
   def free_books
-    cached('free_books') do
+    Base::CachedData.call('free_books') do
       Book.where.not(cover: nil, domain: 'yakaboo.ua').order('RAND()').limit(20)
     end
   end
 
   def lists
-    cached('last_lists') do
+    Base::CachedData.call('last_lists') do
       List.order(id: :desc).where(status: :published).limit(3)
     end
   end
 
   def articles
-    cached('last_articles') do
+    Base::CachedData.call('last_articles') do
       Article.order(id: :desc).where(status: :published).limit(3)
     end
   end
