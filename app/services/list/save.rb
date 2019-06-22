@@ -1,8 +1,7 @@
 class List::Save
-
-  def initialize params, item, user = nil
+  def initialize(params, item, user = nil)
     @params = params
-    @item = item  
+    @item = item
     @user = user
   end
 
@@ -10,13 +9,13 @@ class List::Save
 
   def call
     # if params[:books_ids]
-      item.books = Book.where(id: params[:books_ids])
-      params.delete :books_ids
+    item.books = Book.where(id: params[:books_ids])
+    params.delete :books_ids
     # end
     item.attributes = params
     item.user = user if user
     item.save
-    LibAgreagator::CACHE.delete('last_lists')
+    Base::CachedData::CACHE.delete('last_lists')
     item
   end
 end

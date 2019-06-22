@@ -12,7 +12,7 @@ class Admin::ArticlesController < Admin::AdminController
     @article = Article.new(article_params)
     @article.user = current_user
     if @article.save
-      LibAgreagator::CACHE.delete('last_articles')
+      Base::CachedData::CACHE.delete('last_articles')
       redirect_to admin_articles_path
     else
       render :new
@@ -28,7 +28,7 @@ class Admin::ArticlesController < Admin::AdminController
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)
-      LibAgreagator::CACHE.delete('last_articles')
+      Base::CachedData::CACHE.delete('last_articles')
       redirect_to admin_articles_path
     else
       render :new
@@ -37,7 +37,7 @@ class Admin::ArticlesController < Admin::AdminController
 
   def destroy
     Article.find(params[:id]).destroy
-    LibAgreagator::CACHE.delete('last_articles')
+    Base::CachedData::CACHE.delete('last_articles')
     redirect_to admin_articles_path
   end
 

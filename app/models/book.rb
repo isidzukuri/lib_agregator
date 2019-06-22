@@ -3,8 +3,11 @@ class Book < ActiveRecord::Base
   include Tire::Model::Callbacks
   include SeoName
 
-  FORMATS = [:txt, :rtf, :doc, :pdf, :fb2, :epub, :mobi, :djvu, :paper] 
+  FORMATS = [:txt, :rtf, :doc, :pdf, :fb2, :epub, :mobi, :djvu, :paper].freeze
   VIEW_ATTRIBUTES = [:id, :title, :seo, :is_copy] + FORMATS
+  DOMAINS = { chtyvo: 'chtyvo.org.ua',
+              librusec: 'lib.rus.ec',
+              yakaboo: 'yakaboo.ua' }.freeze
 
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :tags
@@ -18,7 +21,7 @@ class Book < ActiveRecord::Base
     indexes :description
   end
 
-  def self.thumb book
+  def self.thumb(book)
     book['optimized_cover'] ? "#{CloudFront::URL}#{book['optimized_cover']}" : book['cover']
   end
 

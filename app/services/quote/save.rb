@@ -1,8 +1,7 @@
 class Quote::Save
-
-  def initialize params, item, user = nil
+  def initialize(params, item, user = nil)
     @params = params
-    @item = item  
+    @item = item
     @user = user
   end
 
