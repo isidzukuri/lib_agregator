@@ -1,6 +1,8 @@
 class Book
   class ExtendedSearchQuery
     include Tire::Model::Search
+    
+    COLLECTION_KEY = 'books'.freeze
 
     attr_reader :params
 
@@ -26,7 +28,7 @@ class Book
 
     def title_filter
       filter = "title:#{params[:word]}"
-      search = Tire::Search::Search.new('books')
+      search = Tire::Search::Search.new(COLLECTION_KEY)
       search.query { string(filter) }
       search.results.pluck(:id)
     end
