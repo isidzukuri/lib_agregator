@@ -1,6 +1,8 @@
 class Book
   class SearchByTitleQuery
     include Tire::Model::Search
+    
+    COLLECTION_KEY = 'books'.freeze
 
     attr_reader :params
 
@@ -10,7 +12,7 @@ class Book
 
     def call
       title_filter = "title:#{params[:word]}"
-      search = Tire::Search::Search.new('books', load: true)
+      search = Tire::Search::Search.new(COLLECTION_KEY, load: true)
       search.query { string(title_filter) }
 
       pointers = search.results
