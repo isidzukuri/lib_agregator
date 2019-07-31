@@ -10,4 +10,8 @@ class Api::BookInListSerializer < ActiveModel::Serializer
     admitad = "https://ad.admitad.com/g/a4afb4f21a7e808e4236d32ae27335/?ulp="
     object.paper.sub!(sls_d, admitad) if object.paper
   end
+
+  def cover
+    object.thumb
+  end
 end
