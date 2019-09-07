@@ -1,4 +1,4 @@
 - clean controllers from logic, move it to services
 - rewrite parser
 - upload book covers to amazon
-- upgrade to rails 6
+- fix restart after deploy
