@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.2.3'
+gem 'rails', '6.0.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
@@ -64,5 +64,5 @@ gem 'carrierwave', '~> 1.0'
 gem 'jquery-ui-rails'
 gem 'bootstrap-wysihtml5-rails'
 gem 'mini_magick', '4.5.1'
-gem 'actionpack-action_caching'
+gem 'actionpack-action_caching', github: 'rails/actionpack-action_caching'
 gem 'dalli'
