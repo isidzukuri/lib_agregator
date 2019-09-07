@@ -50,7 +50,7 @@ gem 'awesome_print'
 
 gem 'colorize'
 gem 'htmlentities'
-gem 'unidecoder'
+gem 'stringex'
 gem 'mysql2'
 gem 'tire'
 gem 'puma'
