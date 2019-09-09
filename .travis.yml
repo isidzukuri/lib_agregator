@@ -4,7 +4,7 @@ rvm:
 services:
   - mysql
 before_install:
-  - cp config/database.yml.example config/database.yml
+  - cp config/database.yml_example config/database.yml
 script:
   - bundle exec rails db:create db:environment:set db:schema:load db:migrate
   - bundle exec rspec
