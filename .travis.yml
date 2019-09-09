@@ -3,6 +3,7 @@ rvm:
  - 2.6.4
 services:
   - mysql
+  - elasticsearch
 before_install:
   - cp config/database.yml_example config/database.yml
 script:
