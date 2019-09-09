@@ -1,4 +1,10 @@
 language: ruby
 rvm:
  - 2.6.4
- - ruby
+services:
+  - mysql
+before_install:
+  - cp config/database.yml.example config/database.yml
+script:
+  - bundle exec rails db:create db:environment:set db:schema:load db:migrate
+  - bundle exec rspec
