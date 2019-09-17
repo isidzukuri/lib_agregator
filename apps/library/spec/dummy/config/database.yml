@@ -1,0 +1,17 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  user: root
+  password: rfkf,fyz
+  pool: 10
+
+development:
+  <<: *default
+  database: lib_agregator
+  host: localhost
+
+test:
+  <<: *default
+  database: lib_agregator_test
+  host: localhost
+
