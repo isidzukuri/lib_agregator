@@ -3,3 +3,4 @@
 - upload book covers to amazon
 - fix restart after deploy
 - separate into engines: base, api, admin, library 
+- replace tire
