@@ -66,3 +66,6 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'mini_magick', '4.5.1'
 gem 'actionpack-action_caching', github: 'rails/actionpack-action_caching'
 gem 'dalli'
+
+
+gem 'library', path: 'apps/library'
