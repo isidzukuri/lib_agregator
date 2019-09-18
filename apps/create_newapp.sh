@@ -4,7 +4,7 @@ capitalized_name=`echo $1 | tr [A-Z] [a-z] | sed -e 's/^./\U&/g; s/ ./\U&/g'`
 
 echo "New apps/$1"
 
-echo "Make newapp duplicate"
+echo "Making newapp duplicate..."
 cp -a newapp "$1"
 
 echo "Renaming core directories & files"
@@ -31,13 +31,12 @@ grep -rl "Newapp" . | xargs sed -i "s/Newapp/$capitalized_name/g"
 echo "Find and replacing newapp with $1"
 grep -rl "newapp" . | xargs sed -i "s/newapp/$1/g"
 
-# echo "$1 -> Bundle"
-
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-echo "Configure $1.gemspec manually and run bundle"
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-# bundle
-
 # echo "$1/spec/dummy -> Setup"
 # cd "spec/dummy"
 # rake db:setup RAILS_ENV=test
+
+echo "$1 -> Bundle"
+bundle
+
+echo 'Checking rspec...'
+rspec spec
