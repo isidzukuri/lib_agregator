@@ -68,4 +68,4 @@ gem 'actionpack-action_caching', github: 'rails/actionpack-action_caching'
 gem 'dalli'
 
 
-gem 'library', path: 'apps/library'
+gem 'base', path: 'apps/base'

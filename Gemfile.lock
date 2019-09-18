@@ -14,6 +14,14 @@ GIT
       capistrano-bundler
       puma (~> 4.0)
 
+PATH
+  remote: apps/base
+  specs:
+    base (0.1.0)
+      activesupport
+      mysql2
+      rails (~> 5.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -371,6 +379,7 @@ DEPENDENCIES
   actionpack-action_caching!
   active_model_serializers
   awesome_print
+  base!
   bootstrap-sass (~> 3.3.6)
   bootstrap-wysihtml5-rails
   byebug

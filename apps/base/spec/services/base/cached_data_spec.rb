@@ -1,4 +1,5 @@
-require 'rails_helper'
+# require 'rails_helper'
+
 RSpec.describe Base::CachedData, type: :service do
 
   let!(:cache_key) { 'some_str' }
