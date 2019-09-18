@@ -7,7 +7,7 @@ echo "New apps/$1"
 echo "Making newapp duplicate..."
 cp -a newapp "$1"
 
-echo "Renaming core directories & files"
+echo "Renaming core directories & files..."
 mv "$1/app/assets/images/newapp" "$1/app/assets/images/$1"
 mv "$1/app/assets/javascripts/newapp" "$1/app/assets/javascripts/$1"
 mv "$1/app/assets/stylesheets/newapp" "$1/app/assets/stylesheets/$1"
@@ -25,17 +25,17 @@ mv "$1/newapp.gemspec" "$1/$1.gemspec"
 
 cd "$1"
 
-echo "Find and replacing Newapp with ${capitalized_name}"
+echo "Find and replacing Newapp with ${capitalized_name}..."
 grep -rl "Newapp" . | xargs sed -i "s/Newapp/$capitalized_name/g"
 
-echo "Find and replacing newapp with $1"
+echo "Find and replacing newapp with $1..."
 grep -rl "newapp" . | xargs sed -i "s/newapp/$1/g"
 
 # echo "$1/spec/dummy -> Setup"
 # cd "spec/dummy"
 # rake db:setup RAILS_ENV=test
 
-echo "$1 -> Bundle"
+echo "$1 -> Bundle..."
 bundle
 
 echo 'Checking rspec...'
