@@ -27,7 +27,9 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 5.2.3"
   s.add_dependency 'mysql2'
+  s.add_dependency 'tire'
   s.add_dependency 'base'
+  s.add_dependency 'carrierwave', '~> 1.0'
 
   s.add_development_dependency "rspec-rails", '~> 3.8'
   s.add_development_dependency "factory_bot_rails"

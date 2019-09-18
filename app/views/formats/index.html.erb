@@ -1,9 +1,0 @@
-<h3>Формати книг</h3>
-<p>На сайті можна знайти всі електронні, українськомовні книги доступні в інтернеті, а також всі паперові книжки, які можна замовити з доставкою. На цій сторінці Ви можете побачити всі доступні формати:</p>
-<% @items.each do |item|%>
-  <a href='/formats/<%= item %>'><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> <%= item%></a><br/>
-<% end %>
-
-<%= render partial: "layouts/book_search_form" %>
-
-<% content_for(:title, "Книги по форматах. Скачти fb2, epub, mobi, pdf, djvu, txt, rtf, doc") %> 

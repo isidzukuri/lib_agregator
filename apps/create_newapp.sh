@@ -12,7 +12,10 @@ mv "$1/app/assets/images/newapp" "$1/app/assets/images/$1"
 mv "$1/app/assets/javascripts/newapp" "$1/app/assets/javascripts/$1"
 mv "$1/app/assets/stylesheets/newapp" "$1/app/assets/stylesheets/$1"
 mv "$1/app/controllers/newapp" "$1/app/controllers/$1"
-mv "$1/app/models/newapp" "$1/app/models/$1"
+mv "$1/app/controllers/newapp" "$1/app/controllers/$1"
+mv "$1/app/helpers/newapp" "$1/app/helpers/$1"
+
+
 
 # mv "$1/config/locales/en.newapp.yml" "$1/config/locales/en.$1.yml"
 mv "$1/lib/newapp" "$1/lib/$1"

@@ -1,0 +1,11 @@
+<h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= @author.display_title %></h2>
+
+<%= render partial: "bibliotheca/books/list", collection: @items, as: :item  %>
+
+<%= render partial: "bibliotheca/shared/paginator" %>
+
+<% content_for(:title, "#{@author.display_title}. Скачати книги безкоштовно або купити з доставкою") %> 
+<% content_for :meta do %>
+<meta content='<%= @author.title %>' property='og:title'>
+<meta content='website' property='og:type'>
+<% end %>

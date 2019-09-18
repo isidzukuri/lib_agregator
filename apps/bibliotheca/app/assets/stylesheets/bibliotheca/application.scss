@@ -1,0 +1,310 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require jquery-ui
+ *= require_tree .
+ *= require_self
+
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
+
+
+html{
+    min-height: 100%;
+    position:relative;
+}
+footer{
+    padding: 0 10px 3px;
+    width:100%;
+  position: absolute;
+  bottom: 0;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+@media (max-width: 480px) {
+    body {
+      /* Margin bottom by footer height */
+      margin-bottom: 80px;
+    }
+}
+
+
+
+
+
+
+a{
+    color: #653306;
+}
+a:hover{
+    color:#c58a16;
+}
+.main_content{
+    margin-top: 70px;
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+.block_center{
+    float:none;
+    margin:0 auto;
+}
+.book_item{
+    padding-left:40px;
+    margin-bottom:20px;
+    background: url('https://d15rt5giy0bfyx.cloudfront.net/assets/images/closed_book.png') no-repeat 0% 50%;
+
+    .label{
+        opacity:0.7;
+    }
+    .author_link{
+        font-size: 13px;
+        color: #6b635b;
+    }
+}
+.book_item:hover{
+    background: url('https://d15rt5giy0bfyx.cloudfront.net/assets/images/open-book.jpg') no-repeat 0% 50%;
+}
+.book_cover{
+    max-width: 150px;
+    margin-right: 15px;
+    float: left;
+    display:block;
+}
+.top_menu{
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+
+    h1{
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 19px;
+        font-weight: 900;
+        margin:0;
+    }
+
+    a{
+        color: #a57d5a !important;
+    }
+}
+.search_btn{
+    background: #a57d5a;
+    color:#fff;
+}
+.pagination a{
+    color: #653306 !important;
+}
+.author_item{
+    display:block;
+    margin-bottom: 8px;
+}
+.download_href{
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 900;
+    margin: 0 20px 20px 0;
+    cursor:pointer;
+    white-space: nowrap;
+}
+.soc_butt_wrap {
+    float: left;
+    margin-right: 15px;
+}
+.soc_chains{
+    margin-left: 35%;
+}
+.pagination{
+    margin-bottom: 27px;
+}
+.book_search_form{
+    margin-bottom: 50px;
+    
+    h2{
+        text-align: center;
+    }
+}
+.book_panel_link{
+    display: block;
+    text-align:center;
+    height:400px;
+    margin-bottom: 10px;
+
+    img{
+        max-width:100%;
+        max-height:350px;
+        display: block;
+        margin: 0 auto;
+    }
+    img:hover{
+        box-shadow: 0 0 6px #e68d08;
+        transition: all 200ms ease-out;
+    }
+}
+.search_description{
+    margin-top:15px;
+    text-align:center;
+}
+.book_panel_link.read_also{
+    height: auto;
+    max-height: 270px;
+    overflow:hidden;
+}
+@media (max-width: 605px){
+    .book_panel_link.read_also{
+        height: 180px;
+    }
+}
+@media (max-width: 415px) {
+    .book_panel_link{
+        height: 280px;
+    }
+    .book_panel_link.read_also{
+        height: 160px;
+    }
+}
+.bottom_description{
+    border-top: 1px dashed #9e9c98;
+    border-bottom: 1px dashed #9e9c98;
+    margin-top: 30px; 
+    padding: 10px 0 5px;
+
+    p{
+        color: #7b7874;
+        text-align: justify;
+    }
+}
+.bold{
+    font-weight: 700;
+}
+.justify{
+    text-align: justify;
+}
+.section_title{
+    text-align: center;
+    margin-bottom: 35px;
+}
+.paginator_wrapper{
+    text-align: center;
+}
+.contacts_href{
+    margin-top: -20px;
+}
+.books_pool{
+    margin: 10px 0;
+}
+.list_href{
+    position: relative;
+    display: block;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color:#fff;
+    text-shadow: 0px 0px 10px #000;
+    margin-bottom: 30px;
+    padding: 0;
+
+    img{
+        width:100%;
+        max-width: 100%;
+    }
+
+    div{
+        position: absolute;
+        top:0;
+        width: 100%;
+        height: 100%;
+        padding-top:20%;
+        text-align:center;
+        background: url('https://d15rt5giy0bfyx.cloudfront.net/assets/images/fake-brick.png') repeat 0% 0%;
+    }
+}
+.list_href:hover{
+    color:#fff;
+    box-shadow: 0 0 6px #e68d08;
+    transition: all 200ms ease-out;
+}
+.description_book_item{
+    margin-bottom: 30px;
+}
+.article_href{
+    margin-bottom:20px;
+    display: block;
+    font-family: 'Fira Sans', sans-serif;
+    cursor:pointer;
+
+    .href_content{
+        text-align:justify;
+    }
+    span{
+        color: #333;
+    }
+    img{
+        max-width:100%;
+        margin: 0 auto;
+        display:block;
+    }
+    b{
+        font-size:19px;
+    }
+}
+.article_image{
+    text-align:center;
+    margin-bottom: 15px;
+    img{
+        max-width:100%;
+    }
+}
+#book_page{
+    display: block !important;
+}
+#tags_autocomplete{
+    margin-bottom: 10px;
+}
+#tags_results a{
+    font-size: 12px;
+    margin: 0 2px 2px;
+    display: inline-block;
+}
+.tags_pool{
+    overflow: hidden;
+}
+
+
+.quote_href{
+    .q_text{
+        padding: 10px 0;
+    }
+    .q_book{
+        opacity: 0.8;
+        font-size: 12px;
+    }
+    .q_book:hover{
+        opacity: 1;
+    }
+    .book_cover{
+        max-width: 60px;
+    }
+    .q_href{
+        font-size:10px;
+        opacity: 0.8;
+
+    }
+    .q_href:hover{
+        opacity: 1;
+    }
+}

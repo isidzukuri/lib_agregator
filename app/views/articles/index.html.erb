@@ -1,7 +1,0 @@
-<div class="row">
-  <h2 class="section_title">Статті:</h2>
-  <%= render partial: "articles/item", collection: @items, as: :item  %>
-  <%= render partial: "layouts/paginator" %>
-</div> 
-
-<% content_for(:title, 'Підбірки книг') %>

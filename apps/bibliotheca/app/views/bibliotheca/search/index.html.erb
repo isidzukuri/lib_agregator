@@ -1,0 +1,10 @@
+<%= render partial: "bibliotheca/shared/book_search_form" %>
+
+<h2>книги:</h2>
+<%= render partial: "bibliotheca/books/list", collection: @books, as: :item  %>
+
+
+
+
+<h2>автори:</h2>
+<%= render partial: "bibliotheca/authors/list", collection: @authors, as: :item  %>

@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/rails/actionpack-action_caching.git
-  revision: 6c48c98d0b59d4868ac71817bf46cbdee26467ff
-  specs:
-    actionpack-action_caching (1.2.0)
-      actionpack (>= 4.0.0)
-
-GIT
   remote: git://github.com/seuros/capistrano-puma.git
   revision: 6112323390cff15539d947882d72d937622cfdf4
   specs:
@@ -22,6 +15,16 @@ PATH
       dalli
       mysql2
       rails (~> 5.2.3)
+
+PATH
+  remote: apps/bibliotheca
+  specs:
+    bibliotheca (0.1.0)
+      base
+      carrierwave (~> 1.0)
+      mysql2
+      rails (~> 5.2.3)
+      tire
 
 GEM
   remote: https://rubygems.org/
@@ -43,6 +46,8 @@ GEM
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionpack-action_caching (1.2.0)
+      actionpack (>= 4.0.0, < 6)
     actionview (5.2.3)
       activesupport (= 5.2.3)
       builder (~> 3.1)
@@ -377,10 +382,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionpack-action_caching!
+  actionpack-action_caching
   active_model_serializers
   awesome_print
   base!
+  bibliotheca!
   bootstrap-sass (~> 3.3.6)
   bootstrap-wysihtml5-rails
   byebug

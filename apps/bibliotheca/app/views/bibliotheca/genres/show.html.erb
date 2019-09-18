@@ -1,0 +1,8 @@
+<h2><%= @genre.title %></h2>
+
+<%= render partial: "bibliotheca/books/list", collection: @items, as: :item  %>
+
+<%= render partial: "bibliotheca/shared/paginator" %>
+<%= render partial: "bibliotheca/shared/book_search_form" %>
+
+<% content_for(:title, "#{@genre.title}. Книги cкачти fb2, epub, mobi, pdf, djvu, txt, rtf, doc") %> 

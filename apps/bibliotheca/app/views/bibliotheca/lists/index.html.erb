@@ -1,0 +1,4 @@
+<h2 class="section_title">Списки книг:</h2>
+<%= render partial: "bibliotheca/lists/item", collection: @items, as: :list  %>
+<%= render partial: "bibliotheca/shared/paginator" %>
+<% content_for(:title, 'Підбірки книг') %>

@@ -50,9 +50,7 @@ gem 'awesome_print'
 
 gem 'colorize'
 gem 'htmlentities'
-gem 'stringex'
-gem 'mysql2'
-gem 'tire'
+
 gem 'puma'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sitemap_generator'
@@ -60,12 +58,18 @@ gem 'active_model_serializers'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
 gem 'devise'
-gem 'carrierwave', '~> 1.0'
 gem 'jquery-ui-rails'
 gem 'bootstrap-wysihtml5-rails'
 gem 'mini_magick', '4.5.1'
-gem 'actionpack-action_caching', github: 'rails/actionpack-action_caching'
+
+
+gem 'actionpack-action_caching'
 gem 'dalli'
+gem 'stringex'
+gem 'mysql2'
+gem 'tire'
+gem 'carrierwave', '~> 1.0'
 
 
 gem 'base', path: 'apps/base'
+gem 'bibliotheca', path: 'apps/bibliotheca'
