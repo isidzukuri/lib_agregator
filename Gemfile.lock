@@ -19,6 +19,7 @@ PATH
   specs:
     base (0.1.0)
       activesupport
+      dalli
       mysql2
       rails (~> 5.2.3)
 

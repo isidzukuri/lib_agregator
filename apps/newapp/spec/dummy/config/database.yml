@@ -2,8 +2,8 @@ default: &default
   adapter: mysql2
   database: lib_agregator
   host: localhost
-  username: root
-  password: rfkf,fyz
+  username: travis
+  password:
   port: 3306
   pool: 25
   encoding: utf8
