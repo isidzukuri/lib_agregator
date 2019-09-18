@@ -1,4 +1,5 @@
-module Bibliotheca
+module Base
+  module Concerns
 module SeoName
   def self.included(base)
     base.instance_eval do
@@ -34,5 +35,6 @@ module SeoName
   def seo_source
     :title
   end
+end
 end
 end
