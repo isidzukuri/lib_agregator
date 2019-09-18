@@ -4,7 +4,7 @@ class Book < ActiveRecord::Base
 
   include Tire::Model::Search
   include Tire::Model::Callbacks
-  include SeoName
+  include Concerns::SeoName
 
   FORMATS = [:txt, :rtf, :doc, :pdf, :fb2, :epub, :mobi, :djvu, :paper].freeze
   VIEW_ATTRIBUTES = [:id, :title, :seo, :is_copy] + FORMATS

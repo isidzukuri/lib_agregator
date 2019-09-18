@@ -4,7 +4,7 @@ class Author < ActiveRecord::Base
 
   include Tire::Model::Search
   include Tire::Model::Callbacks
-  include SeoName
+  include Concerns::SeoName
 
   has_and_belongs_to_many :books
 

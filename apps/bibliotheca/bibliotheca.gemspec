@@ -33,6 +33,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'mini_magick', '4.5.1'
   s.add_dependency 'will_paginate', '~> 3.1.0'
   s.add_dependency 'will_paginate-bootstrap'
+  s.add_dependency 'stringex'
+
 
 
   s.add_development_dependency "rspec-rails", '~> 3.8'

@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
   self.table_name = 'articles'
 
   include Concerns::SeoName
-  belongs_to :user
+  belongs_to :user, optional: true
 
   mount_uploader :cover, ArticleCoverUploader
 

@@ -2,7 +2,7 @@ module Bibliotheca
 class Tag < ActiveRecord::Base
   self.table_name = 'tags'
   
-  include SeoName
+  include Concerns::SeoName
 
   has_and_belongs_to_many :books
 

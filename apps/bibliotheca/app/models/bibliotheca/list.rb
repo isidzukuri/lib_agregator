@@ -2,7 +2,7 @@ module Bibliotheca
 class List < ActiveRecord::Base
   self.table_name = 'lists'
 
-  include SeoName
+  include Concerns::SeoName
   belongs_to :user
   has_and_belongs_to_many :books
 

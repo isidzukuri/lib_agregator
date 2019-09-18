@@ -2,7 +2,7 @@ module Bibliotheca
 class Genre < ActiveRecord::Base
   self.table_name = 'genres'
   
-  include SeoName
+  include Concerns::SeoName
 
   has_many :books
 
