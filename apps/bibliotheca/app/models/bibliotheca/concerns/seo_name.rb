@@ -1,4 +1,4 @@
-module Base
+module Bibliotheca
   module Concerns
 module SeoName
   def self.included(base)

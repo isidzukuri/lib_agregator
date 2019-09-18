@@ -2,7 +2,7 @@ module Bibliotheca
 class Article < ActiveRecord::Base
   self.table_name = 'articles'
 
-  include SeoName
+  include Concerns::SeoName
   belongs_to :user
 
   mount_uploader :cover, ArticleCoverUploader
