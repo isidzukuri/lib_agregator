@@ -1,7 +1,6 @@
 - clean controllers from logic, move it to services
 - rewrite parser
 - upload book covers to amazon
-- fix restart after deploy
 - separate into engines: base, api, admin, library 
 - replace tire gem
 - upgrade elastic
