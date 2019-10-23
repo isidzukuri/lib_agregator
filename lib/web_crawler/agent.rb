@@ -2,33 +2,61 @@
 
 module WebCrawler
   class Agent
-
-    STATUS_OK = 200
-
-    # CACHE = Rails.cache
-
     Result = Struct.new(:page, :errors) do
       def success?
         errors.nil?
       end
     end
 
-    def get(url)
-      # if cache
-      response = HTTP.get(url)
+    CACHE = Rails.cache # TODO: get rid of Rails dependency
+    STATUS_OK = 200
 
-      process_response(response)
+    def initialize(config = {})
+      @config = config
+    end
+
+    def get(url)
+      if use_cache?
+        get_from_cache(url)
+      else
+        request(url)
+      end
     end
 
     private
 
-    def process_response(response)
+    attr_reader :config
+
+    def use_cache?
+      config[:use_cache] == true
+    end
+
+    def request(url)
+      response = HTTP.get(url)
+
       if response.status.code == STATUS_OK
-        Result.new(response.body.to_s)
+        result(response.body.to_s)
       else
-        Result.new(nil, [response.status.to_s])
+        result(nil, [response.status.to_s])
       end
     end
 
+    def get_from_cache(url)
+      data = CACHE.read(url)
+
+      if data
+        result(response.body.to_s)
+      else
+        res = request(url)
+
+        CACHE.write(url, res.page) if res.success?
+
+        res
+      end
+    end
+
+    def result(page = nil, errors = nil)
+      Result.new(page, errors)
+    end
   end
 end
