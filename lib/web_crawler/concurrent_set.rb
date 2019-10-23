@@ -6,12 +6,12 @@ module WebCrawler
 
     def initialize
       @current_position = 0
-      @lock = Mutex.new
+      @mutex = Mutex.new
       @store = []
     end
 
     def next
-      lock.synchronize do
+      mutex.synchronize do
         value = store[current_position]
         increment_current_position if value
         value
@@ -30,7 +30,7 @@ module WebCrawler
 
     private
 
-    attr_reader :lock
+    attr_reader :mutex
 
     def increment_current_position
       @current_position += 1

@@ -8,7 +8,8 @@ module WebCrawler
       end
     end
 
-    CACHE = Rails.cache # TODO: get rid of Rails dependency
+    # TODO: get rid of Rails dependency
+    CACHE = Rails.cache
     STATUS_OK = 200
 
     def initialize(config = {})
