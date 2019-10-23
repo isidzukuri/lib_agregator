@@ -14,6 +14,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'rails_helper'
+require 'vcr'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -104,4 +105,11 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+end
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
 end

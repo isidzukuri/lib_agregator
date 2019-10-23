@@ -1,5 +1,5 @@
 # require 'nokogiri'
-# require 'http'
+require 'http'
 
 require 'web_crawler/concurrent_set'
 
