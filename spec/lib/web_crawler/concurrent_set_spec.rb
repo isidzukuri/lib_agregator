@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe WebCrawler::SynchronizedSet do
+RSpec.describe WebCrawler::ConcurrentSet do
   # let!(:book1) { create(:book, fb2: nil) }
 
   describe 'push' do

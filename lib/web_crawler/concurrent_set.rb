@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module WebCrawler
-  class SynchronizedSet
+  class ConcurrentSet
     attr_reader :store, :current_position
 
     def initialize
@@ -30,7 +30,7 @@ module WebCrawler
 
     private
 
-    attr_accessor :lock
+    attr_reader :lock
 
     def increment_current_position
       @current_position += 1

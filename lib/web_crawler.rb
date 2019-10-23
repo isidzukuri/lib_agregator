@@ -1,7 +1,9 @@
 # require 'nokogiri'
 # require 'http'
 
-# require 'web_crawler/sitemap'
+require 'web_crawler/concurrent_set'
+
+
 
 # data store (with sync thread)
 # web_agent
