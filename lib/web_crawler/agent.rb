@@ -17,7 +17,7 @@ module WebCrawler
 
     def get(url)
       if use_cache?
-        get_from_cache(url)
+        from_cache(url)
       else
         request(url)
       end
@@ -41,11 +41,11 @@ module WebCrawler
       end
     end
 
-    def get_from_cache(url)
+    def from_cache(url)
       data = CACHE.read(url)
 
       if data
-        result(response.body.to_s)
+        result(data)
       else
         res = request(url)
 

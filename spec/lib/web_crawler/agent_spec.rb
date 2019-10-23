@@ -41,6 +41,19 @@ RSpec.describe WebCrawler::Agent do
         end
       end
 
+      it 'returns body from url' do
+        VCR.use_cassette('google_index') do
+          expect(WebCrawler::Agent::CACHE).to receive(:write).exactly(1).times.and_call_original
+          expect(WebCrawler::Agent::CACHE).to receive(:read).exactly(2).times.and_call_original
+
+          obj.get(url)
+          res = obj.get(url)
+
+          expect(res.success?).to be_truthy
+          expect(res.page).to be_a(String)
+        end
+      end
+
       it 'returns errors if rquest failed' do
         VCR.use_cassette('google_404') do
           expect(WebCrawler::Agent::CACHE).to receive(:read)
