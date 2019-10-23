@@ -8,6 +8,9 @@ require 'rspec/rails'
 require 'support/factory_bot'
 require 'ffaker'
 
+
+OpenSSL::SSL::SSLContext::DEFAULT_PARAMS[:ciphers]=OpenSSL::SSL::SSLContext.new.ciphers; # fix: key not found: :ciphers
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
