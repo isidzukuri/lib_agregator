@@ -18,14 +18,26 @@ module WebCrawler
       end
     end
 
+    def next_remain
+      mutex.synchronize do
+        size - current_position
+      end
+    end
+
     def push(data)
       data = [data] unless data.is_a?(Array)
 
-      data.each do |item|
-        next if item.nil? || store.include?(item)
+      mutex.synchronize do
+        data.each do |item|
+          next if item.nil? || store.include?(item)
 
-        store << item
+          store << item
+        end
       end
+    end
+
+    def size
+      store.size
     end
 
     private

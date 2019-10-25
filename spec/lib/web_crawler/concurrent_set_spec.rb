@@ -56,4 +56,31 @@ RSpec.describe WebCrawler::ConcurrentSet do
       expect(obj.current_position).to eq(2)
     end
   end
+
+  describe 'size' do
+    it 'returns quantity of items' do
+      obj = described_class.new
+      obj.push([1, 2])
+
+      expect(obj.size).to eq(2)
+    end
+  end
+
+  describe 'next_remain' do
+    it 'returns quantity of items' do
+      obj = described_class.new
+      obj.push([1, 2])
+
+      expect(obj.next_remain).to eq(2)
+      obj.next
+
+      expect(obj.next_remain).to eq(1)
+      obj.next
+
+      expect(obj.next_remain).to eq(0)
+      obj.next
+
+      expect(obj.next_remain).to eq(0)
+    end
+  end
 end
