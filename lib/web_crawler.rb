@@ -1,15 +1,15 @@
-# require 'nokogiri'
+# frozen_string_literal: true
+
+require 'nokogiri'
 require 'http'
 
+require 'web_crawler/agent'
 require 'web_crawler/concurrent_set'
-
-
 
 # data store (with sync thread)
 # web_agent
 # sitemap
 # sitemap_builder
-
 
 module WebCrawler
   # def parse(params)

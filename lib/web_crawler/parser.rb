@@ -1,7 +1,7 @@
+# frozen_string_literal: true
 
 module WebCrawler
   class Parser
-
     # def call
     #   spawn thread
     #     get url

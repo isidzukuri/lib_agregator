@@ -2,9 +2,10 @@
 
 module WebCrawler
   class ConcurrentSet
-    attr_reader :store, :current_position
+    attr_reader :store, :current_position, :next_remain
 
     def initialize
+      @next_remain = 0
       @current_position = 0
       @mutex = Mutex.new
       @store = []
@@ -13,14 +14,12 @@ module WebCrawler
     def next
       mutex.synchronize do
         value = store[current_position]
-        increment_current_position if value
-        value
-      end
-    end
+        if value
+          @current_position += 1
+          @next_remain -= 1
+        end
 
-    def next_remain
-      mutex.synchronize do
-        size - current_position
+        value
       end
     end
 
@@ -30,6 +29,8 @@ module WebCrawler
       mutex.synchronize do
         data.each do |item|
           next if item.nil? || store.include?(item)
+
+          @next_remain += 1
 
           store << item
         end
@@ -43,9 +44,5 @@ module WebCrawler
     private
 
     attr_reader :mutex
-
-    def increment_current_position
-      @current_position += 1
-    end
   end
 end
