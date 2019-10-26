@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
-require 'nokogiri'
+# require 'nokogiri'
+require 'uri'
 require 'http'
 
 require 'web_crawler/agent'
 require 'web_crawler/concurrent_set'
+require 'web_crawler/threads_pool'
+require 'web_crawler/sitemap'
+
 
 # data store (with sync thread)
 # web_agent
