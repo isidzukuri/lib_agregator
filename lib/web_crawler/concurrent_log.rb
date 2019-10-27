@@ -4,7 +4,8 @@ module WebCrawler
   class ConcurrentLog
     include Singleton
 
-    attr_reader :store, :std_out
+    attr_accessor :std_out
+    attr_reader :store
 
     def self.puts_system_info(message, color = :cyan)
       instance.puts_system_info(message, color)
@@ -22,6 +23,10 @@ module WebCrawler
       @mutex = Mutex.new
       @store = {}
       @std_out = config[:std_out] || true
+    end
+
+    def purge
+      @store = {}
     end
 
     def puts_system_info(message, color = :cyan)
@@ -44,10 +49,6 @@ module WebCrawler
       str = key.to_s + glue + store[key].join(glue)
       puts str.colorize(color)
     end
-    #
-    # def size
-    #   store.size
-    # end
 
     private
 

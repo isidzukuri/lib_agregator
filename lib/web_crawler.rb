@@ -16,10 +16,8 @@ require 'web_crawler/file_helpers'
 require 'web_crawler/concurrent_log'
 
 
-# data store (with sync thread)
-# web_agent
-# sitemap
-# sitemap_builder
+# readme
+# config
 
 module WebCrawler
   # def parse(params)

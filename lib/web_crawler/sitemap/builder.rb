@@ -20,13 +20,10 @@ module WebCrawler
 
       def build
         site_info(params[:entry_point])
-
         queue.push(params[:entry_point])
-
         queue.process
-
         save_sitemap
-        # print step info
+        sitemap
       end
 
       private
