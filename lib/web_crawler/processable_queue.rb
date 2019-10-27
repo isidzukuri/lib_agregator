@@ -9,7 +9,7 @@ module WebCrawler
     def initialize(processor, config = {})
       @processor = processor
       @queue = ConcurrentSet.new
-      @threads_pool = ThreadsPool.new(thread_limit: config[:thread_limit])
+      @threads_pool = ThreadsPool.new
     end
 
     def process
@@ -45,9 +45,17 @@ module WebCrawler
 
     def worker(processor)
       while (item = queue.next)
-
         processor.call(item)
+        puts_info
       end
+    end
+
+    def puts_info
+      ConcurrentLog.puts_system_info(info)
+    end
+
+    def info
+      "Queue: #{queue.current_position}/#{queue.size}"
     end
   end
 end

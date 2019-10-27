@@ -27,6 +27,7 @@ module WebCrawler
       thr = Thread.new { process&.call }
 
       pool.push(thr)
+      puts_info()
 
       { status: :ok, thread: thr }
     end
@@ -39,5 +40,16 @@ module WebCrawler
       sleep(join_timeout) while alive_count > 0
       threads.each(&:join)
     end
+
+    def puts_info
+      color = limit_reached? ? :yellow : :cyan
+
+      ConcurrentLog.puts_system_info(info, color)
+    end
+
+    def info
+      "Threads: #{alive_count}/#{thread_limit}"
+    end
+
   end
 end
