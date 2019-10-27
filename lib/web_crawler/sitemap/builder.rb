@@ -46,7 +46,7 @@ module WebCrawler
         res = agent.get(url)
 
         unless res.success?
-          ConcurrentLog.put_in_bucket(url, res.errors.to_s)
+          ConcurrentLog.put_in_bucket(url, res.errors.to_s, :red)
 
           return
         end

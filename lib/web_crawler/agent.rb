@@ -14,6 +14,7 @@ module WebCrawler
 
     def initialize(config = {})
       @config = config
+      @config[:use_cache] ||= WebCrawler::CONFIG[:use_cache]
     end
 
     def get(url)

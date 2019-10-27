@@ -11,18 +11,18 @@ module WebCrawler
       instance.puts_system_info(message, color)
     end
 
-    def self.put_in_bucket(key, value)
-      instance.put_in_bucket(key, value)
+    def self.put_in_bucket(key, value, color = :green)
+      instance.put_in_bucket(key, value.colorize(color))
     end
 
-    def self.puts_bucket(key, color = :green)
-      instance.puts_bucket(key, color)
+    def self.puts_bucket(key)
+      instance.puts_bucket(key)
     end
 
     def initialize(config = {})
       @mutex = Mutex.new
       @store = {}
-      @std_out = config[:std_out] || true
+      @std_out = config[:std_out] || WebCrawler::CONFIG[:std_out] || true
     end
 
     def purge
@@ -42,12 +42,12 @@ module WebCrawler
       end
     end
 
-    def puts_bucket(key, color = :green)
+    def puts_bucket(key)
       return unless std_out
 
       glue = "\n\s-"
       str = key.to_s + glue + store[key].join(glue)
-      puts str.colorize(color)
+      puts str
     end
 
     private

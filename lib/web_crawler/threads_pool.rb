@@ -7,7 +7,7 @@ module WebCrawler
     THREAD_LIMIT = 5
     JOIN_TIMEOUT = 0.1
 
-    def initialize(config = {})
+    def initialize(config = WebCrawler::CONFIG[:threads_pool])
       @pool = ConcurrentSet.new
       @thread_limit = config[:thread_limit] || THREAD_LIMIT
       @join_timeout = config[:join_timeout] || JOIN_TIMEOUT
