@@ -6,7 +6,7 @@ module WebCrawler
 
     attr_reader :queue, :threads_pool, :processor
 
-    def initialize(processor, config = {})
+    def initialize(processor, _config = {})
       @processor = processor
       @queue = ConcurrentSet.new
       @threads_pool = ThreadsPool.new

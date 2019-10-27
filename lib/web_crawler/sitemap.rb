@@ -4,7 +4,6 @@ require 'web_crawler/sitemap/builder'
 
 module WebCrawler
   module Sitemap
-
     def self.build(params)
       Builder.new(params).build
     end

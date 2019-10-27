@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe WebCrawler::Sitemap::Builder do
-
   describe '' do
     let!(:website) { 'http://chtyvo.org.ua/' }
     # let!(:obj) do
@@ -41,6 +40,5 @@ RSpec.describe WebCrawler::Sitemap::Builder do
         expect(obj.sitemap.size).to eq(50)
       end
     end
-
   end
 end

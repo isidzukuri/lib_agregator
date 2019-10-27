@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module WebCrawler
   module Sitemap
     class Builder
-
       InvalidUrlError = Class.new(StandardError)
 
       attr_reader :queue, :sitemap, :params, :site
@@ -33,11 +34,11 @@ module WebCrawler
 
         raise(InvalidUrlError, "'url' does not contain host") unless uri.host
 
-        @site = {host: uri.host, scheme: uri.scheme}
+        @site = { host: uri.host, scheme: uri.scheme }
       end
 
       def processor
-        Proc.new {|url| find_links(url) }
+        proc { |url| find_links(url) }
       end
 
       def find_links(url)
@@ -103,16 +104,15 @@ module WebCrawler
         @sitemap_items_pattern ||= build_link_regexp(params[:sitemap_items_pattern])
       end
 
-      def build_link_regexp pattern = ''
+      def build_link_regexp(pattern = '')
         /<a\s*href="(?=[^"]*#{pattern})([^"]*)">/
       end
 
       def save_sitemap
-        time = Time.now.strftime("%d.%m.%Y_%H-%M")
+        time = Time.now.strftime('%d.%m.%Y_%H-%M')
         path = "tmp/#{site[:host]}/sitemap/#{time}.csv"
         FileHelpers.write path, sitemap.store.to_csv
       end
-
     end
   end
 end

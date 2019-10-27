@@ -27,7 +27,7 @@ module WebCrawler
       thr = Thread.new { process&.call }
 
       pool.push(thr)
-      puts_info()
+      puts_info
 
       { status: :ok, thread: thr }
     end
@@ -50,6 +50,5 @@ module WebCrawler
     def info
       "Threads: #{alive_count}/#{thread_limit}"
     end
-
   end
 end
