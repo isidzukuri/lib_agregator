@@ -6,15 +6,16 @@ module WebCrawler
 
       attr_reader :queue, :sitemap, :params, :site
 
+      #   {
+      #     entry_point: entry_point,
+      #     pages_pattern: /\/authors\//
+      #     sitemap_items_pattern: /authors/
+      #   }
+
       def initialize(params)
         @params = params
         @sitemap = ConcurrentSet.new
         @queue = ProcessableQueue.new(processor)
-        #   {
-        #     entry_point: entry_point,
-        #     pages_pattern: /\/authors\//
-        #     sitemap_items_pattern: /authors/
-        #   }
       end
 
       def build
@@ -24,8 +25,7 @@ module WebCrawler
 
         queue.process
 
-        # create working dir
-        # save sitemap to csv
+        save_sitemap
         # print step info
       end
 
@@ -105,6 +105,12 @@ module WebCrawler
 
       def build_link_regexp pattern = ''
         /<a\s*href="(?=[^"]*#{pattern})([^"]*)">/
+      end
+
+      def save_sitemap
+        time = Time.now.strftime("%d.%m.%Y_%H-%M")
+        path = "tmp/#{site[:host]}/sitemap/#{time}.csv"
+        FileHelpers.write path, sitemap.store.to_csv
       end
 
     end

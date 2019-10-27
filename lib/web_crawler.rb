@@ -3,11 +3,14 @@
 # require 'nokogiri'
 require 'uri'
 require 'http'
+require 'csv'
+require 'fileutils'
 
 require 'web_crawler/agent'
 require 'web_crawler/concurrent_set'
 require 'web_crawler/threads_pool'
 require 'web_crawler/sitemap'
+require 'web_crawler/file_helpers'
 
 
 # data store (with sync thread)
