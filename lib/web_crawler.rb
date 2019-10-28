@@ -15,11 +15,7 @@ require 'web_crawler/sitemap'
 require 'web_crawler/file_helpers'
 require 'web_crawler/concurrent_log'
 
-
-# readme
-
 module WebCrawler
-
   CONFIG = {
         threads_pool: {
           thread_limit: 20,
@@ -28,5 +24,4 @@ module WebCrawler
         std_out: true,
         use_cache: true
       }
-
 end
