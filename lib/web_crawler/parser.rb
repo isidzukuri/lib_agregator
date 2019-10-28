@@ -3,11 +3,11 @@
 module WebCrawler
   class Parser
     # def call
-    #   spawn thread
-    #     get url
-    #     extract_data
-    #     save_data_to csv if present
-    #
+    #     create working dir
+    #     create processible queue from sitemap
+      #     get url
+      #     extract_data (extractor.call(html))
+      #     save_data_to csv if present
     # end
   end
 end

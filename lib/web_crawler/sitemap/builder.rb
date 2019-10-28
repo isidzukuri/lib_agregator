@@ -40,27 +40,31 @@ module WebCrawler
         res = agent.get(url)
 
         unless res.success?
-          ConcurrentLog.put_in_bucket(url, res.errors.to_s, :red)
+          message = "#{url}: #{res.errors}"
+          Log.puts_alert(message)
 
           return
         end
 
-        ConcurrentLog.put_in_bucket(url, 'looking for urls')
+        Log.puts_success(url)
         sitemap_urls = find_sitemap_urls(res.page)
         pages_urls = find_pages_urls(res.page)
 
         sitemap.push(sitemap_urls)
         queue.push(pages_urls)
-        ConcurrentLog.puts_bucket(url)
       end
 
       def find_sitemap_urls(html)
+        return [] unless params[:sitemap_items_pattern]
+
         hrefs = html.scan(params[:sitemap_items_pattern]).flatten
 
         urls_from(hrefs)
       end
 
       def find_pages_urls(html)
+        return [] unless params[:pages_pattern]
+
         hrefs = html.scan(params[:pages_pattern]).flatten
 
         urls_from(hrefs)

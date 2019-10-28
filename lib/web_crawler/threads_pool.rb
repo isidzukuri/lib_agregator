@@ -44,7 +44,7 @@ module WebCrawler
     def puts_info
       color = limit_reached? ? :yellow : :cyan
 
-      ConcurrentLog.puts_system_info(info, color)
+      Log.puts_system_info(info, color)
     end
 
     def info

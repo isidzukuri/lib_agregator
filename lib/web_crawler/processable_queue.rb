@@ -51,7 +51,7 @@ module WebCrawler
     end
 
     def puts_info
-      ConcurrentLog.puts_system_info(info)
+      Log.puts_system_info(info)
     end
 
     def info

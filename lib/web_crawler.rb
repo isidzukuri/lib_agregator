@@ -13,9 +13,11 @@ require 'web_crawler/concurrent_set'
 require 'web_crawler/threads_pool'
 require 'web_crawler/sitemap'
 require 'web_crawler/file_helpers'
-require 'web_crawler/concurrent_log'
+require 'web_crawler/log'
 
 module WebCrawler
+
+  # TODO: move it to config files
   CONFIG = {
         threads_pool: {
           thread_limit: 20,

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module WebCrawler
-  class ConcurrentLog
+  class Log
     include Singleton
 
     attr_accessor :std_out
@@ -11,16 +11,15 @@ module WebCrawler
       instance.puts_system_info(message, color)
     end
 
-    def self.put_in_bucket(key, value, color = :green)
-      instance.put_in_bucket(key, value.colorize(color))
+    def self.puts_success(message, color = :green)
+      instance.puts_system_info(message, color)
     end
 
-    def self.puts_bucket(key)
-      instance.puts_bucket(key)
+    def self.puts_alert(message, color = :red)
+      instance.puts_system_info(message, color)
     end
 
     def initialize(config = {})
-      @mutex = Mutex.new
       @store = {}
       @std_out = config[:std_out] || WebCrawler::CONFIG[:std_out] || true
     end
@@ -35,23 +34,5 @@ module WebCrawler
       puts message.colorize(color)
     end
 
-    def put_in_bucket(key, value)
-      mutex.synchronize do
-        store[key] = [] unless store[key]
-        store[key] << value
-      end
-    end
-
-    def puts_bucket(key)
-      return unless std_out
-
-      glue = "\n\s-"
-      str = key.to_s + glue + store[key].join(glue)
-      puts str
-    end
-
-    private
-
-    attr_reader :mutex
   end
 end
