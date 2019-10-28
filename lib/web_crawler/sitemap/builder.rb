@@ -7,12 +7,6 @@ module WebCrawler
 
       attr_reader :queue, :sitemap, :params, :site
 
-      #   {
-      #     entry_point: entry_point,
-      #     pages_pattern: /\/authors\//
-      #     sitemap_items_pattern: /authors/
-      #   }
-
       def initialize(params)
         @params = params
         @sitemap = ConcurrentSet.new
@@ -61,13 +55,13 @@ module WebCrawler
       end
 
       def find_sitemap_urls(html)
-        hrefs = html.scan(sitemap_items_pattern).flatten
+        hrefs = html.scan(params[:sitemap_items_pattern]).flatten
 
         urls_from(hrefs)
       end
 
       def find_pages_urls(html)
-        hrefs = html.scan(pages_pattern).flatten
+        hrefs = html.scan(params[:pages_pattern]).flatten
 
         urls_from(hrefs)
       end
@@ -96,16 +90,8 @@ module WebCrawler
         uri.to_s
       end
 
-      def pages_pattern
-        @pages_pattern ||= build_link_regexp(params[:pages_pattern])
-      end
-
-      def sitemap_items_pattern
-        @sitemap_items_pattern ||= build_link_regexp(params[:sitemap_items_pattern])
-      end
-
       def build_link_regexp(pattern = '')
-        /<a\s*href="(?=[^"]*#{pattern})([^"]*)">/
+        pattern
       end
 
       def save_sitemap
