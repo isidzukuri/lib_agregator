@@ -4,7 +4,7 @@ RSpec.describe WebCrawler::Parser do
   describe '' do
     class DummyDataMiner
       def call(url, html)
-        'parsed_data'
+        {some_key: 'parsed_data'}
       end
     end
 
@@ -22,7 +22,7 @@ RSpec.describe WebCrawler::Parser do
       VCR.use_cassette('') do
         res = obj.call
 
-        expect(res.store).to eq(['parsed_data'])
+        expect(res.store).to eq([{some_key: 'parsed_data'}])
       end
     end
 

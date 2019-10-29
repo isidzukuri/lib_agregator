@@ -8,6 +8,7 @@ require 'http'
 require 'singleton'
 require 'uri'
 
+require 'web_crawler/concurrent_data_store'
 require 'web_crawler/concurrent_set'
 require 'web_crawler/file_helpers'
 require 'web_crawler/log'
