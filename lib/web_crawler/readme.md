@@ -8,3 +8,21 @@ WebCrawler::Sitemap.build({
       })
 ```
 Will be saved in tmp folder as csv file.
+
+
+Data miner obj should have implemented `:call` method which returns hash
+
+```ruby
+class DummyDataMiner
+  def call(url, html)
+    {some_key: 'parsed_data'}
+  end
+end
+```
+
+Parse
+
+```ruby
+WebCrawler::Parser.new(sitemap_obj, data_miner_obj).call
+```
+Will return data set. Also data will be saved to the file in tmp folder.
