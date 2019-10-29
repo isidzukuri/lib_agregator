@@ -1,7 +1,7 @@
 Most interesting thing about this library its dynamically spawned threads. Why its needed?
 For example you have one job to do. Its easy: one job - one thread. 2 jobs - 2 threads ... n jobs - n threads (in ideal world).
-But what if you dont know about number of jobs should be done at the start? Or number will change in the middle of the process?
-It would be cool if code could decide about optimal number of threads in each moment of time.
+But what if you dont know  at the start about number of jobs should be done? Or number will change in the middle of the process?
+It would be cool if code could decide about optimal number of threads in each moment of time. If queue of jobs is big - starts new threads. Thread simply dies if no job left for it.
 
 
 Build sitemap
