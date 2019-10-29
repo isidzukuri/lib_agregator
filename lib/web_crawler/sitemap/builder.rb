@@ -3,7 +3,6 @@
 module WebCrawler
   module Sitemap
     class Builder
-
       InvalidUrlError = Class.new(StandardError)
 
       attr_reader :queue, :sitemap, :params, :site

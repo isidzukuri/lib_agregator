@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'web_crawler/web/agent'
 require 'web_crawler/web/result'
 
@@ -25,6 +26,5 @@ module WebCrawler
 
       res.page
     end
-
   end
 end

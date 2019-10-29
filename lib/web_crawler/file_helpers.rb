@@ -3,7 +3,7 @@
 module WebCrawler
   module FileHelpers
     def self.write(path, data = nil)
-      self.create_dir(path)
+      create_dir(path)
       file = File.new(path, 'w+')
       file.puts(data)
       file.close

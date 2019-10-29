@@ -3,7 +3,6 @@
 module WebCrawler
   module Web
     class Agent
-      
       # TODO: get rid of Rails dependency
       CACHE = Rails.cache
       STATUS_OK = 200

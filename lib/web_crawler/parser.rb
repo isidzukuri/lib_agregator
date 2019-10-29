@@ -2,7 +2,6 @@
 
 module WebCrawler
   class Parser
-
     attr_reader :queue, :data, :data_store, :data_miner, :site
 
     def initialize(sitemap, data_miner)
@@ -45,6 +44,5 @@ module WebCrawler
       dir = "tmp/#{site[:host]}"
       ConcurrentDataSrore.new(dir)
     end
-
   end
 end

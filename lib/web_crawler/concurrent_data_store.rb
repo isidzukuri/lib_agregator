@@ -2,7 +2,6 @@
 
 module WebCrawler
   class ConcurrentDataSrore
-
     def initialize(dir)
       time = Time.now.strftime('%d.%m.%Y')
       @path = "#{dir}/data_#{time}.csv"
@@ -31,6 +30,5 @@ module WebCrawler
     def add_row(entity)
       file << entity.values_at(*headers)
     end
-
   end
 end
