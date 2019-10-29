@@ -32,6 +32,7 @@ class ChtyvoImporter
   end
 
   def create_book(entry, authors, genre, tags)
+    # return if  exists
     entry.delete('author')
     entry.delete('tags')
     entry.delete('category')

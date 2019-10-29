@@ -33,6 +33,5 @@ module WebCrawler
 
       puts message.colorize(color)
     end
-
   end
 end

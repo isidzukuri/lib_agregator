@@ -14,7 +14,7 @@ module WebCrawler
       end
 
       def build
-        site_info(params[:entry_point])
+        @site = site_info(params[:entry_point])
         queue.push(params[:entry_point])
         queue.process
         save_sitemap
@@ -23,32 +23,43 @@ module WebCrawler
 
       private
 
+      # agent helpers
+
       def site_info(url)
         uri = URI(url)
 
         raise(InvalidUrlError, "'url' does not contain host") unless uri.host
 
-        @site = { host: uri.host, scheme: uri.scheme }
+        { host: uri.host, scheme: uri.scheme }
       end
+
+      def load_page(url)
+        agent = Agent.new
+        res = agent.get(url)
+
+        if res.success?
+          Log.puts_success(url)
+        else
+          message = "#{url}: #{res.errors}"
+          Log.puts_alert(message)
+        end
+
+        res.page
+      end
+
+      #####################
 
       def processor
         proc { |url| find_links(url) }
       end
 
       def find_links(url)
-        agent = Agent.new
-        res = agent.get(url)
+        page = load_page(url)
 
-        unless res.success?
-          message = "#{url}: #{res.errors}"
-          Log.puts_alert(message)
+        return unless page
 
-          return
-        end
-
-        Log.puts_success(url)
-        sitemap_urls = find_sitemap_urls(res.page)
-        pages_urls = find_pages_urls(res.page)
+        sitemap_urls = find_sitemap_urls(page)
+        pages_urls = find_pages_urls(page)
 
         sitemap.push(sitemap_urls)
         queue.push(pages_urls)
@@ -94,12 +105,8 @@ module WebCrawler
         uri.to_s
       end
 
-      def build_link_regexp(pattern = '')
-        pattern
-      end
-
       def save_sitemap
-        time = Time.now.strftime('%d.%m.%Y_%H-%M')
+        time = Time.now.strftime('%d.%m.%Y')
         path = "tmp/#{site[:host]}/sitemap/#{time}.csv"
         FileHelpers.write path, sitemap.store.to_csv
       end
