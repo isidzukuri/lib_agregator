@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 require 'web_crawler/web/agent'
-# require 'web_crawler/web/result'
-
+require 'web_crawler/web/result'
 
 module WebCrawler
   module Web
-    def site_info(url)
+    def self.site_info(url)
       uri = URI(url)
 
       raise(InvalidUrlError, "'url' does not contain host") unless uri.host
@@ -13,7 +12,7 @@ module WebCrawler
       { host: uri.host, scheme: uri.scheme }
     end
 
-    def load_page(url)
+    def self.load_page(url)
       agent = Web::Agent.new
       res = agent.get(url)
 

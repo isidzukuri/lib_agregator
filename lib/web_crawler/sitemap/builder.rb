@@ -3,7 +3,6 @@
 module WebCrawler
   module Sitemap
     class Builder
-      include WebCrawler::Web
 
       InvalidUrlError = Class.new(StandardError)
 
@@ -16,7 +15,7 @@ module WebCrawler
       end
 
       def build
-        @site = site_info(params[:entry_point])
+        @site = Web.site_info(params[:entry_point])
         queue.push(params[:entry_point])
         queue.process
         save_sitemap
@@ -30,7 +29,7 @@ module WebCrawler
       end
 
       def find_links(url)
-        page = load_page(url)
+        page = Web.load_page(url)
 
         return unless page
 

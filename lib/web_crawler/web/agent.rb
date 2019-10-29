@@ -3,12 +3,7 @@
 module WebCrawler
   module Web
     class Agent
-      Result = Struct.new(:page, :errors) do
-        def success?
-          errors.nil?
-        end
-      end
-
+      
       # TODO: get rid of Rails dependency
       CACHE = Rails.cache
       STATUS_OK = 200
