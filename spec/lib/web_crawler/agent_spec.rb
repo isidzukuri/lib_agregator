@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe WebCrawler::Agent do
+RSpec.describe WebCrawler::Web::Agent do
   # let!(:book1) { create(:book, fb2: nil) }
 
   describe 'get' do
@@ -31,8 +31,8 @@ RSpec.describe WebCrawler::Agent do
 
       it 'returns body from url' do
         VCR.use_cassette('google_index') do
-          expect(WebCrawler::Agent::CACHE).to receive(:read)
-          expect(WebCrawler::Agent::CACHE).to receive(:write)
+          expect(WebCrawler::Web::Agent::CACHE).to receive(:read)
+          expect(WebCrawler::Web::Agent::CACHE).to receive(:write)
 
           res = obj.get(url)
 
@@ -43,8 +43,8 @@ RSpec.describe WebCrawler::Agent do
 
       it 'returns body from url' do
         VCR.use_cassette('google_index') do
-          expect(WebCrawler::Agent::CACHE).to receive(:write).exactly(1).times.and_call_original
-          expect(WebCrawler::Agent::CACHE).to receive(:read).exactly(2).times.and_call_original
+          expect(WebCrawler::Web::Agent::CACHE).to receive(:write).exactly(1).times.and_call_original
+          expect(WebCrawler::Web::Agent::CACHE).to receive(:read).exactly(2).times.and_call_original
 
           obj.get(url)
           res = obj.get(url)
@@ -56,8 +56,8 @@ RSpec.describe WebCrawler::Agent do
 
       it 'returns errors if rquest failed' do
         VCR.use_cassette('google_404') do
-          expect(WebCrawler::Agent::CACHE).to receive(:read)
-          expect(WebCrawler::Agent::CACHE).not_to receive(:write)
+          expect(WebCrawler::Web::Agent::CACHE).to receive(:read)
+          expect(WebCrawler::Web::Agent::CACHE).not_to receive(:write)
 
           res = obj.get(invalid_url)
 

@@ -3,6 +3,8 @@
 module WebCrawler
   module Sitemap
     class Builder
+      include WebCrawler::Web
+
       InvalidUrlError = Class.new(StandardError)
 
       attr_reader :queue, :sitemap, :params, :site
@@ -22,32 +24,6 @@ module WebCrawler
       end
 
       private
-
-      # agent helpers
-
-      def site_info(url)
-        uri = URI(url)
-
-        raise(InvalidUrlError, "'url' does not contain host") unless uri.host
-
-        { host: uri.host, scheme: uri.scheme }
-      end
-
-      def load_page(url)
-        agent = Agent.new
-        res = agent.get(url)
-
-        if res.success?
-          Log.puts_success(url)
-        else
-          message = "#{url}: #{res.errors}"
-          Log.puts_alert(message)
-        end
-
-        res.page
-      end
-
-      #####################
 
       def processor
         proc { |url| find_links(url) }

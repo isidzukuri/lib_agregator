@@ -2,6 +2,8 @@
 
 module WebCrawler
   class Parser
+    include WebCrawler::Web
+    
     attr_reader :queue, :data, :data_miner
 
     def initialize(sitemap, data_miner)
