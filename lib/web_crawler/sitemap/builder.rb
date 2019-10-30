@@ -82,7 +82,7 @@ module WebCrawler
       def save_sitemap
         time = Time.now.strftime('%d.%m.%Y')
         path = "tmp/#{site[:host]}/sitemap/#{time}.csv"
-        FileHelpers.write path, sitemap.store.to_csv
+        FileHelpers.write path, sitemap.store.join("\n")
       end
     end
   end
