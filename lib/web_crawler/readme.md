@@ -1,6 +1,6 @@
 Most interesting thing about this library its dynamically spawned threads. Why its needed?
 For example you have one job to do. Its easy: one job - one thread. 2 jobs - 2 threads ... n jobs - n threads (in ideal world).
-But what if you dont know  at the start about number of jobs should be done? Or if number will change in the middle of the process?
+But what if you dont know  at the start about number of jobs should be done? Or if number will change during the process?
 It would be cool if code could decide about optimal number of threads in each moment of time.
 
 Logic begind is simple: if queue of jobs is big - start new threads. Thread dies if no jobs left.
@@ -23,7 +23,7 @@ Parse website:
 ```ruby
 WebCrawler::Parser.new(sitemap_obj, data_miner_obj).call
 ```
-Will return data set. Also data will be saved to the file in tmp folder.
+Returns data set. Also data will be saved to the file in tmp folder.
 
 
 Data miner obj should respond to `:call` and return hash
