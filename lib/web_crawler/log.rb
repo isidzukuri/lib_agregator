@@ -5,7 +5,6 @@ module WebCrawler
     include Singleton
 
     attr_accessor :std_out
-    attr_reader :store
 
     def self.puts_system_info(message, color = :cyan)
       instance.puts_system_info(message, color)
@@ -20,12 +19,7 @@ module WebCrawler
     end
 
     def initialize(config = {})
-      @store = {}
       @std_out = config[:std_out] || WebCrawler::CONFIG[:std_out] || true
-    end
-
-    def purge
-      @store = {}
     end
 
     def puts_system_info(message, color = :cyan)
