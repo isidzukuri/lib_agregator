@@ -1,10 +1,12 @@
 Most interesting thing about this library its dynamically spawned threads. Why its needed?
 For example you have one job to do. Its easy: one job - one thread. 2 jobs - 2 threads ... n jobs - n threads (in ideal world).
-But what if you dont know  at the start about number of jobs should be done? Or number will change in the middle of the process?
-It would be cool if code could decide about optimal number of threads in each moment of time. If queue of jobs is big - starts new threads. Thread simply dies if no job left for it.
+But what if you dont know  at the start about number of jobs should be done? Or if number will change in the middle of the process?
+It would be cool if code could decide about optimal number of threads in each moment of time.
+
+Logic begind is simple: if queue of jobs is big - start new threads. Thread dies if no jobs left.
 
 
-Build sitemap
+Build sitemap:
 ```ruby
 WebCrawler::Sitemap.build({
         entry_point: 'http://chtyvo.org.ua/',
@@ -12,10 +14,19 @@ WebCrawler::Sitemap.build({
         sitemap_items_pattern: /((?:http:\/\/chtyvo.org.ua\/)?authors\/(?!letter).+\/.+\/)"/
       })
 ```
-Returns set of urls. Will be saved in tmp folder as csv file.
+Returns set of urls. The set will be saved in `/tmp` folder as csv file.
+Process will visit page(`:entry_point`) at the  start. It will start looking there for links to pages(`:pages_pattern`) which contains urls(`:sitemap_items_pattern`) which will be saved to the sitemap.
 
 
-Data miner obj should have implemented `:call` method which returns hash
+Parse website:
+
+```ruby
+WebCrawler::Parser.new(sitemap_obj, data_miner_obj).call
+```
+Will return data set. Also data will be saved to the file in tmp folder.
+
+
+Data miner obj should respond to `:call` and return hash
 
 ```ruby
 class DummyDataMiner
@@ -24,10 +35,3 @@ class DummyDataMiner
   end
 end
 ```
-
-Parse website:
-
-```ruby
-WebCrawler::Parser.new(sitemap_obj, data_miner_obj).call
-```
-Will return data set. Also data will be saved to the file in tmp folder.
