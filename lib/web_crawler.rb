@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# require 'nokogiri'
 require 'colorize'
 require 'csv'
 require 'fileutils'
@@ -21,7 +20,7 @@ module WebCrawler
   # TODO: move it to config files
   CONFIG = {
         threads_pool: {
-          thread_limit: 20,
+          thread_limit: 40,
           join_timeout: 0.1
         },
         std_out: true,

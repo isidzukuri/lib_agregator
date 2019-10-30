@@ -24,11 +24,15 @@ module WebCrawler
       @headers = entity.keys
       FileHelpers.create_dir(path)
       @file = CSV.open(path, 'wb')
-      file << headers
+      write(headers)
     end
 
     def add_row(entity)
-      file << entity.values_at(*headers)
+      write(entity.values_at(*headers))
+    end
+
+    def write(row)
+      CSV.open(path, 'a+'){|csv| csv << row}
     end
   end
 end

@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module BooksMining
   class ChtyvoDataMiner
-
     def call(url, page)
       return nil unless page && url
 
@@ -33,8 +34,8 @@ module BooksMining
       file_url = nil
 
       link = page.at("a:contains('#{frmt}')")
-      link = page.at("a:contains('#{frmt}.zip')") unless link
-      link = page.at("a:contains('#{frmt}.rar')") unless link
+      link ||= page.at("a:contains('#{frmt}.zip')")
+      link ||= page.at("a:contains('#{frmt}.rar')")
 
       file_url = URI(link[:href]).path if link
       file_url
