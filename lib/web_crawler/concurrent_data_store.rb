@@ -4,7 +4,7 @@ module WebCrawler
   class ConcurrentDataSrore
     def initialize(dir)
       time = Time.now.strftime('%d.%m.%Y')
-      @path = "#{dir}/data_#{time}.csv"
+      @path = "#{dir}/store/data_#{time}.csv"
       @mutex = Mutex.new
     end
 

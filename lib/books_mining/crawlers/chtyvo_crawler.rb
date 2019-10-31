@@ -6,6 +6,7 @@ module BooksMining
 
     def call
       WebCrawler::Parser.new(sitemap, data_miner).call
+      ChtyvoImporter.new.call
     end
 
     private
