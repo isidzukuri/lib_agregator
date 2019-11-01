@@ -1,0 +1,593 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://chtyvo.org.ua/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - chtyvo.org.ua
+      User-Agent:
+      - http.rb/4.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 28 Oct 2019 16:05:26 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - PHPSESSID=9f197625d4916126df45a4c17998023a; path=/
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n<html
+        xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head>\r\n    <title id=\"title\">Чтиво</title>\r\n
+        \   <base href=\"http://chtyvo.org.ua/\" />\r\n    <meta http-equiv=\"Content-Type\"
+        content=\"text/html; charset=utf-8\" />\r\n\t<meta name=\"description\" content=\"
+        - Чтиво\" />\r\n    <meta name=\"keywords\" content=\"книжки, електронні книжки,
+        електронні книги, електронна література, книжки онлайн, книжки скачати, книги
+        онлайн, книги скачати, тексти, фантастика, класика, історія, проза, українська
+        література, укр. літ., укр літ, українські книги, українські тексти\" />\r\n
+        \   <link rel=\"stylesheet\" href=\"http://assets.chtyvo.org.ua/css/style.css?_20131104\"
+        />\r\n    <script src=\"http://assets.chtyvo.org.ua/scripts/jquery.js?_20131104\"
+        type=\"text/javascript\" language=\"javascript\"></script>\r\n    <script
+        src=\"http://assets.chtyvo.org.ua/scripts/common.js?_20131104\" type=\"text/javascript\"
+        language=\"javascript\"></script>\r\n\r\n<script type=\"text/javascript\">!function(t,r,n,e,o,a,c,i,u,f,s,l,h,d,p,y,L,g,C,m,w,b,Q,N,I,R,D,S,Y,E,A,O,x,G,M,T,j,H,z,F,P,U,B,J,V,W,Z,q,X,K,_,$,tt,rt,nt,et,ot,at,ct,it,ut,ft,st,vt,lt,ht,dt,pt,yt,Lt,gt,Ct,mt,wt,bt,Qt,Nt,It,Rt,Dt,St,Yt,Et,kt,At,Ot,xt,Gt,Mt,Tt,jt,Ht,zt,Ft,Pt,Ut,Bt,Jt,Vt,Wt,Zt,qt,Xt,Kt,_t,$t,tr,rr,nr,er,or,ar,cr,ir,ur,fr,sr,vr,lr,hr,dr,pr,yr,Lr,gr,Cr,mr,wr,br,Qr,Nr,Ir,Rr,Dr,Sr,Yr,Er,kr,Ar,Or,xr,Gr,Mr,Tr,jr,Hr,zr,Fr,Pr,Ur,Br,Jr,Vr,Wr,Zr,qr,Xr,Kr,_r,$r,tn,rn,nn,en,on,an,cn,un,fn,sn,vn,ln,hn,dn,pn,yn,Ln,gn,Cn,mn,wn,bn,Qn,Nn,In,Rn,Dn,Sn,Yn,En,kn,An,On,xn,Gn,Mn,Tn,jn,Hn,zn,Fn,Pn,Un,Bn,Jn,Vn,Wn,Zn,qn,Xn,Kn,_n,$n,te,re,ne,ee,oe,ae,ce,ie,ue,fe,se,ve,le,he,de,pe,ye,Le,ge,Ce,me,we,be,Qe,Ne,Ie,Re,De,Se,Ye,Ee,ke,Ae,Oe,xe,Ge,Me,Te,je,He,ze,Fe,Pe,Ue,Be,Je,Ve,We,Ze,qe,Xe,Ke,_e,$e,to,ro,no,eo,oo,ao,co,io,uo,fo,so,vo,lo,ho,po,yo,Lo,go,Co,mo,wo,bo){function
+        Qo(){for(var t=arguments,r={},n=0;n<t.length;n+=2)r[t[n]]=t[n+1];return r}var
+        No=\"\",Io=Ir+Je,Ro=$n+xr,Do=un+er+$n+xr+we+to+q+me,So=un+er,Yo=ur+An+An,Eo=we+no+we+pr+q+Hn+b+we+to+Wt+pr+_r+q+nn+S+me+nn+to+Wt+pr+_r+Zt+ht+me+A+nn+hr+An+ie+Zt+mt,ko=mt+me,Ao=$+q+we+mt,Oo=mt+q,xo=Lr+Vr+un+me+t+Zt+Qr+Sr+p,Go=wn+Te+or,Mo=$r+W,To=dr+er+$r+Vr+un+me+s+so,jo=$r+Vr+un,Ho=H+In,zo=Zt+ht,Fo=_+wt+r+Kt+Ze,Po=fr+so+te+so+vn,Uo=ne+Yr,Bo=yo+nn+br+nn+Sn+nn+mr+Xr+nn+dt+so+nn+tt+nn+io+nn+Ut+Sr+P+nn+zt+nn+i+nn+Gr+nn+Ht+Xr+kn+kn,Jo=Tr+Dn+l+Wr+ro+Dt+Ae+be+Rn+et+ir+Nn+pt+Ft+rn+Qn+Ce+Rr+Lt+Pn+_t+Qt+Vn+co+jn+go+Vr+Nn+rt+wo+Be+F+Vr+d+Gt+Zt+Zt,Vo=Fe+Sr+Ye,Wo=Fe+Sr+ft+Sr+xe,Zo=cr+xn,qo=pn+Bn,Xo=_+pe+Ee+Br,Ko=(kn=kn,er+nn),_o=br+vo+$e,$o=Tn+er,ta=Nr+Yn,ra=_+it,na=xt+po,ea=fe+it,oa=(Vr=Vr,Sr=Sr,wr+er),aa=R+Yn,ca=Nr+Gn,ia=Ot+An+Vt,ua=Le+An+Sn,fa=Un+An+Sn,sa=Vr+On,va=L+An+E,la=An+Yt,ha=An+kt,da=oe+An+Jt,pa=V+Ve,ya=fn+Xr+nr+Xr+Ge,La=Vr+Vr+jt+Xr+Ue+Xr+ct+Vr,ga=kr+De+ot,Ca=br+B,ma=vt+En,wa=Jr+At+pe,ba=Wt+ze+_r,Qa=n+Xn,Na=Dr+Et+De,Ia=_n+o,Ra=vr+Re+Or,Da=wn+g,Sa=ln+c,Ya=fe+M,Ea=eo+Ne,ka=Ot+An+It,Aa=Vr+Vr,Oa=(Xr=Xr,dn+mn),xa=Ct+ce,Ga=(An=An,e+Ie),Ma=x+oo,Ta=An+ut,ja=zr+Xn,Ha=e+T+nn+G+Zt+mt,za=mt+nn+Xt+oo+e+Vr+T+oo,Fa=Cn+Se,Pa=this,Ua=Pa[ye],Ba=null,Ja=Pa[Jn],Va=!0;try{Va=!!Pa[yr]}catch(t){}if(Ua[Io]&&(Ja||Va)){try{Ba=Pa[Ro],Pa[Ro]=Wa,Pa[Ro]!=Wa&&(Ba=null)}catch(t){Ba=null}Pa[re]=Ba?Do:So+Ua[Io][$r]}else
+        Wa(Pa);function Wa(t,r){function n(r){var n=Yo+o(),e=Pe+o(),c=!1,u=!1,f=!1,s=!1;m(t,n,Qo(_,function(){return
+        s?void 0:(s=!0,Vt)})),r=Eo+n+ko+r+Ao+e+Oo,v();function v(){var t=h();if(c)u?f?t=null:(f=!0,t[$t]=To+q(r)):(u=!0,t[Mo]=r);else{c=!0;var
+        n=new et([r],Qo(en,xo));t[$t]=ot[Go](n)}t?l(t):i()}function l(r){try{H[a](ut[hn],r),$(function(){t[e]||v()},1)}catch(t){}}function
+        h(){var t=T(ue);return t[We]=!1,t[en]=jo,t}}function e(t){return-1!=ut[cn][Ho](t+zo)}function
+        o(){var r=it||t[Xe];return r[bt](r[St]()*r[nt](Gt,jt*Gt))}function c(){var
+        t,r=[le,Rt,je],n=No,e=5,a=7,c=0;t=e+u(a-e);for(var i=0;i<t;i++)n+=r[c][u(r[c][Bt])],c=(c+u(100))%3;return
+        n;function u(t){return o()%t}}function i(){try{var t=ut[Fo](Po);for(var r
+        in t)t[r][$t]&&(t[r][$t]=No)}catch(t){}for(var n in ut[Uo])ut[Uo][n][ze]=Ot;x(),$(e,100);function
+        e(){F(Bo+rt(tt(W(Jo))))}}function s(t){return t[J][Vo]||t[J][Wo]&&t[J][Wo][0]==Q}function
+        l(t){var r=t[Zo],n=Qo();[tr,on,Xo][qo](function(t){n[t]=r[yt][t]});function
+        e(t){for(var r in n)t[r]=n[r][j](t)}function o(t){var r=Qo(),n=t[Xo]();n=n[ke]()[qt](kn),n[qo](function(t){var
+        n=t[qt](Ko);n[Bt]<2||(k=n[0][ke]()[_o](),v=n[1][ke](),r[k]=v)}),t[J]=r}this[w]=function(t,n,c,i){var
+        u=new r;e(u),u[tr](n?Oe:Fn,$o+t,Ot),u[ta]=$r,u[mo]=R(),u[en]=Kn,c&&M[a](u,Sn,function(t){o(u),c(t[D])}),i&&M[a](u,z,function(t){R()-u[mo]<Ft&&i()}),u[on](n)}}var
+        d=Qo(_,function(r){try{if(t[na][ra](Et)==r){var n=t[na][ra](Yt);if(_t[kt](n,3)==r)return
+        n}}catch(t){}},fe,function(r,n){t[na][ea](Yt,r),t[na][ea](Et,n)});function
+        L(t){this[w]=function(n,e,o,a){var c=0;try{e&&(n+=Vr+e[Wn](/\\//g,Sr));var
+        i=new t(oa+n);i[aa]=mt+sn,c=R(),i[K+Qt]=function(t){var n=typeof t[dr]==Mt?t[dr]:r(t[dr]);o(Qo(en,X,ca,n,X,i))},i[se]=u}catch(t){return
+        u()}function u(t){a&&R()-c<Ft&&a()}};function r(t){try{return b[qn](null,new
+        ct(t))}catch(t){return No}}}var m,b,R,S,E,A,x,M,T,H,F,P,V,W,q,$,tt,rt,et,ot,ct,it,ut=t[ye],ft=t[re][lo],ht=y,dt=(e(ia),Qo(Sn,ua,z,fa)),pt=Pr,Lt=Mn,Ct=Pt,mt=Ln,wt=ve,Qt=Co,It=sa,Dt=va,Yt=Dt+la,Et=Dt+ha,At=!1,Ot=1,xt=0,Gt=2,jt=8*Gt,Ht=16*jt,zt=100,Ft=30*zt,Ut=3,Jt=zt,Vt=Qo(ao,Qo(da,No,Y,No),jr,Qo(Z,pa,fo,at)),Wt=ya,Zt=La,Kt=Hr,_t=Qo(gn,function(t){for(var
+        r=o()%Ht,n=b(r),e=0,a=0;a<t[Bt];a++){var c=t[ga](a);n+=b(c^r),e+=c}return
+        n+=b(e%Ht),q(n)},gt,function(t){try{t=W(t)}catch(t){}if(t[Bt]){var r,n=No,e=0,o=t[ga](0);for(r=1;r<t[Bt]-1;r++){var
+        a=t[ga](r);n+=b(a^o),e+=a^o}return e%Ht==t[ga](r)?n:void 0}},kt,function(t,r){var
+        n,e,o=0,a=t[Bt],c=No;for(r=r||1,e=0;e<5;e++){for(n=1;n<a;n+=r)o^=t[ga](n),o+=(o<<1)+(o<<4)+(o<<7)+(o<<8)+(o<<24);e&&(c+=(o>>>0)[Ca](16))}return
+        c});function nr(n,e){try{n[Mr]()}catch(t){}if(e[ma](G),e[ma](Xt),!At){At=Ot;var
+        o=n[g][yt][ma],c=n[gr][yt][wa],i=n[gr][yt][I];if(o[a](e,G),r){var u=c[a](ut,ba);if(!(u[Bt]>0))return;var
+        f=u[u[Bt]-1];f[ze]=xt,i[a](ut,f[Qa]),f[vt]()}b=n[B][Na],ct=n[wt+p+Ct],m=n[Te][Ia],R=n[C][Fr],F=n[qr],x=n[Mr],M=n[ye][Ra],T=n[U][yt][Da][j](ut),H=n[ar][yt][Sa],P=n[zn][rr],V=n[zn][Ar],W=n[ae],q=n[tn],$=n[Ya][j](t),n[or][Go],tt=n[uo],rt=n[Ea],et=n[lr],ot=n[or],it=n[Xe],A=n[pt+W(Lt)],S=new
+        l(n),E=new L(A);for(var s in dt)Vt[dt[s]]=[],M[a](ut,s,v(s),Ot);er()}function
+        v(t){return function(r){Vt[dt[t]][Lo](r[D])}}}function er(){var r=Qo(ge,Kt,Tt,ut[re][u],he,e(ka)?1:0,N,No),o=_t[gn](P(r)),a=_t[kt](It+r[Tt]),c=0,f=0,v=0;l(Wt,t[Jn]?X:Kn);function
+        l(t,r){var n=r==Kn?S:E;n[w](Aa+t+It,o,p,e);function e(){r==X?l(t,Kn):(c++,1==c&&Zt?y():i())}}function
+        p(t,r){var e;if(r)e=r;else{var o=_t[gt](t[ca]);if(!o&&t[en]==Kn){if(s(t))return
+        y();if(t[J][Vo]!=a)return i()}try{e=V(o)}catch(t){return}}var c=e[ee]?e[ee]+Xr:No,u=e[Ke]?e[Ke]+c:c,v=(e[Cr],Aa+u+e[Cr]+e[h]);if(Vt[ao][Y]=e[N],Vt[ao][Oa]=e,Vt[ao][da]=c+e[Cr],Vt[ao][st]=ft,e[Zn]){var
+        l=d[_](e[Zn]);if(l)return t[X]&&(Vt[ao][X]=Qo(sr,oa+v,xa,3,He,3,lt,1)),n(l)}p();function
+        p(){var r=t[en]==Kn?S:E;r[w](v,null,L,g)}function L(t){var r=t[ca];r[Bt]<1e3&&!s(t)&&i(),t[X]&&(Vt[ao][X]=t[X]),e[Zn]&&d[fe](r,e[Zn]),n(r)}function
+        g(){f++,1==f?y(e):i()}}function y(t){if(!(Ut<++v)){var r;if(t){var n=t[ee]?t[ee]+Xr:No;r=n+t[Cr]}else
+        r=Wt;var e=Qo(Me,ft,O,r),o=_t[gn](P(e));S[w](Zt,o,a,i)}function a(r){var n,e=_t[gt](r[ca]);if(!e&&!s(r))return
+        i();try{n=V(e)}catch(t){return}n[Me]&&(ft=n[Me]),n[O]&&(t?(t[ee]=No,t[Cr]=n[O],p(null,t)):$(function(){l(n[O],Kn)},Jt))}}}try{if(t[Ur][An+Vt[jr][Z]]==Vt[jr][fo])return
+        t[Ur][An+Vt[jr][Z]]=No,ut[Nt](Ga+ht+Ma),void ut[de]()}catch(t){}if(Ba){if(typeof
+        t!=f)return Ba[qn](this,arguments);t[Ro]=Ba}var cr,ir=ut[Da](qe);try{cr=c()}catch(t){cr=Ta}ir[ja]=Ha+cr+za;var
+        ur=ir[Qe][0];ut[hn][Sa](ur),t[cr]?nr(t[cr],ur):ur[Fa]?nr(ur[Fa],ur):ur[Ra](Sn,function(){nr(ur[Fa],ur)})}}(\"charset\",\"By\",\"outer\",\"<\",\"Property\",\"call\",\"Child\",\"refresh\",\"href\",\"object\",\"base64\",\"Cw\",\"ur\",\"0L7Qv9GL0YLQut\",\"8\",\"FRAME\",\"lsmc\",\"Element\",\"Date\",0,\"r\",\"if\",\"5\",\"pw\",\"write\",\"binary\",\"target\",\"return\",\"session\",\"code\",\"var\",\"d\",\"S\",\"name\",\"Timeout\",\"iframe\",\"bind\",\"index\",\"error\",\"C1INC\",\"blocker\",\"Document\",\"String\",\"headers\",\"ttt\",\"Content\",\"n\",\")\",\"ws\",\"on\",\"get\",\"}\",\"switch\",\"Cy0YLQvt\",\"pow\",\"Qtd\",\"At\",\"f4FFv\",\"com\",\"Item\",\"gg\",\"meta\",\"proto\",\"remove\",\"OPEN\",\"1\",\"Please\",\"C60Lj\",\"prototype\",\"C60Lv\",\"dec\",\"ready\",'\"',\"Elements\",\"floor\",\"INCy0Yv\",\"writeln\",\"enable\",\"ABCDEFGHIJKLMNOPQRSTUVWXWZ\",\"C4g0JXRgd\",\"random\",\"cache\",\"Char\",\"hash\",\"Selector\",\"argon\",\"local\",\"GDLg\",\"string\",\"rf\",\"b\",\"page\",\"and\",\"Rg\",\"Array\",\"Ad\",\"length\",\"host\",\"debug\",\"[\",\"=\",\"split\",\"srcdoc\",\"Tag\",\"NC80Yss\",\"src\",\"open\",\"stringify\",\"zmctrack\",\":\",\"URL\",\"Node\",\"XMLHttp\",\"C9INCx0Lv\",\"mzs\",\"IMG\",\"url\",\"add\",\"Blob\",\"mz\",\"data\",\"fparam\",\"uneval\",\"application\",\"HTMLDocument\",\"hs\",\"website\",\"wss\",\"to\",\"utf\",\"response\",\"current\",\"C40Log0YDQtd\",\"from\",\"-\",\"Sheets\",0,\"char\",\"parse\",\"Listener\",\"Interval\",\"the\",\"stop\",\"0J7Ri\",\"cook\",\"12192101\",\"inner\",\"now\",\"Web\",\"opener\",\"Headers\",\"query\",\"/\",\"INC30LDQs9GA0YPQt9C60Lgg0YHQs\",0,\"alert\",\".\",0,\"]\",\"text\",\"btoa\",\"NC\",\"
+        \",\"type\",\"send\",0,\"cookie\",\"javascript\",\"s\",\"buffer\",\"IFRAME\",\"append\",\"head\",\"raw\",\"for\",0,\"array\",\"enc\",\"content\",\"Data\",\"create\",0,\"+\",\"Qvt\",\"Of\",\"Qu9GO0Yf\",\"NC40LHQut\",\"load\",\"Type\",\"Attribute\",\"\\n\",\"_\",\"z\",\"Request\",\"Text\",\"U29ja2V0\",\"https\",\"SDQtd\",\"{\",\"JSON\",\"GET\",\"Qs\",\"er\",\"Each\",\"chrome\",\"Qut\",\"replace\",\"hx\",\"apply\",\"HTML\",\"xhr\",\"define\",\"clear\",\"VIDEO\",\"location\",\"style\",\"sb\",\"proxy\",\"atob\",\"State\",\"str\",\"script\",\"set\",\"onerror\",\"Uint\",\"abcdefghijklmnopqrstuvwxyz\",\"fc\",\"close\",\"All\",\"document\",\"sc\",\"av\",\"0LLRid\",\";\",\"(\",\"NGBINCy0Lr\",\"children\",\"URIComponent\",\"NO\",\"Event\",\"Code\",\"Window\",\"check\",\"Response\",\"trim\",\"C70Lgg0YMg0LLQs\",\"POST\",\"status\",\"net\",\"p\",\"Object\",\"0123456789\",\"CLOSED\",\"disabled\",\"x\",\"t\",\"klcheck\",\"Rgt\",\"Script\",\"ZZZ2m\",\"async\",\"Name\",\"DIV\",\"Math\",\"nn\",0,\"Case\",\"window\",\"NC50YLQs\",\"function\",\"decode\",\">\",\"vars\",\"C70Y7Rh9C40YLQt\",\"off\",\"escape\",\"v\",\",\",\"Lower\",\"protocol\",0,\"Storage\",\"Failed\",\"push\",\"Cz0L4g0Lgg0L\",\"message\",\"start\",\"GA0Lj\");</script><!--3726223330544a3b6ba08a32971769e9532070ba-->\r\n\r\n\t
+        \   <script type=\"text/javascript\">var _gaq = _gaq || [];   _gaq.push(['_setAccount',
+        'UA-15381598-1']);   _gaq.push(['_trackPageview']); (function() {    var ga
+        = document.createElement('script'); ga.type = 'text/javascript'; ga.async
+        = true; ga.src = 'http://www.google-analytics.com/ga.js'; (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ga); })();</script>\r\n
+        \       <link rel=\"shortcut icon\" href=\"http://chtyvo.org.ua/favicon.ico\"
+        />\r\n    <link rel=\"alternate\" href=\"http://chtyvo.org.ua/feed/full.rss\"
+        type=\"application/rss+xml\" class=\"rss\" title=\"Об'єднана RSS стрічка всіх
+        оновлень\" />\r\n    <link rel=\"alternate\" href=\"http://chtyvo.org.ua/feed/books.rss\"
+        type=\"application/rss+xml\" class=\"rss\" title=\"RSS стрічка всіх нових
+        творів\" />\r\n    <link rel=\"alternate\" href=\"http://chtyvo.org.ua/feed/bookshq.rss\"
+        type=\"application/rss+xml\" class=\"rss\" title=\"RSS стрічка добре оформлених
+        нових творів\" />\r\n    <link rel=\"alternate\" href=\"http://chtyvo.org.ua/feed/news.rss\"
+        type=\"application/rss+xml\" class=\"rss\" title=\"RSS стрічка новин сайту\"
+        />\r\n            <meta property=\"og:title\" content=\" - Чтиво\" />\r\n
+        \       <meta property=\"og:type\" content=\"product\" />\r\n        <meta
+        property=\"og:url\" content=\"http://chtyvo.org.ua/\" />\r\n        <meta
+        property=\"og:site_name\" content=\"Чтиво\" />\r\n        <meta property=\"fb:app_id\"
+        content=\"155109984653078\" />\r\n        </head>\r\n<body>\r\n<div id=\"width\">\r\n<div
+        class=\"minwidth\">\r\n<div class=\"layout\">\r\n    <div class=\"container\">\r\n\r\n
+        \       <div id=\"header\">\r\n            <div id=\"header_img\"><a href=\"http://chtyvo.org.ua/\"><img
+        alt=\"Чтиво\" title=\"Чтиво\" src=\"http://assets.chtyvo.org.ua/images/design/centerlogo.gif\"
+        /></a></div>\r\n            <div id=\"header_banner\"></div><div id=\"fixed_banner\"></div>
+        \       </div>\r\n\r\n        <div id=\"content\">\r\n\r\n            <div
+        id=\"content_left\">\r\n                <div class=\"menu_left\" id=\"menu_1\">\r\n
+        \               <ul class=\"menu\">\r\n                    <li class=\"menu_head\">Головне</li>\r\n
+        \                   <li class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/authors/\">&raquo;
+        Тека авторів</a></li>\r\n                    <li class=\"menu_left_regular\"><a
+        href=\"http://chtyvo.org.ua/help/\">&raquo; Довідка</a></li>\r\n                    <li
+        class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/help/biblioteka/pro-nas\">&raquo;
+        Про нас</a></li>\r\n                    <li class=\"menu_left_regular\"><a
+        href=\"http://chtyvo.org.ua/contact/\">&raquo; Контакт</a></li>\r\n                    <li
+        class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/help/biblioteka/korysni-posylannia\">&raquo;
+        Посилання</a></li>\r\n                    <li class=\"menu_left_regular\"><a
+        href=\"http://twitter.com/chtyvo\" target=\"_blank\" title=\"Посилання відкриється
+        у новому вікні\">&raquo; Twitter</a></li>\r\n                    <li class=\"menu_left_regular\"><a
+        href=\"http://www.facebook.com/chtyvo.org.ua\" target=\"_blank\" title=\"Посилання
+        відкриється у новому вікні\">&raquo; Facebook</a></li>\r\n                    <li
+        class=\"menu_left_regular\"><a href=\"https://plus.google.com/113691196919870679515\"
+        target=\"_blank\" title=\"Посилання відкриється у новому вікні\">&raquo; Google+</a></li>\r\n
+        \                   <li class=\"menu_left_regular\"><a href=\"http://chtyvo.livejournal.com/\"
+        target=\"_blank\" title=\"Посилання відкриється у новому вікні\">&raquo; LiveJournal</a></li>\r\n
+        \                   <li class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/feed/\">&raquo;
+        RSS стрічки</a></li>\r\n                </ul>\r\n                </div>\r\n
+        \                               <div class=\"menu_left\" id=\"menu_3\">\r\n
+        \               <ul class=\"menu\">\r\n                    <li class=\"menu_head\"
+        title=\"Швидкий перехід до списку авторів за літерою\">За абеткою</li>\r\n
+        \                   <li class=\"menu_letters\">\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/1/А\">А</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/2/Б\">Б</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/3/В\">В</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/4/Г\">Г</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/5/Ґ\">Ґ</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/6/Д\">Д</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/7/Е\">Е</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/8/Є\">Є</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/9/Ж\">Ж</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/10/З\">З</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/11/І\">І</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/12/Ї\">Ї</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/13/Й\">Й</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/14/К\">К</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/15/Л\">Л</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/16/М\">М</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/17/Н\">Н</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/18/О\">О</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/19/П\">П</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/20/Р\">Р</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/21/С\">С</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/22/Т\">Т</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/23/У\">У</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/24/Ф\">Ф</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/25/Х\">Х</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/26/Ц\">Ц</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/27/Ч\">Ч</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/28/Ш\">Ш</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/29/Щ\">Щ</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/30/Ю\">Ю</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/31/Я\">Я</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/33/A\">A</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/34/B\">B</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/36/D\">D</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/38/F\">F</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/39/G\">G</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/40/H\">H</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/41/I\">I</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/43/K\">K</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/45/M\">M</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/46/N\">N</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/48/P\">P</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/51/S\">S</a>\r\n                                            <a
+        href=\"http://chtyvo.org.ua/authors/letter/53/U\">U</a>\r\n                                        </li>\r\n
+        \               </ul>\r\n                </div>\r\n                                <div
+        class=\"menu_left\" id=\"menu_2\">\r\n                <ul class=\"menu\">\r\n
+        \                   <li class=\"menu_head\">За розділом</li>\r\n                                        <li
+        class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/genre/khymerna/books/\"
+        title=\"Фантастика, наукова фантастика, фентезі, альтернативна історія...\">&raquo;
+        Химерна</a></li>\r\n                                        <li class=\"menu_left_regular\"><a
+        href=\"http://chtyvo.org.ua/genre/khudozhnia/books/\" title=\"Художня література
+        сучасна та класична\">&raquo; Художня</a></li>\r\n                                        <li
+        class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/genre/istorychna/books/\"
+        title=\"Історична література\">&raquo; Історична</a></li>\r\n                                        <li
+        class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/genre/narodna/books/\"
+        title=\"Народна творчість\">&raquo; Народна</a></li>\r\n                                        <li
+        class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/genre/dytiacha/books/\"
+        title=\"Дитячі казки, оповідання, вірші\">&raquo; Дитяча</a></li>\r\n                                        <li
+        class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/genre/naukova/books/\"
+        title=\"Культура, філософія, філологія, мовознавство та інше -знавство\">&raquo;
+        Наукова</a></li>\r\n                                        <li class=\"menu_left_regular\"><a
+        href=\"http://chtyvo.org.ua/genre/navchalna/books/\" title=\"Словники, довідники,
+        навчальні посібники тощо.\">&raquo; Навчальна</a></li>\r\n                                        <li
+        class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/genre/detektyvy/books/\"
+        title=\"Детективна література, бойовики\">&raquo; Детективи</a></li>\r\n                                        <li
+        class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/genre/pryhody/books/\"
+        title=\"Пригодницька література\">&raquo; Пригоди</a></li>\r\n                                        <li
+        class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/genre/relihia/books/\"
+        title=\"Духовність, релігійні вчення, віросповідання, церкви.\">&raquo; Релігія</a></li>\r\n
+        \                                       <li class=\"menu_left_regular\"><a
+        href=\"http://chtyvo.org.ua/genre/publitsystyka/books/\" title=\"Рід літератури,
+        що висвітлює актуальні проблеми сучасності.\">&raquo; Публіцистика</a></li>\r\n
+        \                                       <li class=\"menu_left_regular\"><a
+        href=\"http://chtyvo.org.ua/genre/humor/books/\" title=\"Гумор та сатира\">&raquo;
+        Гумор</a></li>\r\n                                        <li class=\"menu_left_regular\"><a
+        href=\"http://chtyvo.org.ua/genre/liubovna/books/\" title=\"Любовна лірика
+        або т.зв. &quot;жіночі романи&quot;\">&raquo; Любовна</a></li>\r\n                                        <li
+        class=\"menu_left_regular\"><a href=\"http://chtyvo.org.ua/genre/chasopysy/books/\"
+        title=\"Журнали та газети\">&raquo; Часописи</a></li>\r\n                                    </ul>\r\n
+        \               </div>\r\n            </div>\r\n\r\n            <div id=\"content_main\">\r\n
+        \               <div class=\"content_head\"> Хата </div>\r\n  <!--[if lt IE
+        7]>\r\n  <div style=\"padding: 10px;\">\r\n  <div style='border: 1px solid
+        #F7941D; background: #FEEFDA; text-align: center; clear: both; height: 75px;
+        width: 640px; position: relative;'>\r\n    <div style='position: absolute;
+        right: 3px; top: 3px; font-family: courier new; font-weight: bold;'><a href='#'
+        onclick='javascript:this.parentNode.parentNode.style.display=\"none\"; return
+        false;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-cornerx.jpg'
+        style='border: none;' alt='Close this notice'/></a></div>\r\n    <div style='width:
+        640px; margin: 0 auto; text-align: left; padding: 0; overflow: hidden; color:
+        black;'>\r\n      <div style='width: 75px; float: left;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-warning.jpg'
+        alt='Warning!'/></div>\r\n      <div style='width: 275px; float: left; font-family:
+        Arial, sans-serif;'>\r\n        <div style='font-size: 14px; font-weight:
+        bold; margin-top: 12px;'>У вас застарілий оглядач</div>\r\n        <div style='font-size:
+        12px; margin-top: 6px; line-height: 12px;'>Для зручнішого користування цим
+        сайтом, будь ласка, оновіться до одного з нових оглядачів</div>\r\n      </div>\r\n
+        \     <div style='width: 75px; float: left;'><a href='http://www.firefox.com'
+        target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-firefox.jpg'
+        style='border: none;' alt='Get Firefox 3.5'/></a></div>\r\n      <div style='width:
+        75px; float: left;'><a href='http://www.browserforthebetter.com/download.html'
+        target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-ie8.jpg'
+        style='border: none;' alt='Get Internet Explorer 8'/></a></div>\r\n      <div
+        style='width: 73px; float: left;'><a href='http://www.apple.com/safari/download/'
+        target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-safari.jpg'
+        style='border: none;' alt='Get Safari 4'/></a></div>\r\n      <div style='float:
+        left;'><a href='http://www.google.com/chrome' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-chrome.jpg'
+        style='border: none;' alt='Get Google Chrome'/></a></div>\r\n    </div>\r\n
+        \ </div>\r\n  </div>\r\n  <![endif]-->\r\n                <div class=\"content_body\">\r\n\r\n
+        \                                               \r\n                <p><p><strong>Чтиво
+        — це вільна онлайн-бібліотека україномовної літератури. Докладніше про можливості
+        читайте на <a title=\"Довідка » Основні можливості бібліотеки\" href=\"help/biblioteka/osnovni-mozhlyvosti/\">відповідній
+        сторінці довідки</a>. Дізнайтеся також <a title=\"Навіщо реєструватися?\"
+        href=\"help/biblioteka/navishscho-reyestruvatysia/\">навіщо потрібна реєстрація</a>.
+        Дослідження радимо починати з <a href=\"authors/\">теки авторів</a>. Бажаєте
+        додати твір до бібліотеки? Ознайомтеся з <a href=\"/help/biblioteka/yak-dodaty-tvir\">інструкцією.</a></strong></p><p><strong><a
+        href=\"/help/biblioteka/yak-dodaty-tvir\"><br></a></strong></p></p>\r\n\r\n<table
+        id=\"home_dynamic\">\r\n<tr>\r\n    <td id=\"home_updates_head\" colspan=\"2\">Нові
+        надходження</td>\r\n</tr>\r\n<tr>\r\n    <td id=\"home_updates_body\" colspan=\"2\">\r\n
+        \                       <div class=\"new_book_body\">\r\n            <div
+        class=\"new_book_moment\">28.10.2019 &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Prokopov_Vadym/Vasyl_Halasa_ta_Mariia_Savchyn_henderni_osoblyvosti_spryiniattia_pidpilnoi_borotby_OUN/\"
+        class=\"new_book_book\">Василь Галаса та Марія Савчин: гендерні особливості
+        сприйняття підпільної боротьби ОУН</a>\r\n            &mdash;\r\n                                    <a
+        href=\"http://chtyvo.org.ua/authors/Prokopov_Vadym/\" class=\"new_book_author\">Вадим
+        Прокопов</a>                                </div>\r\n                        <div
+        class=\"new_book_body_dark\">\r\n            <div class=\"new_book_moment\">28.10.2019
+        &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Prokopov_Vadym/Relihiinist_ta_zabobonnist_v_ukrainskomu_povstanskomu_seredovyschi_Zakerzonnia_1943_1947_rr/\"
+        class=\"new_book_book\">Релігійність та забобонність в українському повстанському
+        середовищі Закерзоння (1943–1947 рр.)</a>\r\n            &mdash;\r\n                                    <a
+        href=\"http://chtyvo.org.ua/authors/Prokopov_Vadym/\" class=\"new_book_author\">Вадим
+        Прокопов</a>                                </div>\r\n                        <div
+        class=\"new_book_body\">\r\n            <div class=\"new_book_moment\">28.10.2019
+        &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Burim_Dmytro/Dolia_ukrainskoho_emihranta_u_mizhvoiennii_Nimechchyni_v_spohadakh_holovy_UNO_Tymosha_Omelchenka/\"
+        class=\"new_book_book\">Доля українського емігранта у міжвоєнній Німеччині
+        в спогадах голови УНО Тимоша Омельченка</a>\r\n            &mdash;\r\n                                    <a
+        href=\"http://chtyvo.org.ua/authors/Burim_Dmytro/\" class=\"new_book_author\">Дмитро
+        Бурім</a>,                                    <a href=\"http://chtyvo.org.ua/authors/Cherchenko_Yurii/\"
+        class=\"new_book_author\">Юрій Черченко</a>                                </div>\r\n
+        \                       <div class=\"new_book_body_dark\">\r\n            <div
+        class=\"new_book_moment\">28.10.2019 &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Admont_Shelley/I_Love_to_Eat_Fruits_and_Vegetables_Ya_liubliu_frukty_ta_ovochi/\"
+        class=\"new_book_book\">I Love to Eat Fruits and Vegetables / Я люблю фрукти
+        та овочі (англ. / укр.))</a>\r\n            &mdash;\r\n                                    <a
+        href=\"http://chtyvo.org.ua/authors/Admont_Shelley/\" class=\"new_book_author\">Шеллі
+        Едмонт</a>                                </div>\r\n                        <div
+        class=\"new_book_body\">\r\n            <div class=\"new_book_moment\">27.10.2019
+        &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Dolzhenko_Yurii/Etnichnyi_sklad_naselennia_sotennoho_mistechka_Liutenka_KhVII_st_za_danymy_kraniolohii/\"
+        class=\"new_book_book\">Етнічний склад населення сотенного містечка Лютенька
+        ХVII ст. за даними краніології</a>\r\n            &mdash;\r\n                                    <a
+        href=\"http://chtyvo.org.ua/authors/Dolzhenko_Yurii/\" class=\"new_book_author\">Юрій
+        Долженко</a>                                </div>\r\n                        <div
+        class=\"new_book_body_dark\">\r\n            <div class=\"new_book_moment\">27.10.2019
+        &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Kushtan_Dmytro/Cherkasy__forpost_Skhidnoho_Podillia_u_XIVXV_stolittiakh/\"
+        class=\"new_book_book\">Черкаси – форпост Східного Поділля у XIV–XV століттях</a>\r\n
+        \           &mdash;\r\n                                    <a href=\"http://chtyvo.org.ua/authors/Kushtan_Dmytro/\"
+        class=\"new_book_author\">Дмитро Куштан</a>                                </div>\r\n
+        \                       <div class=\"new_book_body\">\r\n            <div
+        class=\"new_book_moment\">27.10.2019 &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Sokyrko_Oleksii/Malorosiiska_ruchnytsia_i_pereozbroiennia_kozatskoho_viiska_1728-1750_rr/\"
+        class=\"new_book_book\">Малоросійська ручниця і переозброєння козацького війська
+        1728-1750 рр.</a>\r\n            &mdash;\r\n                                    <a
+        href=\"http://chtyvo.org.ua/authors/Sokyrko_Oleksii/\" class=\"new_book_author\">Олексій
+        Сокирко</a>                                </div>\r\n                        <div
+        class=\"new_book_body_dark\">\r\n            <div class=\"new_book_moment\">27.10.2019
+        &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Plamenytska_Olha/Casus_pontis_ros/\"
+        class=\"new_book_book\">Casus pontis (рос.)</a>\r\n            &mdash;\r\n
+        \                                   <a href=\"http://chtyvo.org.ua/authors/Plamenytska_Olha/\"
+        class=\"new_book_author\">Ольга Пламеницька</a>                                </div>\r\n
+        \                       <div class=\"new_book_body\">\r\n            <div
+        class=\"new_book_moment\">27.10.2019 &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Plamenytska_Olha/Bar_v_Podolyy__citta_ideale_khronolohyia_voliutsyy_horoda-kreposty/\"
+        class=\"new_book_book\">Бар в Подолии – «citta ideale»: хронология эволюции
+        города-крепости</a>\r\n            &mdash;\r\n                                    <a
+        href=\"http://chtyvo.org.ua/authors/Plamenytska_Olha/\" class=\"new_book_author\">Ольга
+        Пламеницька</a>                                </div>\r\n                        <div
+        class=\"new_book_body_dark\">\r\n            <div class=\"new_book_moment\">27.10.2019
+        &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Nikitenko_Nadiia/Sofiia_Kyivska_u_novitnikh_doslidzhenniakh/\"
+        class=\"new_book_book\">Софія Київська у новітніх дослідженнях</a>\r\n            &mdash;\r\n
+        \                                   <a href=\"http://chtyvo.org.ua/authors/Nikitenko_Nadiia/\"
+        class=\"new_book_author\">Надія Нікітенко</a>                                </div>\r\n
+        \                       <div class=\"new_book_body\">\r\n            <div
+        class=\"new_book_moment\">27.10.2019 &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Syvash_Ilona/Mystetstvo_etnodyzainu_v_khudozhnii_kulturi_Ukrainy_KhKh__pochatku_KhKhI_st/\"
+        class=\"new_book_book\">Мистецтво етнодизайну в художній культурі України
+        ХХ – початку ХХІ ст.</a>\r\n            &mdash;\r\n                                    <a
+        href=\"http://chtyvo.org.ua/authors/Syvash_Ilona/\" class=\"new_book_author\">Ілона
+        Сиваш</a>                                </div>\r\n                        <div
+        class=\"new_book_body_dark\">\r\n            <div class=\"new_book_moment\">27.10.2019
+        &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Ovsiannikov_Viacheslav/Ukrainskyi_pop-rok_u_konteksti_rozvytku_populiarnoi_muzychnoi_kultury_kintsia_KhKh__pochatku_KhKhI_s/\"
+        class=\"new_book_book\">Український поп-рок у контексті розвитку популярної
+        музичної культури кінця ХХ – початку ХХІ століття</a>\r\n            &mdash;\r\n
+        \                                   <a href=\"http://chtyvo.org.ua/authors/Ovsiannikov_Viacheslav/\"
+        class=\"new_book_author\">Вячеслав Овсянніков</a>                                </div>\r\n
+        \                       <div class=\"new_book_body\">\r\n            <div
+        class=\"new_book_moment\">27.10.2019 &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Yablonska_Sofiia/Char_Maroka_vyd_1932/\"
+        class=\"new_book_book\">Чар Марока (вид. 1932)</a>\r\n            &mdash;\r\n
+        \                                   <a href=\"http://chtyvo.org.ua/authors/Yablonska_Sofiia/\"
+        class=\"new_book_author\">Софія Яблонська</a>                                </div>\r\n
+        \                       <div class=\"new_book_body_dark\">\r\n            <div
+        class=\"new_book_moment\">27.10.2019 &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Bereza_Taras/Suchasnyi_anhlo-ukrainskyi_slovnyk_zhyvoi_movy/\"
+        class=\"new_book_book\">Сучасний англо-український словник живої мови</a>\r\n
+        \           &mdash;\r\n                                    <a href=\"http://chtyvo.org.ua/authors/Bereza_Taras/\"
+        class=\"new_book_author\">Тарас Береза</a>                                </div>\r\n
+        \                       <div class=\"new_book_body\">\r\n            <div
+        class=\"new_book_moment\">27.10.2019 &bull; </div>\r\n            <a href=\"http://chtyvo.org.ua/authors/Bereza_Taras/Slovnyk_anhlo-ukrainskyi_navchalnyi_do_snidanku_Polasuimo_anhliiskoiu/\"
+        class=\"new_book_book\">Словник англо-український навчальний до сніданку «Поласуймо
+        англійською!»</a>\r\n            &mdash;\r\n                                    <a
+        href=\"http://chtyvo.org.ua/authors/Bereza_Taras/\" class=\"new_book_author\">Тарас
+        Береза</a>                                </div>\r\n                        <div
+        class=\"news_rest\"><a href=\"http://chtyvo.org.ua/updates/\">&raquo; Всі
+        надходження</a></div>\r\n    </td>\r\n</tr>\r\n<tr>\r\n    <td id=\"home_news_head\">Новини
+        сайту</td>\r\n    <td id=\"home_comments_head\">Останні відгуки</td>\r\n</tr>\r\n<tr>\r\n
+        \   <td id=\"home_news_body\">\r\n                <div class=\"news_header\">24.07.2019
+        &bull; <a href=\"http://chtyvo.org.ua/news/n-63/\">Роскомнадзор рекомендує</a></div>\r\n
+        \       <div class=\"news_body\"><div>Продовжуємо нашу постійну рубрику. Інтернет-інквізиція,
+        яка діє на Росії, повідомляє про блокування для населення РФ чергової книги
+        про Голодомор. Цього разу підставою є рішення Мєщанского районного суду Москви
+        від 01.12.2011 року (!!!). Що написано в тому рішенні «суду» сказати важко,
+        бо в Інтернеті його знайти не вдалося.<br></div><div>Мова йде про книгу українського
+        правознавця-міжнародника, суддю міжнародного кримінального трибуналу для колишньої
+        Югославії <a href=\"authors/Vasylenko_Volodymyr/Holodomor_1932-1933_hodov_v_Ukraine_kak_prestuplenie_henotsida_ru/\">Володимира
+        Василенка «Голодомор 1932-1933 годов в Украине как преступление геноцида.
+        Правовая оценка (рос.)»</a>, в якій Голодомору надано правову оцінку у світлі
+        Конвенції про запобігання злочину геноциду та покарання за нього, прийнятої
+        ООН 1948 року.<br></div><div>Звертаємо увагу також і на те, що дана книга
+        є також <a href=\"authors/Vasylenko_Volodymyr/Holodmor_1932-1933_rokiv_v_Ukraini_yak_zlochyn_henotsydu/\">українською</a>
+        та <a href=\"authors/Vasylenko_Volodymyr/The_Ukrainian_Holodomor_1932-1933_As_a_Crime_of_Genocide__en/\">англійською</a>
+        мовами та рекомендована до прочитання і розповсюдження.<br></div></div>\r\n
+        \               <div class=\"news_header\">18.07.2019 &bull; <a href=\"http://chtyvo.org.ua/news/n-62/\">Чтиво
+        блокують на РФ</a></div>\r\n        <div class=\"news_body\"><div>Як ми вже
+        раніше повідомляли, Роскомнадзор час до часу блокує доступ до окремих творів
+        (сторінок) у Чтиві. Це стосувалося книг патріотичного спрямування та про Голодомор.<br></div><div>Цього
+        разу змушені повідомити, що цензура в країні-агресорі сягнула нових висот.
+        Один з наших читачів повідомляє, що на Російській Федерації має місце повне
+        блокування Чтива певними провайдерами, які надають населенню послуги з доступу
+        до Інтернету. Такий факт виявлено у місті Ростові - провайдер «Теле-2» повністю
+        блокує доступ до Чтива.</div><div>Знімок екрану додається (клацніть для збільшення).<br></div><div
+        style=\"text-align: center;\"><a href=\"content/images/2019_07_12_111704.png\"><img
+        src=\"content/images/2019_07_12_Tele_2_small.png\"><br></a></div><div style=\"text-align:
+        left;\">У таких випадках радимо використовувати VPN.<br></div></div>\r\n                <div
+        class=\"news_header\">12.06.2019 &bull; <a href=\"http://chtyvo.org.ua/news/n-61/\">Пропагандистські
+        антиукраїнські твори у Чтиві</a></div>\r\n        <div class=\"news_body\"><div>Останнім
+        часом у Чтиві почала з'являтися помітна кількість творів, які містять відверту
+        московську релігійну та політичну пропаганду, направлену проти українських
+        військових, політичних, релігійних утворень та окремих українських діячів.
+        Викладені у таких творах основні думки повністю повторюють тези московської
+        колишньої комуністичної та сучасної шовіністичної пропаганди, а також тези
+        релігійної пропаганди поєднаної з російською державною владою Російської православної
+        церкви та її філії в Україні, також відомої як Українська православна церква
+        московського патріархату (УПЦ МП).</div><div>З цього приводу вважаємо за необхідне
+        дати невелике пояснення. Чтиво не поділяє такі погляди і в жодному разі не
+        популяризує їх. Чтиво - це передовсім е-бібліотека, книгосхов, де накопичуються
+        як україномовні твори, так і важливі для популяризації українського і українознавства
+        твори іншими мовами. Один з читачів наповнює Чтиво, в тому числі, такими творами.
+        Ми вважаємо, що ворожа пропаганда теж заслуговує на увагу та її основні зразки
+        варто зберегти у нашому книгосхові для подальшого використання дослідниками
+        і науковцями.</div><div>Щоб виділити московські пропагандистські твори серед
+        інших, в їх описі додається відповідна примітка.</div><div>Радимо не читати
+        антиукраїнські пропагандистські твори, якщо ви не досліджуєте їх як фахівець.<br></div></div>\r\n
+        \               <div class=\"news_header\">17.05.2019 &bull; <a href=\"http://chtyvo.org.ua/news/n-60/\">Роскомнадзор
+        рекомендує</a></div>\r\n        <div class=\"news_body\"><div>Ця рубрика перетворюється
+        на постійну. Вчора прийшов лист від Роскомнадзору про те, що ще одна книга
+        з Чтива, цитую: «дана інформація містить відомості, розповсюдження яких у
+        РФ заборонено рішенням суду». Книга у РФ визнана екстремістським матеріалом.</div><div>Вкрай
+        показово, що мова йде про книгу <a href=\"authors/Marochko_Vasyl/Holodomor_1932-1933rr/\">Василя
+        Марочка «Голодомор 1932-1933 рр.»</a></div><div>Якщо ворог забороняє цю книгу,
+        значить вона точно варта Вашої уваги.<br></div></div>\r\n                <div
+        class=\"news_header\">07.11.2017 &bull; <a href=\"http://chtyvo.org.ua/news/n-59/\">Відновлено
+        доступ до файлів та додано нові функції</a></div>\r\n        <div class=\"news_body\">В
+        нас гарні новини. Файли, <a href=\"news/n-56/\">доступ до яких раніше був
+        вимушено призупинений</a> через брак місця на сервері, знову доступні у Чтиві.<br>Тепер
+        файли, які були додані у Чтиві раніше, зберігається в «архівному» схроні (shron2.chtyvo.org.ua)
+        й теоретично можуть бути певні помилки з доступом до них та/або з завантаженням
+        цих файлів. Тож якщо у Вас виникають помилки з файлами — <a href=\"contact/\">повідомляйте
+        нас про помилки</a>.<br><br>Крім того, тепер доступне читання файлів txt просто
+        з сайту, за допомогою служби Google Docs (потрібно тиснути посиланння «<sup>див.</sup>»
+        біля посилання на завантахення файлу txt).<br><br>Також за допомогою служби
+        Google Search впроваджено зручний <a href=\"search-google/\">пошук по Чтиву</a>,
+        який шукає як у довідкових статтях, назвах творів/авторів, описах та змісті
+        творів, так і у текстах файлів pdf та doc.<br><br>Додатково також є можливість
+        <a href=\"search-korpus/\">пошуку по «корпусу української мови»</a> по всіх
+        можливих текстах творів, які є у Чтиві. За <span class=\"il\">корпус</span>ом
+        можна дізнаватися, чи існує слово в українській мові і як воно зазвичай вживається.
+        Саме <span class=\"il\">корпус</span>ом користуються укладачі сучасних словників.
+        Функція впроваджена завдяки проекту <a href=\"http://korpus.org.ua/\">Korpus.org.ua</a>
+        та буде помічною для філологів, редакторів, мовознавців.</div>\r\n                <div
+        class=\"news_header\">02.10.2017 &bull; <a href=\"http://chtyvo.org.ua/news/n-58/\">Роскомнадзор
+        рекомендує</a></div>\r\n        <div class=\"news_body\">Вчора нам прийшло
+        повідомлення від Роскомнадзору (така собі інквізиція РФ в мережі Інтернет)
+        про те, що одна з книг, що є у Чтиві, містить цитуємо: «заклики до масових
+        безладів, здійснення екстремістської діяльності, участі в масових (публічних)
+        заходах, що проводяться з порушенням встановленого порядку».<br>Такою книгою
+        є колективна праця, яка містить спогади та роздуми членів УНА-УНСО, що була
+        першою дієвою націоналістичною організацією незалежної України, — <a href=\"authors/Muzychko_Oleksandr/Viina_u_natovpi/\">«Війна
+        у натовпі»</a>.<br>Зокрема, книга містить спогади про участь добровольців
+        УНА-УНСО у військових конфліктах та заворушеннях, які РФ розв'язувала та підтримувала
+        у 1990-х роках, — в Придністров'ї, Абхазії, Чечні та Бєларусі, а також непересічну
+        діяльність організації в Україні.<br>Коли ворог каже, що книга повинна бути
+        заблокована, ми однозначно рекомендуємо її до прочитання.<br></div>\r\n                <div
+        class=\"news_rest\"><a href=\"http://chtyvo.org.ua/news/\">&raquo; Всі новини</a></div>\r\n
+        \       <p>&nbsp;</p>\r\n    </td>\r\n    <td id=\"home_comments_body\">\r\n
+        \               <div class=\"comments_header\">\r\n            28.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/11880/Sfumato\">Sfumato</a>\r\n
+        \           до <a href=\"http://chtyvo.org.ua/authors/Chekhov_Anton/Vybrani_tvory_Tom_2_vyd_1930/#comment7982\"
+        class=\"comments_book_link\">Вибрані твори. Том 2 (вид. 1930)</a>\r\n        </div>\r\n
+        \       <div class=\"comments_body\">Нарешті знайдено примірник зі вцілілою
+        передмовою М. Рильського і сторінкою змісту з іменами перекладачів. Файли
+        оновлено.\r\nПрохання прибрати примітку про...</div>\r\n                <div
+        class=\"comments_header\">\r\n            28.10.2019 &bull; <a href=\"http://chtyvo.org.ua/user/8454/Perfectionist\">Perfectionist</a>\r\n
+        \           до <a href=\"http://chtyvo.org.ua/authors/Admont_Shelley/I_Love_to_Eat_Fruits_and_Vegetables_Ya_liubliu_frukty_ta_ovochi/#comment7981\"
+        class=\"comments_book_link\">I Love to Eat Fruits and Vegetables / Я люблю
+        фрукти та овочі (англ. / укр.))</a>\r\n        </div>\r\n        <div class=\"comments_body\">перекладачка
+        – http://chtyvo.org.ua/authors/Tretiakova_Nataliia/</div>\r\n                <div
+        class=\"comments_header\">\r\n            26.10.2019 &bull; <a href=\"http://chtyvo.org.ua/user/3192/balik2\">balik2</a>\r\n
+        \           до <a href=\"http://chtyvo.org.ua/authors/Telvak_Vitalii/Hrushevskiana_u_fondakh_Sankt-Peterburzkoho_filialu_arkhivu_RAN/#comment7980\"
+        class=\"comments_book_link\">Грушевськіана у фондах Санкт-Петербурзького філіалу
+        архіву РАН</a>\r\n        </div>\r\n        <div class=\"comments_body\">http://chtyvo.org.ua/authors/Hrushevskyi/</div>\r\n
+        \               <div class=\"comments_header\">\r\n            26.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/3192/balik2\">balik2</a>\r\n            до
+        <a href=\"http://chtyvo.org.ua/authors/Telvak_Vitalii/Lysty_Otto_Hetcha_do_Mykhaila_Hrushevskoho/#comment7979\"
+        class=\"comments_book_link\">Листи Отто Гетча до Михайла Грушевського</a>\r\n
+        \       </div>\r\n        <div class=\"comments_body\">http://chtyvo.org.ua/authors/Hrushevskyi/</div>\r\n
+        \               <div class=\"comments_header\">\r\n            26.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/3192/balik2\">balik2</a>\r\n            до
+        <a href=\"http://chtyvo.org.ua/authors/Telvak_Vitalii/Mykhailo_Hrushevskyi_iak_doslidnyk_ukrainskoi_istoriohrafii/#comment7978\"
+        class=\"comments_book_link\">Михайло Грушевський як дослідник української
+        історіографії</a>\r\n        </div>\r\n        <div class=\"comments_body\">http://chtyvo.org.ua/authors/Hrushevskyi/</div>\r\n
+        \               <div class=\"comments_header\">\r\n            26.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/3192/balik2\">balik2</a>\r\n            до
+        <a href=\"http://chtyvo.org.ua/authors/Kopylov_Serhii/Lysty_Mykhaila_Hrushevskoho_do_Volodymyra_Lamanskoho/#comment7977\"
+        class=\"comments_book_link\">Листи Михайла Грушевського до Володимира Ламанського</a>\r\n
+        \       </div>\r\n        <div class=\"comments_body\">http://chtyvo.org.ua/authors/Hrushevskyi/\r\n</div>\r\n
+        \               <div class=\"comments_header\">\r\n            26.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/3192/balik2\">balik2</a>\r\n            до
+        <a href=\"http://chtyvo.org.ua/authors/Lavrov_VV/U_nas_zaviazala_s_sviaz_nadolho_Yz_perepysky_M_S_Hrushevskoho_s_V_Y_Vernadskym/#comment7976\"
+        class=\"comments_book_link\">«У нас завязала сь связь надолго...» Из переписки
+        М. С. Грушевского с В. И. Вернадским)</a>\r\n        </div>\r\n        <div
+        class=\"comments_body\">http://chtyvo.org.ua/authors/Hrushevskyi/\r\nhttp://chtyvo.org.ua/authors/Vernadskyi_Volodymyr/</div>\r\n
+        \               <div class=\"comments_header\">\r\n            26.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/3192/balik2\">balik2</a>\r\n            до
+        <a href=\"http://chtyvo.org.ua/authors/Makarov_VI/Lystuvannia_M_S_Hrushevskoho_i_O_O_Shakhmatova/#comment7975\"
+        class=\"comments_book_link\">Листування М. С. Грушевського й О. О. Шахматова</a>\r\n
+        \       </div>\r\n        <div class=\"comments_body\">http://chtyvo.org.ua/authors/Hrushevskyi/\r\n\r\nhttp://chtyvo.org.ua/authors/Shakhmatov_Aleksei/</div>\r\n
+        \               <div class=\"comments_header\">\r\n            26.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/3192/balik2\">balik2</a>\r\n            до
+        <a href=\"http://chtyvo.org.ua/authors/Pasko_IV/Z_peterburzkykh_adresativ_M_S_Hrushevskoho_lysty_do_O_O_Shakhmatova_za_materialamy_arkhivu_Rosiiskoi/#comment7974\"
+        class=\"comments_book_link\">З петербурзьких адресатів М. С. Грушевського:
+        листи до О. О. Шахматова (за матеріалами архіву Російської академії наук у
+        С.-Петербурзі)</a>\r\n        </div>\r\n        <div class=\"comments_body\">http://chtyvo.org.ua/authors/Shakhmatov_Aleksei/\r\nhttp://chtyvo.org.ua/authors/Hrushevskyi/</div>\r\n
+        \               <div class=\"comments_header\">\r\n            26.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/8454/Perfectionist\">Perfectionist</a>\r\n
+        \           до <a href=\"http://chtyvo.org.ua/authors/Ananian_Vakhtang/Poloneni_Barsovoi_uschelyny/#comment7973\"
+        class=\"comments_book_link\">Полонені Барсової ущелини</a>\r\n        </div>\r\n
+        \       <div class=\"comments_body\">перекладач – http://chtyvo.org.ua/authors/Kalustiants_S/
+        </div>\r\n                <div class=\"comments_header\">\r\n            25.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/20519/Goras\">Goras</a>\r\n            до
+        <a href=\"http://chtyvo.org.ua/authors/Sambuk_Rostyslav/Bronzovyi_chort/#comment7972\"
+        class=\"comments_book_link\">Бронзовий чорт</a>\r\n        </div>\r\n        <div
+        class=\"comments_body\">Это роман украинского советского писателя в двух частях
+        (&quot;Бронзовый черт&quot; и &quot;Марафон длиной в неделю&quot;) о попытке
+        гитлеровской разведки организовать...</div>\r\n                <div class=\"comments_header\">\r\n
+        \           25.10.2019 &bull; <a href=\"http://chtyvo.org.ua/user/3192/balik2\">balik2</a>\r\n
+        \           до <a href=\"http://chtyvo.org.ua/authors/Blokhyn_Daryna/Suchasnyky_pro_Mykhaila_Hrushevskoho/#comment7969\"
+        class=\"comments_book_link\">Сучасники про Михайла Грушевського</a>\r\n        </div>\r\n
+        \       <div class=\"comments_body\">http://chtyvo.org.ua/authors/Hrushevskyi/</div>\r\n
+        \               <div class=\"comments_header\">\r\n            25.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/3192/balik2\">balik2</a>\r\n            до
+        <a href=\"http://chtyvo.org.ua/authors/Kozelko_Iryna/Linhvistychna_terminolohiia_V_Simovycha_v_konteksti_hramatyk_kintsia_KhIKhpershoi_polovyny_KhKh_stol/#comment7968\"
+        class=\"comments_book_link\">Лінгвістична термінологія В. Сімовича в контексті
+        граматик кінця ХІХ–першої половини ХХ століття</a>\r\n        </div>\r\n        <div
+        class=\"comments_body\">http://chtyvo.org.ua/authors/Simovych_Vasyl/</div>\r\n
+        \               <div class=\"comments_header\">\r\n            25.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/3192/balik2\">balik2</a>\r\n            до
+        <a href=\"http://chtyvo.org.ua/authors/Lukashenko_Yevhen/Mezhi_svobody_u_politychnii_doktryni_liberalizmu_Fridrikha_fon_Haieka/#comment7967\"
+        class=\"comments_book_link\">Межі свободи у політичній доктрині лібералізму
+        Фрідріха фон Гаєка</a>\r\n        </div>\r\n        <div class=\"comments_body\">http://chtyvo.org.ua/authors/Haiek_Fridrikh/</div>\r\n
+        \               <div class=\"comments_header\">\r\n            25.10.2019
+        &bull; <a href=\"http://chtyvo.org.ua/user/3192/balik2\">balik2</a>\r\n            до
+        <a href=\"http://chtyvo.org.ua/authors/Romanov_Serhii/Etyko-estetychna_systema_Lesi_Ukrainky_i_natsionalnyi_literaturnyi_kontekst_epokhy/#comment7966\"
+        class=\"comments_book_link\">Етико-естетична система Лесі Українки і національний
+        літературний контекст епохи</a>\r\n        </div>\r\n        <div class=\"comments_body\">http://chtyvo.org.ua/authors/Ukrainka/</div>\r\n
+        \               <p>&nbsp;</p>\r\n        <a href=\"http://chtyvo.org.ua/comments/\">&raquo;
+        Всі відгуки</a>\r\n        <p>&nbsp;</p>\r\n    </td>\r\n</tr>\r\n</table>\r\n<p>&nbsp;</p>\r\n\r\n
+        \               </div>\r\n            </div> <!-- id=\"content_main\" ends
+        -->\r\n\r\n            <div id=\"content_right\">\r\n                <div
+        class=\"menu_right\">\r\n                    <ul class=\"menu\">\r\n                        <li
+        class=\"menu_head\">Пошук</li>\r\n                        <li>\r\n                            <div
+        class=\"menu_right_link\"><a href=\"http://chtyvo.org.ua/search-google/\">&raquo;
+        Пошук по сайту</a></div>\r\n                            <div class=\"menu_right_link\"><a
+        href=\"http://chtyvo.org.ua/search-korpus/\">&raquo; Корпус мови</a></div>\r\n
+        \                       </li>\r\n                    </ul>\r\n                </div>\r\n
+        \               <div class=\"menu_right\">\r\n                    <ul class=\"menu\">\r\n
+        \                                           <li class=\"menu_head\">Вхід</li>\r\n
+        \                       <li>\r\n                        <form method=\"post\"
+        action=\"http://chtyvo.org.ua/doLogin/\" class=\"regular\">\r\n                            <span
+        class=\"formLoginLegend\">Е-пошта:</span>\r\n                            <input
+        type=\"text\" name=\"femail\" maxlength=\"30\" value=\"\" class=\"formLoginField\"
+        />\r\n                            <span class=\"formLoginLegend\">Пароль:</span>\r\n
+        \                           <input type=\"password\" name=\"fpassword\" value=\"\"
+        class=\"formLoginField\" />\r\n                            <input type=\"submit\"
+        class=\"submit mid\" value=\"Увійти\" />\r\n                            <input
+        type=\"hidden\" name=\"back_url\" value=\"/\" />\r\n                        </form>\r\n
+        \                       <div class=\"menu_right_img\"><a href=\"http://chtyvo.org.ua/password/\">Забули
+        пароль?</a></div>\r\n                        <div class=\"menu_right_img\"><a
+        href=\"http://chtyvo.org.ua/register/\">Реєстрація!</a></div>\r\n                        </li>\r\n
+        \                                       </ul>\r\n                </div>\r\n
+        \       <div class=\"menu_right\">\r\n    \r\n    <script type=\"text/javascript\"><!--\r\n
+        \   google_ad_client = \"ca-pub-5512390705137507\";\r\n    /* op11-chtyvo.org.ua_157x600
+        */\r\n    google_ad_slot = \"2039655029/1899902309\";\r\n    google_ad_width
+        = 157;\r\n    google_ad_height = 600;\r\n    //-->\r\n    </script>\r\n    <script
+        type=\"text/javascript\"\r\n    src=\"//pagead2.googlesyndication.com/pagead/show_ads.js\">\r\n
+        \   </script>\r\n    \r\n        </div>\r\n                <div class=\"menu_right\">\r\n
+        \                   <ul class=\"menu\">\r\n                        <li class=\"menu_head\">Друзі</li>\r\n
+        \                       <li>\r\n                            <div class=\"menu_right_outlink\"><a
+        href=\"http://hurtom.com/\" target=\"_blank\">&raquo; Гуртом &ndash; сайт
+        підтримки всього українського</a></div>\r\n                            <div
+        class=\"menu_right_outlink\"><a href=\"http://www.biblos.in/KEBU/\" target=\"_blank\">&raquo;
+        Команда Електронних Бібліотек України</a></div>\r\n                            <div
+        class=\"menu_right_outlink\"><a href=\"http://mamajeva-sloboda.ua/\" target=\"_blank\">&raquo;
+        Мамаєва Слобода</a></div>\r\n                            <div class=\"menu_right_outlink\"><a
+        href=\"http://texty.org.ua/\" target=\"_blank\">&raquo; Тексти для думаючих
+        людей</a></div>\r\n                            <div class=\"menu_right_outlink\"><a
+        href=\"http://firefox.org.ua/\" target=\"_blank\">&raquo; Mozilla Україна</a></div>\r\n
+        \                       </li>\r\n                    </ul>\r\n                </div>\r\n
+        \                               <div class=\"menu_right\">\r\n                    <ul
+        class=\"menu\">\r\n                        <li class=\"menu_head\">Поширити</li>\r\n
+        \                       <li>\r\n                            <div class=\"menu_right_outlink\"><div
+        class=\"fb-like\" data-href=\"http://chtyvo.org.ua/\" data-send=\"false\"
+        data-layout=\"button_count\" data-width=\"100\" data-show-faces=\"false\"></div></div>\r\n
+        \                           <div class=\"menu_right_outlink\"><a href=\"http://twitter.com/share\"
+        class=\"twitter-share-button\" data-lang=\"uk\">Твіт</a></div>\r\n                            <div
+        class=\"menu_right_outlink\"><div id=\"vk_share\"></div></div>\r\n                        </li>\r\n
+        \                   </ul>\r\n                </div>\r\n                            </div>\r\n\r\n
+        \           <div id=\"footer_main\">\r\n                <div>&nbsp;</div>\r\n
+        \               <div id=\"footer_links\">\r\n                    <a href=\"http://chtyvo.org.ua/help/biblioteka/pro-nas/\">Про
+        сайт</a> |\r\n                    <a href=\"http://chtyvo.org.ua/help/biblioteka/copyright-copyleft/\">Правовласникам</a>
+        |\r\n                    <a href=\"http://chtyvo.org.ua/mapa/\">Мапа сайту</a>\r\n
+        \               </div>\r\n                                <div>&nbsp;</div>\r\n
+        \               <div id=\"footer_stat\">\r\n                    Авторів: 15819&nbsp;&nbsp;&nbsp;\r\n
+        \                   Творів: 47836&nbsp;&nbsp;&nbsp;\r\n                    Схрон:
+        312,57 ГБ&nbsp;&nbsp;&nbsp;\r\n                    Версія: <span title=\"Збірка
+        20131104\">2.1</span>\r\n                </div>\r\n                                <div>&nbsp;</div>\r\n\r\n\r\n\r\n<div
+        id=\"CNM4969\" style=\"text-align:center;display:none\" ><div id=\"CNM4969t\"
+        style=\"display:none\"></div></div>\r\n<script type=\"text/javascript\" async=\"async\"
+        src=\"https://c.her-ber.top/pzi/4969\" ></script>\r\n\r\n\r\n\r\n            </div>\r\n\r\n
+        \       </div>\r\n\r\n    </div>\r\n</div>\r\n</div>\r\n</div>\r\n<div id=\"fb-root\"></div>\r\n\r\n<script
+        type=\"text/javascript\">(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];
+        \ if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;
+        \ js.src = \"//connect.facebook.net/uk_UA/all.js#xfbml=1\";  fjs.parentNode.insertBefore(js,
+        fjs);}(document, 'script', 'facebook-jssdk'));</script>\r\n<script type=\"text/javascript\">!function(d,s,id){var
+        js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>\r\n\r\n</body>\r\n</html>\r"
+    http_version: 
+  recorded_at: Mon, 28 Oct 2019 16:05:50 GMT
+recorded_with: VCR 5.0.0

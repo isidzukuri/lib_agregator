@@ -1,5 +1,4 @@
 class MarkBookAsCopy
-  
 
   def initialize
     ActiveRecord::Base.logger.level = 1
@@ -16,7 +15,7 @@ class MarkBookAsCopy
       # next unless Book.exists?(book.id)
       next if skip.include?(book.id)
       same = find_same_book(book)
-      if same.present? 
+      if same.present?
         same_ids = same.map(&:id)
         skip += same_ids
         Book.where(id: same_ids).update_all(is_copy: true)
@@ -49,9 +48,5 @@ class MarkBookAsCopy
       result << entry if diff.empty? && same_formats
     end
     result
-
   end
-
- 
-
 end

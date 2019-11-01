@@ -38,8 +38,11 @@ group :test do
   gem 'ffaker'
   gem 'database_cleaner'
   gem 'rails-controller-testing'
+  gem 'vcr'
+  gem 'webmock'
 end
 
+gem 'http'
 gem 'mechanize'
 gem 'fastimage'
 gem 'sanitize'
