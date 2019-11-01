@@ -4,13 +4,14 @@ module BooksMining
   class ChtyvoImporter
     STORE_PATH = 'tmp/chtyvo.org.ua/store/*'
 
-    attr_accessor :data, :authors, :genres, :tags
+    attr_accessor :data, :authors, :genres, :tags, :errors
 
     def initialize
       # ActiveRecord::Base.logger.level = 1
       @authors = {}
       @genres = {}
       @tags = {}
+      @errors = []
     end
 
     def path_to_store
@@ -22,15 +23,16 @@ module BooksMining
       CSV.foreach(path_to_store, {headers: true}) do |entry|
         entry = entry.to_h
         # ap entry
-        # begin
+        begin
           author = [book_author(entry['author'])]
           genre = book_genre(entry['category'])
           tags = [book_tag(entry['tags'])]
 
           create_book(entry, author, genre, tags)
-        # rescue
-        #   ap "error"
-        # end
+        rescue => e
+          ap e.message
+          errors << e.message
+        end
       end
 
       true
@@ -40,7 +42,6 @@ module BooksMining
       entry.delete('author')
       entry.delete('tags')
       entry.delete('category')
-
 
       entry['epub'] = entry['ebup']
       entry.delete('ebup')
