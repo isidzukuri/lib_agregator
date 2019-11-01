@@ -4,11 +4,11 @@ module WebCrawler
   class ConcurrentSet
     attr_reader :store, :current_position, :next_remain
 
-    def initialize
+    def initialize(store = [])
       @next_remain = 0
       @current_position = 0
       @mutex = Mutex.new
-      @store = []
+      @store = store
     end
 
     def next

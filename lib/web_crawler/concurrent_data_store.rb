@@ -23,8 +23,11 @@ module WebCrawler
     def create_file_for_entity(entity)
       @headers = entity.keys
       FileHelpers.create_dir(path)
-      @file = CSV.open(path, 'wb')
-      write(headers)
+      unless File.exist?(path)
+        CSV.open(path, 'a')
+        write(headers)
+      end
+      @file = true
     end
 
     def add_row(entity)
@@ -32,7 +35,7 @@ module WebCrawler
     end
 
     def write(row)
-      CSV.open(path, 'a+'){|csv| csv << row}
+      CSV.open(path, 'a'){|csv| csv << row}
     end
   end
 end

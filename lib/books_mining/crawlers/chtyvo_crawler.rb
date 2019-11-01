@@ -6,7 +6,7 @@ module BooksMining
 
     def call
       WebCrawler::Parser.new(sitemap, data_miner).call
-      ChtyvoImporter.new.call
+      ChtyvoImporter.new.call if sitemap.size > 0
     end
 
     private
@@ -15,12 +15,16 @@ module BooksMining
       return @previous_sitemap if @previous_sitemap
 
       files_sorted_by_time = Dir[SITEMAPS_PATH].sort_by { |f| File.mtime(f) }
+
+      return nil if files_sorted_by_time.length == 1
+
       path = files_sorted_by_time[(files_sorted_by_time.length - 2)]
 
       @previous_sitemap = path ? CSV.read(path)&.flatten : nil
     end
 
     def sitemap
+      return @sitemap if @sitemap
       sitemap = WebCrawler::Sitemap.build(
         entry_point: 'http://chtyvo.org.ua/',
         pages_pattern: %r{(?:http://chtyvo.org.ua/)?(?:genre/[A-z]*/books|authors/letter/\d+/\p{L})(?:/page-\d+)?},
@@ -38,7 +42,7 @@ module BooksMining
         sitemap = new_sitemap
       end
 
-      sitemap
+      @sitemap = sitemap
     end
 
     def data_miner
