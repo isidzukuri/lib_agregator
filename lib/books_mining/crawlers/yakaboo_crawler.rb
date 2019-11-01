@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
+# TODO: overcome DDOS ban
+
 module BooksMining
   class YakabooCrawler
     SITEMAPS_PATH = 'tmp/www.yakaboo.ua/sitemap/*'
 
     def call
       ap sitemap.size
-      # ap sitemap.store
-      # WebCrawler::Parser.new(sitemap, data_miner).call
-      # ChtyvoImporter.new.call
     end
 
     private
@@ -38,25 +37,10 @@ module BooksMining
         sitemap_items_pattern: Regexp.new("https://www.yakaboo.ua/ua/(?!#{exclude})[A-z0-9-]*.html")
       )
 
-      sitemap = WebCrawler::ConcurrentSet.new(ebooks_sitemap.store + paper_books_sitemap.store)
-
-
-
-      # if previous_sitemap
-      #   new_sitemap = WebCrawler::ConcurrentSet.new
-      #
-      #   items = sitemap.store - previous_sitemap
-      #
-      #   new_sitemap.push(items)
-      #
-      #   sitemap = new_sitemap
-      # end
-
-      # sitemap
+      WebCrawler::ConcurrentSet.new(ebooks_sitemap.store + paper_books_sitemap.store)
     end
 
     # def data_miner
-    #   ChtyvoDataMiner.new
     # end
 
     def exclude
