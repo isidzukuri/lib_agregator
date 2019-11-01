@@ -5,7 +5,5 @@ require 'books_mining/crawlers/chtyvo_crawler'
 require 'books_mining/data_miners/chtyvo_data_miner'
 require 'books_mining/importers/chtyvo_importer'
 
-require 'books_mining/crawlers/yakaboo_crawler'
-
 module BooksMining
 end
