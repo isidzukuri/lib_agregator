@@ -76,6 +76,7 @@ module WebCrawler
           uri.scheme = site[:scheme]
           uri.path = '/' + uri.path unless uri.path[0] == '/'
         end
+        uri.query = uri.query.gsub('&amp;', '&') if uri.query
         uri.to_s
       end
 

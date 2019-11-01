@@ -32,7 +32,7 @@ module WebCrawler
         response = HTTP.get(url)
 
         if response.status.code == STATUS_OK
-          result(response.body.to_s)
+          result(response.body.to_s.encode('UTF-8', invalid: :replace, replace: "?"))
         else
           result(nil, [response.status.to_s])
         end
