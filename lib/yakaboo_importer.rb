@@ -19,8 +19,6 @@ class YakabooImporter
     entries = doc.xpath('//offers/offer')
     total = entries.count
 
-
-
     entries.each_with_index do |el, i|
       ap "#{i+1}/#{total}"
       if skip_times > i
