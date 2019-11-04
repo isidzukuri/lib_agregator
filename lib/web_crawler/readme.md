@@ -14,8 +14,8 @@ WebCrawler::Sitemap.build({
         sitemap_items_pattern: /((?:http:\/\/chtyvo.org.ua\/)?authors\/(?!letter).+\/.+\/)"/
       })
 ```
-Returns set of urls. The set will be saved in `/tmp` folder as csv file.
-Process will visit page(`:entry_point`) at the  start. It will start looking there for links to pages(`:pages_pattern`) which contains urls(`:sitemap_items_pattern`) which will be saved to the sitemap.
+Returns set of urls. The set saved in `/tmp` folder as csv file.
+Process visit page(`:entry_point`) at the  start. It starts looking there for links to pages(`:pages_pattern`) which contains urls(`:sitemap_items_pattern`) which are saved to the sitemap.
 
 
 Parse website:
