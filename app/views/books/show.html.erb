@@ -35,7 +35,7 @@
         link = @book[frmt].include?(sls_d) ? @book[frmt].sub!(sls_d, '') : @book[frmt]
       %>
 
-      <a href="<%=link%>" class="download_href" target="_blank" rel="nofollow">
+      <a href="<%=URI.decode(link)%>" class="download_href" target="_blank" rel="nofollow">
           <span class="glyphicon glyphicon-<%=frmt == 'paper' ? 'book' : 'cloud-download' %>" aria-hidden="true"></span>    
           <%=frmt == :paper ? 'папір' : frmt.upcase %>
       </a>
