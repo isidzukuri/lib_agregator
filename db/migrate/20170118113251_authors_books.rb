@@ -1,4 +1,4 @@
-class AuthorsBooks < ActiveRecord::Migration
+class AuthorsBooks < ActiveRecord::Migration[4.2]
   def change
     create_table :authors_books do |t|
       t.references :author, :null => false

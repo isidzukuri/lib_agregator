@@ -1,4 +1,4 @@
-class CreateBookTags < ActiveRecord::Migration
+class CreateBookTags < ActiveRecord::Migration[4.2]
   def change
     create_table :books_tags do |t|
       t.references :tag, :null => false
