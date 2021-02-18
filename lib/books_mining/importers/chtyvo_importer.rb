@@ -135,12 +135,13 @@ module BooksMining
     end
 
     def book_present? b_data, authors
-      result = false
-      authors_ids = authors.map(&:id).join(',')
-      query = Book.where(domain: 'chtyvo.org.ua', title: b_data['title'])
-      query = query.joins(:authors).where("authors_books.author_id in(#{authors_ids})") if authors_ids.present?
+      Book.where(source: b_data['source'], domain: b_data['domain']).exists?
+      # result = false
+      # authors_ids = authors.map(&:id).join(',')
+      # query = Book.where(domain: 'chtyvo.org.ua', title: b_data['title'])
+      # query = query.joins(:authors).where("authors_books.author_id in(#{authors_ids})") if authors_ids.present?
 
-      !!query.first
+      # !!query.first
     end
   end
 end
