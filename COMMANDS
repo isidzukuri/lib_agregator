@@ -1,0 +1,11 @@
+
+curl -XDELETE localhost:9200/authors
+curl -XDELETE localhost:9200/books
+
+Book.import; Author.import
+
+curl localhost:9200/books/_flush
+curl localhost:9200/authors/_flush
+
+
+s3cmd --acl-public --add-header="Cache-Control:max-age=2592000" --skip-existing sync lib_agregator/public/covers/ s3://lbacovers/covers/
