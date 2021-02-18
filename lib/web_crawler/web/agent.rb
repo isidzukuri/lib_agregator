@@ -39,14 +39,15 @@ module WebCrawler
       end
 
       def from_cache(url)
-        data = CACHE.read(url)
+        cache_key = Digest::SHA1.hexdigest(url)
+        data = CACHE.read(cache_key)
 
         if data
           result(data)
         else
           res = request(url)
 
-          CACHE.write(url, res.page) if res.success?
+          CACHE.write(cache_key, res.page) if res.success?
 
           res
         end
