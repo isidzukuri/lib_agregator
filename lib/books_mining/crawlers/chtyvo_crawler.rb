@@ -26,9 +26,9 @@ module BooksMining
     def sitemap
       return @sitemap if @sitemap
       sitemap = WebCrawler::Sitemap.build(
-        entry_point: 'http://chtyvo.org.ua/',
-        pages_pattern: %r{(?:http://chtyvo.org.ua/)?(?:genre/[A-z]*/books|authors/letter/\d+/\p{L})(?:/page-\d+)?},
-        sitemap_items_pattern: %r{((?:http://chtyvo.org.ua/)?authors/(?!letter).+/.+/)"}
+        entry_point: 'https://chtyvo.org.ua/',
+        pages_pattern: %r{(?:https://chtyvo.org.ua/)?(?:genre/[A-z]*/books|authors/letter/\d+/\p{L})(?:/page-\d+)?},
+        sitemap_items_pattern: %r{((?:https://chtyvo.org.ua/)?authors/(?!letter).+/.+/)"}
       )
       # sitemap = WebCrawler::Sitemap.from_file('tmp/chtyvo.org.ua/sitemap/30.10.2019.csv')
 
